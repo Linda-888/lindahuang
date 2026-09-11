@@ -114,3 +114,19 @@ document.querySelectorAll('#experience .timeline article').forEach(article=>{
   if(title.includes('Summer Camp Counselor'))date.textContent='April 2025 - Present';
   if(title.includes('Teaching Assistant'))date.textContent='February 2025 - August 2025';
 });
+const contactSection=document.querySelector('#contact');
+const contactEmailTarget=document.querySelector('.contact-email');
+const contactJumpLinks=document.querySelectorAll('.nav-social a[href^="mailto:"], .hero-panel-footer a[href^="mailto:"]');
+contactJumpLinks.forEach(link=>{
+  link.href='#contact';
+  link.addEventListener('click',event=>{
+    if(!contactSection||!contactEmailTarget)return;
+    event.preventDefault();
+    history.replaceState(null,'','#contact');
+    contactSection.scrollIntoView({behavior:'smooth',block:'start'});
+    contactEmailTarget.classList.remove('is-highlighted');
+    void contactEmailTarget.offsetWidth;
+    contactEmailTarget.classList.add('is-highlighted');
+    window.setTimeout(()=>contactEmailTarget.classList.remove('is-highlighted'),2400);
+  });
+});

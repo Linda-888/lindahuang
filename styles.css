@@ -10,3 +10,4 @@
  .project-security{background:var(--sage)}.project-robot{background:var(--peach)}
  .contact-linkedin,.contact-github{display:inline-block;margin:22px 0 0;color:var(--paper);font:11px var(--mono);text-decoration:none;border-bottom:1px solid var(--peach);padding-bottom:3px}.contact-linkedin:hover,.contact-github:hover{color:var(--peach)}
  .contact-email,.contact-linkedin,.contact-github{display:block;width:max-content}.contact-linkedin,.contact-github{font:500 clamp(24px,3.5vw,48px) var(--serif);margin-top:24px;padding-bottom:8px}
+ #contact{scroll-margin-top:82px}.contact-email.is-highlighted{color:var(--peach);border-bottom-color:var(--paper);text-shadow:0 0 18px rgba(232,187,166,.68);animation:contact-email-highlight 2.4s ease-out both}@keyframes contact-email-highlight{0%,100%{transform:translateX(0)}18%{transform:translateX(5px)}36%{transform:translateX(-4px)}54%{transform:translateX(3px)}72%{transform:translateX(-2px)}}
