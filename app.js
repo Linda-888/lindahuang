@@ -50,6 +50,13 @@ if(contactEmail){
   linkedin.rel='noopener noreferrer';
   linkedin.textContent='LinkedIn ↗';
   contactEmail.after(linkedin);
+  const github=document.createElement('a');
+  github.className='contact-github';
+  github.href='https://github.com/Linda-888';
+  github.target='_blank';
+  github.rel='noopener noreferrer';
+  github.textContent='GitHub ↗';
+  linkedin.after(github);
 }
 const portraitHead=document.querySelector('.portrait-head');
 if(portraitHead)portraitHead.textContent='Linda Huang';
