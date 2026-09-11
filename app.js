@@ -72,7 +72,7 @@ const mindjoyHeading=[...document.querySelectorAll('.project h3')].find(el=>el.t
 if(mindjoyHeading){
   const mindjoyButton=document.createElement('a');
   mindjoyButton.className='mindjoy-link';
-  mindjoyButton.href='http://8.137.13.98/';
+  mindjoyButton.href='https://mindjoy.com/';
   mindjoyButton.target='_blank';
   mindjoyButton.rel='noopener noreferrer';
   mindjoyButton.textContent='Check out MindJoy platform ↗';
@@ -97,7 +97,7 @@ const projectGridUpdated=document.querySelector('#projects .project-grid');
 if(projectGridUpdated){
   projectGridUpdated.innerHTML='<article class="project"><div class="project-image project-mindjoy">☼</div><div class="project-body"><span>Founder · Remote · October 2023 - Present</span><h3>MindJoy</h3><p>Built an integrated AI mental-health platform with self-assessment, AI Q&amp;A, “Mood Tree Hole,” and “MindJoy Diary,” informed by research with more than 400 individuals.</p><div class="tags"><span>AI Q&amp;A</span><span>HCI</span><span>Education technology</span></div></div></article><article class="project"><div class="project-image project-security">⌁</div><div class="project-body"><span>Independent Research · Tencent Spark Programme · June 2026 - August 2026</span><h3>Security analysis system</h3><p>Combined ATT&amp;CK with an AI Agent Harness for enterprise attack simulation, vulnerability assessment, and security reporting.</p><div class="tags"><span>AI agents</span><span>ATT&amp;CK</span><span>Risk analysis</span></div></div></article><article class="project"><div class="project-image project-robot">≈</div><div class="project-body"><span>Project Lead · Shenzhen, China · July 2025 - October 2025</span><h3>Underwater Robot</h3><p>Modeled components, assembled hardware, programmed control logic, and completed open-water tests for marine exploration and freshwater assessment.</p><div class="tags"><span>Robotics</span><span>Hardware</span><span>Open water</span></div></div></article>';
   const newMindjoy=projectGridUpdated.querySelector('.project h3');
-  if(newMindjoy){const button=document.createElement('a');button.className='mindjoy-link';button.href='http://8.137.13.98/';button.target='_blank';button.rel='noopener noreferrer';button.textContent='Check out MindJoy platform ↗';newMindjoy.closest('.project-body').appendChild(button);}
+  if(newMindjoy){const button=document.createElement('a');button.className='mindjoy-link';button.href='https://mindjoy.com/';button.target='_blank';button.rel='noopener noreferrer';button.textContent='Check out MindJoy platform ↗';newMindjoy.closest('.project-body').appendChild(button);}
 }
 document.querySelectorAll('#experience .timeline article').forEach(article=>{
   const title=article.querySelector('h3')?.textContent||'';
