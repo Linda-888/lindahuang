@@ -98,7 +98,7 @@ const researchIntro=document.querySelector('#research .section-intro');
 if(researchIntro)researchIntro.textContent='Selected research in language-model evaluation and early mental-health issue detection.';
 const researchListUpdated=document.querySelector('#research .research-list');
 if(researchListUpdated){
-  researchListUpdated.innerHTML='<article class="research-item"><span class="item-number">01</span><div><p class="item-meta">Remote · Student Researcher · March 2025 - November 2025</p><h3>Evaluation of Large Language Models</h3><p>Benchmarked GPT-5, Gemini 2.5 Pro, ChatGLM-4.5, and DeepSeek across academic subjects using MMLU, LogiQA, and C-Eval. Constructed and open-sourced four exam datasets, compared prompting strategies, and designed a six-category error taxonomy for model failure patterns.</p><div class="tags"><span>LLM evaluation</span><span>Datasets</span><span>Prompt strategy</span></div></div></article><article class="research-item"><span class="item-number">02</span><div><p class="item-meta">Remote · Student Researcher · April 2025 - September 2025</p><h3>Early Mental Health Issue Detection System</h3><p>Built an early-warning framework for adolescent depression risk using multimodal survey data across academic pressure, CGPA, sleep duration, study hours, and lifestyle indicators. Preprocessed a 28K-record dataset, benchmarked four models, and identified XGBoost as the strongest predictor.</p><div class="tags"><span>Machine learning</span><span>XGBoost</span><span>Health data</span></div></div></article>';
+  researchListUpdated.innerHTML='<article class="research-item"><span class="item-number">01</span><div class="research-content"><p class="item-meta">Remote · Student Researcher · March 2025 - November 2025</p><h3>Evaluation of Large Language Models</h3><p>Benchmarked GPT-5, Gemini 2.5 Pro, ChatGLM-4.5, and DeepSeek across academic subjects using MMLU, LogiQA, and C-Eval. Constructed and open-sourced four exam datasets, compared prompting strategies, and designed a six-category error taxonomy for model failure patterns.</p><figure class="research-media llm-media" aria-label="Illustration of a large language model evaluation workflow"><div class="media-kicker">BENCHMARK / 01</div><div class="model-row"><span>GPT-5</span><i class="bar bar-one"></i><b>96</b></div><div class="model-row"><span>Gemini</span><i class="bar bar-two"></i><b>91</b></div><div class="model-row"><span>DeepSeek</span><i class="bar bar-three"></i><b>87</b></div><div class="media-foot"><span>MMLU · LogiQA · C-Eval</span><span>six error categories</span></div></figure><div class="tags"><span>LLM evaluation</span><span>Datasets</span><span>Prompt strategy</span></div></div></article><article class="research-item"><span class="item-number">02</span><div class="research-content"><p class="item-meta">Remote · Student Researcher · April 2025 - September 2025</p><h3>Early Mental Health Issue Detection System</h3><p>Built an early-warning framework for adolescent depression risk using multimodal survey data across academic pressure, CGPA, sleep duration, study hours, and lifestyle indicators. Preprocessed a 28K-record dataset, benchmarked four models, and identified XGBoost as the strongest predictor.</p><figure class="research-media health-media" aria-label="Illustration of connected survey signals used in an early mental-health detection system"><div class="media-kicker">SIGNALS / 28K RECORDS</div><div class="signal-map"><span class="signal-node node-center">risk</span><span class="signal-node node-sleep">sleep</span><span class="signal-node node-stress">stress</span><span class="signal-node node-study">study</span><span class="signal-node node-social">lifestyle</span><span class="signal-line line-a"></span><span class="signal-line line-b"></span><span class="signal-line line-c"></span><span class="signal-line line-d"></span></div><div class="media-foot"><span>survey features → model</span><span>XGBoost</span></div></figure><div class="tags"><span>Machine learning</span><span>XGBoost</span><span>Health data</span></div></div></article>';
 }
 const projectGridUpdated=document.querySelector('#projects .project-grid');
 if(projectGridUpdated){
@@ -129,4 +129,26 @@ contactJumpLinks.forEach(link=>{
     contactEmailTarget.classList.add('is-highlighted');
     window.setTimeout(()=>contactEmailTarget.classList.remove('is-highlighted'),2400);
   });
+});
+const projectIcons={
+  'MindJoy':'<svg viewBox="0 0 96 96" aria-hidden="true"><circle cx="48" cy="48" r="16"/><path d="M48 8v16M48 72v16M8 48h16M72 48h16M19.7 19.7l11.3 11.3M65 65l11.3 11.3M76.3 19.7 65 31M31 65 19.7 76.3"/><path d="M48 25c7 8 15 11 15 21a15 15 0 0 1-30 0c0-10 8-13 15-21Z"/></svg>',
+  'Security analysis system':'<svg viewBox="0 0 96 96" aria-hidden="true"><path d="M48 8 78 19v23c0 20-12 35-30 46C30 77 18 62 18 42V19L48 8Z"/><rect x="34" y="43" width="28" height="22" rx="3"/><path d="M40 43v-7a8 8 0 0 1 16 0v7M48 51v6"/></svg>',
+  'Underwater Robot':'<svg viewBox="0 0 96 96" aria-hidden="true"><path d="M13 55c9-8 18-8 27 0s18 8 27 0 18-8 27 0M13 71c9-8 18-8 27 0s18 8 27 0 18-8 27 0"/><path d="M27 43h34a10 10 0 0 0 10-10v-5H37a10 10 0 0 0-10 10v5Z"/><circle cx="43" cy="34" r="4"/><path d="M71 28h9M76 28v-8M57 43v8"/></svg>'
+};
+document.querySelectorAll('#projects .project').forEach(project=>{
+  const title=project.querySelector('h3')?.textContent.trim();
+  const icon=projectIcons[title];
+  const image=project.querySelector('.project-image');
+  if(icon&&image)image.innerHTML=icon;
+});
+const generatedProjectMedia={
+  'MindJoy':'<svg class="generated-media" viewBox="0 0 160 120" aria-label="Animated abstract wellness interface"><circle class="media-orb" cx="80" cy="58" r="30"/><path d="M80 39c11 12 18 17 18 27a18 18 0 0 1-36 0c0-10 7-15 18-27Z"/><path class="media-orbit" d="M26 58c15-36 93-45 110 0-17 45-95 36-110 0Z"/><circle class="media-dot" cx="34" cy="47" r="4"/><circle class="media-dot" cx="126" cy="70" r="4"/></svg>',
+  'Security analysis system':'<svg class="generated-media" viewBox="0 0 160 120" aria-label="Animated abstract security analysis system"><path d="M80 12 122 27v31c0 27-17 43-42 54C55 101 38 85 38 58V27L80 12Z"/><path class="media-scan" d="M47 62h66"/><rect x="66" y="48" width="28" height="23" rx="4"/><path d="M72 48v-7a8 8 0 0 1 16 0v7M80 57v6"/><circle class="media-dot" cx="128" cy="29" r="4"/></svg>',
+  'Underwater Robot':'<svg class="generated-media" viewBox="0 0 160 120" aria-label="Animated underwater robot illustration"><path d="M15 84c17-13 34-13 51 0s34 13 51 0 34-13 51 0M15 103c17-13 34-13 51 0s34 13 51 0 34-13 51 0"/><path d="M46 64h57a14 14 0 0 0 14-14v-7H58a14 14 0 0 0-14 14v7Z"/><circle cx="68" cy="51" r="6"/><path d="M103 43h15M110 43V29M86 64v12"/><circle class="media-bubble bubble-one" cx="35" cy="38" r="4"/><circle class="media-bubble bubble-two" cx="24" cy="22" r="2.5"/></svg>'
+};
+document.querySelectorAll('#projects .project').forEach(project=>{
+  const title=project.querySelector('h3')?.textContent.trim();
+  const media=generatedProjectMedia[title];
+  const image=project.querySelector('.project-image');
+  if(media&&image)image.innerHTML=media;
 });
