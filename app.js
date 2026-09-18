@@ -38,7 +38,7 @@ Object.entries(sectionNumbers).forEach(([id,label])=>{const marker=document.quer
 const projectsHeading=document.querySelector('#projects h2');
 if(projectsHeading)projectsHeading.textContent='Building tools for minds, classrooms, and communities.';
 const getInTouch=document.querySelector('.hero-actions .text-link');
-if(getInTouch){getInTouch.href='#contact';getInTouch.addEventListener('click',event=>{const target=document.querySelector('#contact');if(target){event.preventDefault();target.scrollIntoView({behavior:'smooth'});}});}
+if(getInTouch)getInTouch.href='contact.html#email';
 const aboutHeading=document.querySelector('#about h2');
 if(aboutHeading)aboutHeading.textContent='Building systems that support people and center the human experience.';
 const contactEmail=document.querySelector('.contact-email');
@@ -62,7 +62,7 @@ const portraitHead=document.querySelector('.portrait-head');
 if(portraitHead)portraitHead.textContent='Linda Huang';
 const heroRight=document.querySelector('.hero-right');
 if(heroRight){
-  heroRight.innerHTML='<div class="hero-panel"><div class="hero-panel-top"><span>Research direction</span><i>2026</i></div><div class="hero-panel-main"><span class="panel-mark">LH</span><div><strong>Building human-centered systems</strong><p>Researching how intelligent technology can support mental health, learning, and everyday communication.</p></div></div><div class="hero-panel-details"><div><span>School</span><b>University of Illinois<br>Urbana-Champaign</b></div><div><span>Major</span><b>Computer Science<br>+ Education</b></div><div><span>Interests</span><b>AI · Data Structures<br>Learning Sciences</b></div></div><div class="hero-panel-footer"><span>Open to thoughtful collaboration</span><a href="mailto:lindah6@illinois.edu">Email me ↗</a></div></div>';
+  heroRight.innerHTML='<div class="hero-panel"><div class="hero-panel-top"><span>Research direction</span><i>2026</i></div><div class="hero-panel-main"><span class="panel-mark">LH</span><div><strong>Building human-centered systems</strong><p>Researching how intelligent technology can support mental health, learning, and everyday communication.</p></div></div><div class="hero-panel-details"><div><span>School</span><b>University of Illinois<br>Urbana-Champaign</b></div><div><span>Major</span><b>Computer Science<br>+ Education</b></div><div><span>Interests</span><b>AI · Data Structures<br>Learning Sciences</b></div></div><div class="hero-panel-footer"><span>Open to thoughtful collaboration</span><a href="contact.html#email">Email me ↗</a></div></div>';
 }
 const heroRole=document.querySelector('.hero-role');
 if(heroRole){
@@ -116,6 +116,7 @@ document.querySelectorAll('#experience .timeline article').forEach(article=>{
 });
 const contactSection=document.querySelector('#contact');
 const contactEmailTarget=document.querySelector('.contact-email');
+if(contactEmailTarget&&window.location.hash==='#email')contactEmailTarget.classList.add('is-highlighted');
 const contactJumpLinks=document.querySelectorAll('.nav-social a[href^="mailto:"], .hero-panel-footer a[href^="mailto:"]');
 contactJumpLinks.forEach(link=>{
   link.href='#contact';
