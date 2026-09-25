@@ -167,7 +167,7 @@ document.querySelectorAll('#projects .project').forEach(project=>{
 });
 const mentalHealthVisual=document.querySelector('.health-media .signal-map');
 if(mentalHealthVisual)mentalHealthVisual.innerHTML='<svg class="mental-health-icon" viewBox="0 0 180 150" aria-label="Brain model connected to survey signals"><path class="brain-shape" d="M78 35c-9-12-29-7-29 8-12-3-21 11-13 21-12 8-7 26 7 27 1 14 20 18 28 8 8 9 24 5 26-7 14-3 16-21 5-28 9-12 0-28-13-25-1-9-6-15-11-15Z"/><path class="brain-fold" d="M64 35c-7 8 3 12-4 19s7 9 0 17 6 10 2 18M83 37c8 7-2 13 5 19s-6 9 1 16-5 11-1 18"/><circle class="signal-node-real node-real-a" cx="25" cy="44" r="5"/><circle class="signal-node-real node-real-b" cx="27" cy="108" r="5"/><circle class="signal-node-real node-real-c" cx="151" cy="48" r="5"/><circle class="signal-node-real node-real-d" cx="151" cy="103" r="5"/><path class="signal-connector connector-a" d="M30 46 48 55M32 106l31-15M146 50l-25 12M146 101l-29-13"/><path class="detect-line" d="M15 130h24l6-9 8 14 10-18 9 13h27l8-9 7 9h34"/></svg>';
-const motionTargets=document.querySelectorAll('.section,.project,.research-item,.timeline article,.story-steps>div');
+const motionTargets=document.querySelectorAll('main > .section:not(:first-child)');
 if('IntersectionObserver' in window){
   const motionObserver=new IntersectionObserver(entries=>entries.forEach(entry=>{
     if(entry.isIntersecting){entry.target.classList.add('is-visible');motionObserver.unobserve(entry.target);}

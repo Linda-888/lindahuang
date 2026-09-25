@@ -53,4 +53,5 @@ body::before{display:none!important}
 @keyframes site-content-settle{from{opacity:0;transform:translateY(10px) scale(.996)}to{opacity:1;transform:none}}
 @keyframes site-nav-settle{from{opacity:0;transform:translateY(-5px)}to{opacity:1;transform:none}}
 @supports selector(::view-transition-new(root)){.page-home main,.page-about main,.page-story main,.page-research main,.page-projects main,.page-education main,.page-contact main,.page-research-detail main,.nav{animation:none}}
+.motion-reveal{transform:translateY(14px);transition:opacity .48s cubic-bezier(.22,.8,.22,1) var(--reveal-delay,0ms),transform .48s cubic-bezier(.22,.8,.22,1) var(--reveal-delay,0ms)}
 @media(prefers-reduced-motion:reduce){::view-transition-old(root),::view-transition-new(root){animation:none}.page-home main,.page-about main,.page-story main,.page-research main,.page-projects main,.page-education main,.page-contact main,.page-research-detail main,.nav{animation:none!important}}
