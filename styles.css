@@ -40,3 +40,17 @@ body::before,.page-home::before,.page-about::before,.page-story::before,.page-re
 .research-actions .button-outline{background:transparent;color:var(--ink);border:1px solid var(--ink);padding:11px 15px}.research-actions .button-outline:hover{background:var(--peach);color:var(--ink);box-shadow:5px 5px 0 var(--ink)}
 .research-card-image{margin:24px 0 25px;border:1px solid var(--ink);background:var(--paper);overflow:hidden}.research-card-image img{display:block;width:100%;height:220px;object-fit:contain;padding:12px}.research-card-image figcaption,.paper-figure-grid figcaption{border-top:1px solid var(--line);padding:11px 14px;color:var(--muted);font:10px/1.4 var(--mono)}.paper-figures{background:var(--cream)}.paper-figure-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}.paper-figure-grid figure{margin:0;border:1px solid var(--ink);background:var(--paper);overflow:hidden}.paper-figure-grid img{display:block;width:100%;height:310px;object-fit:contain;padding:14px;background:var(--paper)}@media(max-width:780px){.research-card-image img{height:180px}.paper-figure-grid{grid-template-columns:1fr}.paper-figure-grid img{height:250px}}
 .research-item{grid-template-columns:1fr}.research-item .item-number,#research .item-number,#projects .item-number{display:none}
+/* Site navigation: a calm, consistent transition for every page. */
+@view-transition{navigation:auto}
+::view-transition-old(root){animation:site-page-out .16s ease-in both}
+::view-transition-new(root){animation:site-page-in .42s cubic-bezier(.22,.8,.22,1) both}
+@keyframes site-page-out{to{opacity:0;transform:scale(.995)}}
+@keyframes site-page-in{from{opacity:0;transform:scale(.992);filter:blur(2px)}to{opacity:1;transform:scale(1);filter:blur(0)}}
+body::before{display:none!important}
+.page-home main,.page-about main,.page-story main,.page-research main,.page-projects main,.page-education main,.page-contact main,.page-research-detail main{transform-origin:50% 35%;animation:site-content-settle .46s cubic-bezier(.22,.8,.22,1) both}
+.page-research-detail .detail-hero,.page-research-detail .detail-section{animation:none}
+.nav{animation:site-nav-settle .36s cubic-bezier(.22,.8,.22,1) both}
+@keyframes site-content-settle{from{opacity:0;transform:translateY(10px) scale(.996)}to{opacity:1;transform:none}}
+@keyframes site-nav-settle{from{opacity:0;transform:translateY(-5px)}to{opacity:1;transform:none}}
+@supports selector(::view-transition-new(root)){.page-home main,.page-about main,.page-story main,.page-research main,.page-projects main,.page-education main,.page-contact main,.page-research-detail main,.nav{animation:none}}
+@media(prefers-reduced-motion:reduce){::view-transition-old(root),::view-transition-new(root){animation:none}.page-home main,.page-about main,.page-story main,.page-research main,.page-projects main,.page-education main,.page-contact main,.page-research-detail main,.nav{animation:none!important}}
