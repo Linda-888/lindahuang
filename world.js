@@ -1,4 +1,5 @@
 (() => {
+  if (document.body.classList.contains('book-experience')) return;
   const stations = [
     { href: 'about.html', label: 'About', key: 'about' },
     { href: 'story.html', label: 'My Story', key: 'story' },
