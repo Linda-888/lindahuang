@@ -12,6 +12,7 @@ body.chapter-page .nav nav a:hover,
 body.chapter-page .nav-social a:hover { color: #f3ae8c; }
 body.chapter-page .nav-social { border-color: rgba(222,234,227,.18); }
 body.chapter-page footer { background: #0b202a; }
+body.chapter-page footer .brand { color: #eff0e8; }
 body.chapter-page main.chapter-main {
   flex: 1;
   min-height: calc(100svh - 70px);
