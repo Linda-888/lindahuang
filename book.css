@@ -66,8 +66,9 @@
 .book-leaf-body { flex: 1; min-height: 0; overflow: auto; scrollbar-width: thin; scrollbar-color: #bcb7a5 transparent; padding: 24px 36px 20px; }
 .book-leaf-body::-webkit-scrollbar { width: 6px; }
 .book-leaf-body::-webkit-scrollbar-thumb { border-radius: 4px; background: #c2beae; }
-.book-scroll-cue { display: none; position: absolute; right: 35px; bottom: 49px; z-index: 2; pointer-events: none; color: #a6654f; font: 9px/1.4 var(--mono); letter-spacing: .02em; padding: 13px 2px 3px 26px; background: linear-gradient(90deg, transparent, #faf8ef 24%); }
-.book-leaf.has-more .book-scroll-cue { display: block; }
+.book-scroll-cue { display: none; color: #a6654f; font: 9px/1.4 var(--mono); letter-spacing: .02em; white-space: nowrap; }
+.book-leaf.has-more .book-scroll-cue { display: inline; }
+.book-leaf.has-more .book-leaf-direction { display: none; }
 .book-chapter-kicker { color: #b86c52; font: 10px/1.5 var(--mono); letter-spacing: .12em; text-transform: uppercase; margin-bottom: 16px; }
 .book-display { font: 600 clamp(49px, 5.1vw, 84px)/.98 var(--sans); letter-spacing: -.09em; margin: 0 0 18px; color: #1a323b; }
 .book-display em { color: #ca7960; font: 500 1.02em/.98 var(--serif); letter-spacing: -.075em; }
@@ -240,7 +241,6 @@
   .book-leaf-head { margin: 20px 27px 0; }
   .book-leaf-foot { margin: 0 27px 18px; }
   .book-leaf-body { padding: 22px 27px 20px; }
-  .book-scroll-cue { right: 27px; bottom: 46px; }
   .book-display { font-size: clamp(48px, 10vw, 75px); }
   .book-chapter-title { font-size: clamp(34px, 7vw, 49px); }
   .book-index-card { grid-template-columns: 115px minmax(0,1fr); }
@@ -261,7 +261,8 @@
   .book-leaf-head { margin-left: 21px; margin-right: 21px; }
   .book-leaf-foot { margin-left: 21px; margin-right: 21px; }
   .book-leaf-body { padding-left: 21px; padding-right: 21px; }
-  .book-scroll-cue { right: 21px; }
+  .book-leaf-foot { font-size: 8px; }
+  .book-scroll-cue { font-size: 8px; }
   .book-index-card, .book-index-card--compact { grid-template-columns: 88px minmax(0,1fr); gap: 10px; padding: 7px; }
   .book-index-art, .book-index-card--compact .book-index-art { min-height: 104px; }
   .book-index-art img { height: 104px; }

@@ -257,7 +257,7 @@
   const previous = main.querySelector('.book-prev');
   const next = main.querySelector('.book-next');
   const position = main.querySelector('.book-position');
-  const leaf = (content, side, title) => `<section class="book-leaf book-leaf--${side}"><div class="book-leaf-head"><span>Linda Huang</span><span>${safe(title)}</span></div><div class="book-leaf-body">${content}</div><span class="book-scroll-cue" aria-hidden="true">Scroll for more ↓</span><div class="book-leaf-foot"><span>Human-centered technology</span><span>${side === 'left' ? '◂' : '▸'}</span></div></section>`;
+  const leaf = (content, side, title) => `<section class="book-leaf book-leaf--${side}"><div class="book-leaf-head"><span>Linda Huang</span><span>${safe(title)}</span></div><div class="book-leaf-body">${content}</div><div class="book-leaf-foot"><span>Human-centered technology</span><span class="book-scroll-cue" aria-hidden="true">Scroll for more ↓</span><span class="book-leaf-direction">${side === 'left' ? '◂' : '▸'}</span></div></section>`;
   const spreadFromHash = () => {
     const id = location.hash.slice(1);
     if (id === 'email' && file === 'contact.html') return 0;
