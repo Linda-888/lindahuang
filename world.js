@@ -100,7 +100,13 @@
   if (trackSvg) {
     const guide = trackSvg.querySelector('.track-guide');
     const waypoints = trackSvg.querySelector('.thread-waypoints');
-    const orb = routeWorld.querySelector('.route-orb');
+    const companion = routeWorld.querySelector('.route-companion');
+    const orb = companion.querySelector('.route-orb');
+    const dialog = companion.querySelector('.route-orb-dialog');
+    const typedText = dialog.querySelector('.route-orb-typed');
+    const announcement = dialog.querySelector('.route-orb-announcement');
+    const goLink = dialog.querySelector('.route-orb-go');
+    const closeButton = dialog.querySelector('.route-orb-close');
     const routeStations = [...routeWorld.querySelectorAll('.route-station')];
     const desktopPath = 'M110 690 C220 690 350 390 490 390 C575 390 560 550 650 550 C740 550 740 260 830 260 C945 260 980 330 1090 330';
     const mediumPath = 'M110 690 C235 690 405 390 550 390 C595 390 560 550 650 550 C740 550 740 260 830 260 C945 260 980 330 1090 330';
@@ -109,6 +115,13 @@
     const mediumStops = [[110, 690], [550, 390], [650, 550], [830, 260], [1090, 330]];
     const mobileStops = [[80, 72], [320, 176], [80, 280], [320, 384], [80, 488]];
     const scenes = ['about', 'education', 'research', 'projects', 'contact'];
+    const stageInfo = [
+      { label: 'About Me', question: 'Wanna know about me?', href: 'about.html' },
+      { label: 'Education', question: 'Wanna know about my education?', href: 'education.html' },
+      { label: 'Research', question: 'Wanna know about my research?', href: 'research.html' },
+      { label: 'Projects', question: 'Wanna know about my projects?', href: 'projects.html' },
+      { label: 'Contact', question: 'Wanna know about reaching me?', href: 'contact.html' },
+    ];
     const narrowRoute = matchMedia('(max-width: 780px)');
     const mediumRoute = matchMedia('(min-width: 781px) and (max-width: 920px)');
     const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
@@ -118,8 +131,14 @@
     let orbDistance = 0;
     let direction = 1;
     let pinnedStation = null;
+    let pointerStation = null;
+    let focusedStation = null;
+    let orbHovered = false;
+    let orbFocused = false;
     let animationFrame = 0;
     let lastTime = 0;
+    let dialogOpen = false;
+    let typingTimer = 0;
 
     const svgElement = (name, attributes = {}) => {
       const element = document.createElementNS(svgNamespace, name);
@@ -161,22 +180,90 @@
       return nearest;
     };
 
+    const currentSceneIndex = () => {
+      if (pinnedStation !== null) return pinnedStation;
+      let scene = 0;
+      for (let index = 1; index < stopDistances.length; index += 1) {
+        if (orbDistance >= stopDistances[index] - 22) scene = index;
+      }
+      return scene;
+    };
+
+    const syncPin = () => {
+      if (dialogOpen) return;
+      const next = pointerStation ?? focusedStation ?? ((orbHovered || orbFocused) ? currentSceneIndex() : null);
+      pinnedStation = next;
+      orb.classList.toggle('is-spotlight', next !== null);
+      if (next !== null && reducedMotion.matches) orbDistance = stopDistances[next];
+      placeOrb();
+    };
+
+    const typeQuestion = (index) => {
+      window.clearTimeout(typingTimer);
+      const question = stageInfo[index].question;
+      typedText.textContent = '';
+      announcement.textContent = question;
+      if (reducedMotion.matches) {
+        typedText.textContent = question;
+        dialog.classList.remove('is-typing');
+        return;
+      }
+      dialog.classList.add('is-typing');
+      let character = 0;
+      const typeNext = () => {
+        if (!dialogOpen) return;
+        character += 1;
+        typedText.textContent = question.slice(0, character);
+        if (character < question.length) typingTimer = window.setTimeout(typeNext, 32);
+        else dialog.classList.remove('is-typing');
+      };
+      typeNext();
+    };
+
     const placeOrb = () => {
       if (!orb || !pathLength) return;
       const point = guide.getPointAtLength(Math.max(0, Math.min(pathLength, orbDistance)));
       const width = narrowRoute.matches ? 400 : 1200;
       const height = narrowRoute.matches ? 560 : 800;
-      orb.style.left = `${(point.x / width * 100).toFixed(3)}%`;
-      orb.style.top = `${(point.y / height * 100).toFixed(3)}%`;
-      if (pinnedStation !== null) {
-        orb.dataset.scene = scenes[pinnedStation];
-      } else {
-        let scene = 0;
-        for (let index = 1; index < stopDistances.length; index += 1) {
-          if (orbDistance >= stopDistances[index] - 22) scene = index;
+      companion.style.left = `${(point.x / width * 100).toFixed(3)}%`;
+      companion.style.top = `${(point.y / height * 100).toFixed(3)}%`;
+      companion.dataset.side = point.x / width > .58 ? 'left' : 'right';
+      const index = currentSceneIndex();
+      if (companion.dataset.scene !== scenes[index]) {
+        companion.dataset.scene = scenes[index];
+        orb.setAttribute('aria-label', `Ask about ${stageInfo[index].label}`);
+        if (dialogOpen) {
+          dialog.setAttribute('aria-label', `${stageInfo[index].label} preview`);
+          goLink.href = stageInfo[index].href;
+          typeQuestion(index);
         }
-        orb.dataset.scene = scenes[scene];
       }
+    };
+
+    const openDialog = () => {
+      const index = currentSceneIndex();
+      pinnedStation = index;
+      dialogOpen = true;
+      dialog.hidden = false;
+      dialog.setAttribute('aria-label', `${stageInfo[index].label} preview`);
+      orb.setAttribute('aria-expanded', 'true');
+      orb.classList.add('is-spotlight');
+      goLink.href = stageInfo[index].href;
+      placeOrb();
+      typeQuestion(index);
+    };
+
+    const closeDialog = (restoreFocus = false) => {
+      dialogOpen = false;
+      window.clearTimeout(typingTimer);
+      dialog.classList.remove('is-typing');
+      dialog.hidden = true;
+      orb.setAttribute('aria-expanded', 'false');
+      pinnedStation = null;
+      orb.classList.remove('is-spotlight');
+      placeOrb();
+      if (restoreFocus) orb.focus({ preventScroll: true });
+      syncPin();
     };
 
     const buildLivingRoute = () => {
@@ -202,21 +289,38 @@
     mediumRoute.addEventListener('change', buildLivingRoute);
 
     routeStations.forEach((station, index) => {
-      const pin = () => {
-        pinnedStation = index;
-        orb.classList.add('is-spotlight');
-        if (reducedMotion.matches) orbDistance = stopDistances[index];
-        placeOrb();
-      };
-      const release = () => {
-        pinnedStation = null;
-        orb.classList.remove('is-spotlight');
-        placeOrb();
-      };
-      station.addEventListener('mouseenter', pin);
-      station.addEventListener('focus', pin);
-      station.addEventListener('mouseleave', release);
-      station.addEventListener('blur', release);
+      station.addEventListener('mouseenter', () => { pointerStation = index; syncPin(); });
+      station.addEventListener('mouseleave', () => {
+        if (pointerStation === index) pointerStation = null;
+        syncPin();
+      });
+      station.addEventListener('focus', () => { focusedStation = index; syncPin(); });
+      station.addEventListener('blur', () => {
+        if (focusedStation === index) focusedStation = null;
+        syncPin();
+      });
+    });
+
+    orb.addEventListener('click', () => dialogOpen ? closeDialog() : openDialog());
+    closeButton.addEventListener('click', () => closeDialog(true));
+    orb.addEventListener('focus', () => { orbFocused = true; syncPin(); });
+    orb.addEventListener('blur', () => { orbFocused = false; syncPin(); });
+    companion.addEventListener('mouseenter', () => {
+      orbHovered = true;
+      syncPin();
+    });
+    companion.addEventListener('mouseleave', () => {
+      orbHovered = false;
+      syncPin();
+    });
+    document.addEventListener('pointerdown', (event) => {
+      if (dialogOpen && !companion.contains(event.target)) closeDialog();
+    });
+    document.addEventListener('keydown', (event) => {
+      if (dialogOpen && event.key === 'Escape') {
+        event.preventDefault();
+        closeDialog(true);
+      }
     });
 
     const animateOrb = (time) => {
