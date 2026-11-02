@@ -257,7 +257,7 @@
   const previous = main.querySelector('.book-prev');
   const next = main.querySelector('.book-next');
   const position = main.querySelector('.book-position');
-  const leaf = (content, side, title) => `<section class="book-leaf book-leaf--${side}"><div class="book-leaf-head"><span>Linda Huang</span><span>${safe(title)}</span></div><div class="book-leaf-body">${content}</div><div class="book-leaf-foot"><span>Human-centered technology</span><span>${side === 'left' ? '◂' : '▸'}</span></div></section>`;
+  const leaf = (content, side, title) => `<section class="book-leaf book-leaf--${side}"><div class="book-leaf-head"><span>Linda Huang</span><span>${safe(title)}</span></div><div class="book-leaf-body">${content}</div><span class="book-scroll-cue" aria-hidden="true">Scroll for more ↓</span><div class="book-leaf-foot"><span>Human-centered technology</span><span>${side === 'left' ? '◂' : '▸'}</span></div></section>`;
   const spreadFromHash = () => {
     const id = location.hash.slice(1);
     if (id === 'email' && file === 'contact.html') return 0;
@@ -271,12 +271,24 @@
     const entry = spreads[Math.floor(index / 2)];
     return leaf(index % 2 ? entry.right : entry.left, index % 2 ? 'right' : 'left', entry.title);
   };
+  const updateScrollCues = () => {
+    pages.querySelectorAll('.book-leaf').forEach((page) => {
+      const body = page.querySelector('.book-leaf-body');
+      const update = () => page.classList.toggle('has-more', body.scrollTop + body.clientHeight < body.scrollHeight - 8);
+      update();
+      if (!body.dataset.scrollCueBound) {
+        body.addEventListener('scroll', update, { passive: true });
+        body.dataset.scrollCueBound = 'true';
+      }
+    });
+  };
   const render = () => {
     leafIndex = Math.max(0, Math.min(lastLeaf, leafIndex));
     const spreadIndex = Math.floor(leafIndex / 2);
     pages.innerHTML = narrow.matches
       ? pageContent(leafIndex)
       : pageContent(spreadIndex * 2) + pageContent(spreadIndex * 2 + 1);
+    requestAnimationFrame(updateScrollCues);
     position.textContent = `${section} / ${spreads[spreadIndex].title}${narrow.matches ? (leafIndex % 2 ? ' · continued' : '') : ''}`;
     previous.disabled = leafIndex === 0;
     next.disabled = narrow.matches ? leafIndex === lastLeaf : spreadIndex === spreads.length - 1;
@@ -354,4 +366,5 @@
   }, { passive: true });
   addEventListener('popstate', () => { leafIndex = spreadFromHash() * 2 + (narrow.matches && location.hash === '#email' ? 1 : 0); render(); });
   narrow.addEventListener('change', () => { leafIndex = Math.floor(leafIndex / 2) * 2; render(); });
+  addEventListener('resize', () => requestAnimationFrame(updateScrollCues), { passive: true });
 })();
