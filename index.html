@@ -10,7 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;700&family=Playfair+Display:ital,wght@0,600;1,500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css?v=20261101-editorial">
   <link rel="stylesheet" href="editorial.css?v=20261101-editorial">
-  <link rel="stylesheet" href="world.css?v=20261101-route">
+  <link rel="stylesheet" href="world.css?v=20261101-spatial-v2">
 </head>
 <body class="page-home page-editorial">
   <header class="nav">
@@ -32,30 +32,33 @@
         <h1 id="home-name">Linda <em>Huang.</em></h1>
         <div class="home-intro-copy">
           <p class="home-lede">I study and build technology that helps people learn, connect, and feel supported.</p>
-          <p>My work brings together human-computer interaction, education technology, and thoughtful uses of AI.</p>
+          <p>Human-computer interaction · Education technology · Human-centered AI</p>
           <div class="home-school"><span>B.S. in Computer Science + Education, Learning Sciences</span><span>University of Illinois Urbana-Champaign</span></div>
-          <div class="home-links"><a class="button" href="research.html">Explore my research ↗</a><a class="plain-link" href="projects.html">See projects <span>↗</span></a></div>
+          <div class="home-links"><a class="button" href="#route-map">Enter the route ↓</a></div>
         </div>
       </div>
       <div class="home-route-map" id="route-map" aria-labelledby="route-title">
         <div class="route-map-heading">
-          <div><p class="home-kicker">A route through my work</p><h2 id="route-title">Start with people. Follow the questions.</h2></div>
-          <span class="route-hint">Choose a station to explore</span>
+          <div><p class="home-kicker">The human-centered line</p><h2 id="route-title">Follow an idea from people to possibility.</h2></div>
+          <span class="route-hint">Select a station to enter</span>
         </div>
         <div class="route-world">
           <div class="route-world-grid" aria-hidden="true"></div>
-          <svg class="route-track" viewBox="0 0 1200 440" preserveAspectRatio="none" aria-hidden="true">
-            <path class="track-shadow" d="M82 326 C155 326 161 169 264 169 S381 292 460 292 S584 117 687 117 S811 275 892 275 S1026 154 1115 154"/>
-            <path class="track-rail" d="M82 326 C155 326 161 169 264 169 S381 292 460 292 S584 117 687 117 S811 275 892 275 S1026 154 1115 154"/>
-            <path class="track-light" d="M82 326 C155 326 161 169 264 169 S381 292 460 292 S584 117 687 117 S811 275 892 275 S1026 154 1115 154"/>
-            <circle class="track-beacon" cx="82" cy="326" r="8"/>
+          <svg class="route-track" viewBox="0 0 1200 800" preserveAspectRatio="none" aria-hidden="true">
+            <defs><linearGradient id="trackBed" x1="0" x2="0.9" y1="0" y2="1"><stop offset="0" stop-color="#718095"/><stop offset=".48" stop-color="#334a5d"/><stop offset="1" stop-color="#192d3a"/></linearGradient><filter id="trackGlow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="8" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+            <path class="track-guide" d="M110 690 C220 690 255 455 400 455 S510 540 600 520 S675 260 780 260 S900 390 970 355 S1060 170 1120 245"/>
+            <path class="track-shadow" d="M110 690 C220 690 255 455 400 455 S510 540 600 520 S675 260 780 260 S900 390 970 355 S1060 170 1120 245"/>
+            <path class="track-bed" d="M110 690 C220 690 255 455 400 455 S510 540 600 520 S675 260 780 260 S900 390 970 355 S1060 170 1120 245"/>
+            <g class="track-ties"></g><g class="track-rails"></g>
+            <path class="track-light" d="M110 690 C220 690 255 455 400 455 S510 540 600 520 S675 260 780 260 S900 390 970 355 S1060 170 1120 245"/>
+            <circle class="track-beacon" cx="110" cy="690" r="9"/>
           </svg>
-          <a class="route-station station-about" href="about.html" style="--station-x:7%;--station-y:74%"><span class="station-object object-orbit" aria-hidden="true"><i></i><i></i><b></b></span><span class="station-copy"><small>Meet Linda</small><strong>About</strong></span></a>
-          <a class="route-station station-story" href="story.html" style="--station-x:23%;--station-y:27%"><span class="station-object object-path" aria-hidden="true"><i></i><i></i><b></b></span><span class="station-copy"><small>What shaped the questions</small><strong>My Story</strong></span></a>
-          <a class="route-station station-education" href="education.html" style="--station-x:40%;--station-y:67%"><span class="station-object object-book" aria-hidden="true"><i></i><i></i><b></b></span><span class="station-copy"><small>Learn across disciplines</small><strong>Education</strong></span></a>
-          <a class="route-station station-research" href="research.html" style="--station-x:57%;--station-y:26%"><span class="station-object object-data" aria-hidden="true"><i></i><i></i><b></b></span><span class="station-copy"><small>Questions tested with evidence</small><strong>Research</strong></span></a>
-          <a class="route-station station-projects" href="projects.html" style="--station-x:75%;--station-y:64%"><span class="station-object object-cube" aria-hidden="true"><i></i><i></i><b></b></span><span class="station-copy"><small>Ideas put to work</small><strong>Projects</strong></span></a>
-          <a class="route-station station-contact" href="contact.html" style="--station-x:92%;--station-y:30%"><span class="station-object object-signal" aria-hidden="true"><i></i><i></i><b></b></span><span class="station-copy"><small>Continue the conversation</small><strong>Contact</strong></span></a>
+          <a class="route-station station-about" href="about.html" style="--station-x:9.2%;--station-y:86%"><span class="station-object object-orbit" aria-hidden="true"><i></i><i></i><b></b></span><span class="station-copy"><small>Meet Linda</small><strong>About</strong></span></a>
+          <a class="route-station station-story" href="story.html" style="--station-x:33.3%;--station-y:56.8%"><span class="station-object object-path" aria-hidden="true"><i></i><i></i><b></b></span><span class="station-copy"><small>What shaped the questions</small><strong>My Story</strong></span></a>
+          <a class="route-station station-education" href="education.html" style="--station-x:50%;--station-y:65%"><span class="station-object object-book" aria-hidden="true"><i></i><i></i><b></b></span><span class="station-copy"><small>Learn across disciplines</small><strong>Education</strong></span></a>
+          <a class="route-station station-research" href="research.html" style="--station-x:65%;--station-y:32.5%"><span class="station-object object-data" aria-hidden="true"><i></i><i></i><b></b></span><span class="station-copy"><small>Questions tested with evidence</small><strong>Research</strong></span></a>
+          <a class="route-station station-projects" href="projects.html" style="--station-x:80.8%;--station-y:44.5%"><span class="station-object object-cube" aria-hidden="true"><i></i><i></i><b></b></span><span class="station-copy"><small>Ideas put to work</small><strong>Projects</strong></span></a>
+          <a class="route-station station-contact" href="contact.html" style="--station-x:93.3%;--station-y:30.6%"><span class="station-object object-signal" aria-hidden="true"><i></i><i></i><b></b></span><span class="station-copy"><small>Continue the conversation</small><strong>Contact</strong></span></a>
           <p class="route-thread-label"><span></span> The human-centered thread</p>
         </div>
         <p class="route-map-caption">A connected path through human-computer interaction, education technology, research, and making.</p>
@@ -95,5 +98,5 @@
     const destination = legacyPages[location.hash.slice(1)];
     if (destination) location.replace(destination);
   </script>
-<script src="world.js?v=20261101-route"></script></body>
+<script src="world.js?v=20261101-spatial-v2"></script></body>
 </html>

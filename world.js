@@ -96,6 +96,212 @@
     }
   }
 
+  const trackSvg = document.querySelector('.route-track');
+  if (trackSvg) {
+    const guide = trackSvg.querySelector('.track-guide');
+    const tiesLayer = trackSvg.querySelector('.track-ties');
+    const railsLayer = trackSvg.querySelector('.track-rails');
+    const beacon = trackSvg.querySelector('.track-beacon');
+    const desktopPath = 'M110 690 C220 690 255 455 400 455 S510 540 600 520 S675 260 780 260 S900 390 970 355 S1060 170 1120 245';
+    const mobilePath = 'M80 72 C180 72 220 160 320 160 C220 160 180 248 80 248 C180 248 220 336 320 336 C220 336 180 424 80 424 C180 424 220 512 320 512';
+    const narrowRoute = matchMedia('(max-width: 780px)');
+    const svgNamespace = 'http://www.w3.org/2000/svg';
+    let runner = null;
+
+    const svgElement = (name, attributes = {}) => {
+      const element = document.createElementNS(svgNamespace, name);
+      Object.entries(attributes).forEach(([key, value]) => element.setAttribute(key, value));
+      return element;
+    };
+
+    const pointAndNormal = (path, distance) => {
+      const length = path.getTotalLength();
+      const at = Math.max(0, Math.min(length, distance));
+      const before = path.getPointAtLength(Math.max(0, at - 1));
+      const after = path.getPointAtLength(Math.min(length, at + 1));
+      const point = path.getPointAtLength(at);
+      const tangentLength = Math.hypot(after.x - before.x, after.y - before.y) || 1;
+      return { point, normal: { x: -(after.y - before.y) / tangentLength, y: (after.x - before.x) / tangentLength } };
+    };
+
+    const offsetPathData = (path, offset, step = 5) => {
+      const length = path.getTotalLength();
+      const commands = [];
+      for (let distance = 0; distance <= length; distance += step) {
+        const { point, normal } = pointAndNormal(path, distance);
+        commands.push(`${commands.length ? 'L' : 'M'}${(point.x + normal.x * offset).toFixed(2)} ${(point.y + normal.y * offset).toFixed(2)}`);
+      }
+      const { point, normal } = pointAndNormal(path, length);
+      commands.push(`L${(point.x + normal.x * offset).toFixed(2)} ${(point.y + normal.y * offset).toFixed(2)}`);
+      return commands.join(' ');
+    };
+
+    const buildPhysicalTrack = () => {
+      const pathData = narrowRoute.matches ? mobilePath : desktopPath;
+      trackSvg.setAttribute('viewBox', narrowRoute.matches ? '0 0 400 560' : '0 0 1200 800');
+      trackSvg.querySelectorAll('.track-guide, .track-shadow, .track-bed, .track-light').forEach((path) => path.setAttribute('d', pathData));
+      guide.setAttribute('d', pathData);
+      tiesLayer.replaceChildren();
+      railsLayer.replaceChildren();
+
+      const railOffset = narrowRoute.matches ? 10 : 15;
+      [-railOffset, railOffset].forEach((offset) => {
+        railsLayer.append(svgElement('path', { class: 'track-rail-shadow', d: offsetPathData(guide, offset, 4) }));
+      });
+
+      const length = guide.getTotalLength();
+      const tieSpacing = narrowRoute.matches ? 17 : 18;
+      for (let distance = 8; distance < length - 8; distance += tieSpacing) {
+        const { point, normal } = pointAndNormal(guide, distance);
+        const halfWidth = narrowRoute.matches ? 31 : 31;
+        const start = { x: point.x - normal.x * halfWidth, y: point.y - normal.y * halfWidth };
+        const end = { x: point.x + normal.x * halfWidth, y: point.y + normal.y * halfWidth };
+        const tie = svgElement('line', {
+          class: 'track-tie',
+          x1: start.x.toFixed(2), y1: start.y.toFixed(2),
+          x2: end.x.toFixed(2), y2: end.y.toFixed(2),
+        });
+        const plate = svgElement('line', {
+          class: 'track-tie-glint',
+          x1: (start.x + normal.x * 4).toFixed(2), y1: (start.y + normal.y * 4).toFixed(2),
+          x2: (end.x - normal.x * 4).toFixed(2), y2: (end.y - normal.y * 4).toFixed(2),
+        });
+        tiesLayer.append(tie, plate);
+      }
+
+      [-railOffset, railOffset].forEach((offset) => {
+        railsLayer.append(svgElement('path', { class: 'track-rail', d: offsetPathData(guide, offset, 4) }));
+      });
+
+      const start = guide.getPointAtLength(0);
+      beacon.setAttribute('cx', start.x.toFixed(2));
+      beacon.setAttribute('cy', start.y.toFixed(2));
+      if (!runner) {
+        runner = svgElement('g', { class: 'track-runner', 'aria-hidden': 'true' });
+        runner.innerHTML = '<ellipse class="track-runner-halo" cx="0" cy="0" rx="25" ry="13"/><rect class="track-runner-body" x="-13" y="-6" width="26" height="12" rx="5"/><rect class="track-runner-window" x="-6" y="-3.5" width="7" height="5" rx="1.5"/><circle class="track-runner-light" cx="10" cy="0" r="2.4"/><circle class="track-runner-wheel" cx="-7" cy="7" r="2"/><circle class="track-runner-wheel" cx="7" cy="7" r="2"/>';
+        trackSvg.append(runner);
+      }
+    };
+
+    buildPhysicalTrack();
+    narrowRoute.addEventListener('change', buildPhysicalTrack);
+
+    if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      let animationFrame = 0;
+      let startTime = 0;
+      const animateRunner = (time) => {
+        if (document.hidden) {
+          animationFrame = 0;
+          return;
+        }
+        if (!startTime) startTime = time;
+        const length = guide.getTotalLength();
+        const distance = ((time - startTime) * 0.019) % length;
+        const { point } = pointAndNormal(guide, distance);
+        const before = guide.getPointAtLength(Math.max(0, distance - 2));
+        const after = guide.getPointAtLength(Math.min(length, distance + 2));
+        const angle = Math.atan2(after.y - before.y, after.x - before.x) * 180 / Math.PI;
+        runner.setAttribute('transform', `translate(${point.x.toFixed(2)} ${point.y.toFixed(2)}) rotate(${angle.toFixed(2)})`);
+        animationFrame = requestAnimationFrame(animateRunner);
+      };
+      const startRunner = () => {
+        if (!animationFrame && !document.hidden) animationFrame = requestAnimationFrame(animateRunner);
+      };
+      const stopRunner = () => {
+        if (animationFrame) cancelAnimationFrame(animationFrame);
+        animationFrame = 0;
+      };
+      document.addEventListener('visibilitychange', () => document.hidden ? stopRunner() : startRunner());
+      startRunner();
+    }
+  }
+
+  if (main && page !== 'home') {
+    const spine = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    spine.classList.add('page-route-spine');
+    spine.setAttribute('aria-hidden', 'true');
+    spine.setAttribute('preserveAspectRatio', 'none');
+    const spineDefs = document.createElementNS('http://www.w3.org/2000/svg', 'defs');
+    spineDefs.innerHTML = '<linearGradient id="spineMetal" x1="0" x2="0.9" y1="0" y2="1"><stop offset="0" stop-color="#70838a"/><stop offset=".55" stop-color="#293f4a"/><stop offset="1" stop-color="#162c37"/></linearGradient><filter id="spineGlow" x="-100%" y="-20%" width="300%" height="140%"><feGaussianBlur stdDeviation="2.5" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>';
+    spine.append(spineDefs);
+
+    const spineLayers = Object.fromEntries(['shadow', 'bed', 'ties', 'rails', 'light', 'stops', 'runner'].map((name) => {
+      const layer = document.createElementNS('http://www.w3.org/2000/svg', name === 'ties' || name === 'rails' || name === 'stops' || name === 'runner' ? 'g' : 'path');
+      layer.classList.add(`spine-${name}`);
+      spine.append(layer);
+      return [name, layer];
+    }));
+    const spineRunner = svgElement('circle', { class: 'spine-runner', r: '5' });
+    spineLayers.runner.append(spineRunner);
+    main.prepend(spine);
+
+    const updatePageSpine = () => {
+      const height = Math.max(main.scrollHeight, window.innerHeight);
+      const mobile = matchMedia('(max-width: 780px)').matches;
+      const viewWidth = mobile ? 32 : 120;
+      const leftX = mobile ? 8 : 30;
+      const rightX = mobile ? 24 : 90;
+      spine.setAttribute('viewBox', `0 0 ${viewWidth} ${height}`);
+      spine.style.height = `${height}px`;
+
+      const sections = [...main.children].filter((element) => element.tagName === 'SECTION');
+      const points = [{ x: (leftX + rightX) / 2, y: 8 }];
+      sections.forEach((section, index) => {
+        const sectionTop = section.getBoundingClientRect().top - main.getBoundingClientRect().top;
+        const y = Math.max(points.at(-1).y + 40, Math.min(height - 28, sectionTop + Math.min(76, Math.max(32, section.offsetHeight * 0.11))));
+        points.push({ x: index % 2 ? leftX : rightX, y });
+      });
+      points.push({ x: (leftX + rightX) / 2, y: height - 8 });
+      const pathData = points.reduce((data, point, index) => {
+        if (index === 0) return `M${point.x} ${point.y}`;
+        const previous = points[index - 1];
+        const middleY = (previous.y + point.y) / 2;
+        return `${data} C${previous.x} ${middleY} ${point.x} ${middleY} ${point.x} ${point.y}`;
+      }, '');
+
+      spine.querySelectorAll('.spine-shadow, .spine-bed, .spine-light').forEach((path) => path.setAttribute('d', pathData));
+      spineLayers.ties.replaceChildren();
+      spineLayers.rails.replaceChildren();
+      spineLayers.stops.replaceChildren();
+      const path = spineLayers.bed;
+      path.setAttribute('d', pathData);
+      const laneOffset = mobile ? 2.2 : 7;
+      [-laneOffset, laneOffset].forEach((offset) => spineLayers.rails.append(svgElement('path', { class: 'spine-rail', d: offsetPathData(path, offset, 8) })));
+      const pathLength = path.getTotalLength();
+      for (let distance = 10; distance < pathLength - 10; distance += mobile ? 25 : 34) {
+        const { point, normal } = pointAndNormal(path, distance);
+        spineLayers.ties.append(svgElement('line', {
+          class: 'spine-tie',
+          x1: (point.x - normal.x * (mobile ? 9 : 23)).toFixed(2),
+          y1: (point.y - normal.y * (mobile ? 9 : 23)).toFixed(2),
+          x2: (point.x + normal.x * (mobile ? 9 : 23)).toFixed(2),
+          y2: (point.y + normal.y * (mobile ? 9 : 23)).toFixed(2),
+        }));
+      }
+      points.slice(1, -1).forEach((point, index) => spineLayers.stops.append(svgElement('circle', {
+        class: 'spine-stop', cx: point.x, cy: point.y, r: index === 0 ? 4 : 3,
+      })));
+
+      const progress = Math.max(0, Math.min(1, (window.scrollY + window.innerHeight * 0.42 - (window.scrollY + main.getBoundingClientRect().top)) / height));
+      const position = path.getPointAtLength(progress * pathLength);
+      spineRunner.setAttribute('cx', position.x.toFixed(2));
+      spineRunner.setAttribute('cy', position.y.toFixed(2));
+    };
+    let spineUpdateFrame = 0;
+    const scheduleSpineUpdate = () => {
+      if (spineUpdateFrame) return;
+      spineUpdateFrame = requestAnimationFrame(() => {
+        spineUpdateFrame = 0;
+        updatePageSpine();
+      });
+    };
+    updatePageSpine();
+    window.addEventListener('scroll', scheduleSpineUpdate, { passive: true });
+    window.addEventListener('resize', scheduleSpineUpdate, { passive: true });
+    window.addEventListener('load', scheduleSpineUpdate, { once: true });
+    if ('ResizeObserver' in window) new ResizeObserver(scheduleSpineUpdate).observe(main);
+  }
+
   document.querySelectorAll('.project, .home-work-card, .research-item, .timeline article').forEach((card) => {
     card.classList.add('world-object');
   });
