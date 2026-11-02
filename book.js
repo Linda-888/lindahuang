@@ -23,11 +23,12 @@
   const tagList = (values) => `<div class="book-tags">${values.map((value) => `<span>${safe(value)}</span>`).join('')}</div>`;
   const cta = (href, label, external = false) => `<a class="book-link" href="${safe(href)}"${external ? ' target="_blank" rel="noopener noreferrer"' : ''}>${safe(label)} <span aria-hidden="true">↗</span></a>`;
   const spread = (id, title, left, right) => ({ id, title, left, right });
-  const contentsCard = ({ id, label, title, summary, image, meta }, compact = false) => `
-    <a class="book-index-card${compact ? ' book-index-card--compact' : ''}" href="#${safe(id)}" data-book-to="${safe(id)}">
+  const contentsCard = ({ id, label, title, summary, image, paper }, compact = false) => `
+    <div class="book-index-card${compact ? ' book-index-card--compact' : ''}">
       <span class="book-index-art">${image}</span>
-      <span class="book-index-copy"><small>${safe(label)}</small><strong>${safe(title)}</strong><span>${safe(summary)}</span><b>Open chapter <span aria-hidden="true">↗</span></b></span>
-    </a>`;
+      <a class="book-card-hit" href="#${safe(id)}" data-book-to="${safe(id)}" aria-label="Open ${safe(title)} chapter"></a>
+      <span class="book-index-copy"><small>${safe(label)}</small><strong>${safe(title)}</strong><span class="book-index-summary">${safe(summary)}</span><span class="book-open-hint">Open chapter <span aria-hidden="true">↗</span></span>${paper ? `<a class="book-index-paper-link" href="${safe(paper)}" target="_blank" rel="noopener noreferrer">View the paper ↗</a>` : ''}</span>
+    </div>`;
 
   let spreads = [];
 
@@ -95,11 +96,11 @@
       <div class="book-chapter-kicker">${safe(item.theme)}</div>
       <h1 class="book-chapter-title">${safe(item.title)}</h1>
       <p class="book-chapter-question">${safe(item.question)}</p>
+      ${item.action ? `<div class="book-chapter-actions">${item.action}</div>` : ''}
       <div class="book-rule"></div>
       <h2>What I worked on</h2>${paragraph(item.work)}
       <h2>The human-centered thread</h2>${paragraph(item.note)}
       <div class="book-chips">${item.points.map((point) => `<span>${safe(point)}</span>`).join('')}</div>
-      ${item.action ? `<div class="book-chapter-actions">${item.action}</div>` : ''}
     `)));
   } else if (file === 'research.html') {
     const facts = {
@@ -151,11 +152,11 @@
       <div class="book-chapter-kicker">${safe(item.theme)}</div>
       <h1 class="book-chapter-title">${safe(item.title)}</h1>
       <p class="book-chapter-question">${safe(item.question)}</p>
+      <div class="book-chapter-actions">${cta(item.detail, 'Explore the full analysis')}${cta(item.paper, 'View the paper', true)}</div>
       <div class="book-rule"></div>
       <h2>Approach</h2>${paragraph(item.method)}
       <h2>What the paper found</h2>${paragraph(item.finding)}
       <div class="book-chips">${item.highlights.map((value) => `<span>${safe(value)}</span>`).join('')}</div>
-      <div class="book-chapter-actions">${cta(item.detail, 'Explore the full analysis')}${cta(item.paper, 'View the paper', true)}</div>
     `)));
   } else if (isResearchDetail) {
     const sections = [...main.querySelectorAll(':scope > section')];
