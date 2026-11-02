@@ -33,7 +33,7 @@ if(aboutSection&&researchSection){
   storySection.innerHTML='<div class="section-number">02 / My Story</div><div class="story-layout"><h2>A path shaped by <em>curiosity, care, and change.</em></h2><div class="story-copy"><p>I started with a nontraditional path through homeschool, where learning often meant following a question farther than the textbook expected.</p><p>At UIUC, I found a home in Computer Science + Education, Learning Sciences — a place where technical systems and human experience could belong in the same conversation.</p><p>Since then, research, teaching, and community work have kept showing me the same thing: the best tools begin by paying attention.</p></div></div><div class="story-steps"><div><span>01</span><b>Ask</b><p>Start with the person and the question.</p></div><div><span>02</span><b>Explore</b><p>Test ideas across disciplines and contexts.</p></div><div><span>03</span><b>Share</b><p>Make what I learn useful to others.</p></div></div>';
   researchSection.before(storySection);
 }
-const sectionNumbers={research:'03 / Research',projects:'04 / Key Projects',experience:'05 / Education & Teaching',contact:'06 / Contact'};
+const sectionNumbers={research:'Research',projects:'Key Projects',experience:'Education & Teaching',contact:'Contact'};
 Object.entries(sectionNumbers).forEach(([id,label])=>{const marker=document.querySelector(`#${id} .section-number`);if(marker)marker.textContent=label;});
 const projectsHeading=document.querySelector('#projects h2');
 if(projectsHeading)projectsHeading.textContent='Building tools for minds, classrooms, and communities.';
