@@ -1535,11 +1535,10 @@ main { position: relative; }
   .station-copy small { font-size: 7px; }
   .station-copy strong { font-size: 12px; }
   .route-station.station-about { --station-x: 20%; --station-y: 12.9%; }
-  .route-station.station-story { --station-x: 80%; --station-y: 28.6%; }
-  .route-station.station-education { --station-x: 20%; --station-y: 44.3%; }
-  .route-station.station-research { --station-x: 80%; --station-y: 60%; }
-  .route-station.station-projects { --station-x: 20%; --station-y: 75.7%; }
-  .route-station.station-contact { --station-x: 80%; --station-y: 91.4%; }
+  .route-station.station-education { --station-x: 80%; --station-y: 31.4%; }
+  .route-station.station-research { --station-x: 20%; --station-y: 50%; }
+  .route-station.station-projects { --station-x: 80%; --station-y: 68.6%; }
+  .route-station.station-contact { --station-x: 20%; --station-y: 87.1%; }
   .route-thread-label { bottom: 10px; font-size: 6.5px; }
   .route-thread-label { display: none; }
   .route-map-caption { display: none; }
@@ -1571,11 +1570,10 @@ main { position: relative; }
   .route-world { top: 555px; height: 690px; }
   .route-station { width: 124px; }
   .route-station.station-about { --station-y: 12.9%; }
-  .route-station.station-story { --station-y: 28.6%; }
-  .route-station.station-education { --station-y: 44.3%; }
-  .route-station.station-research { --station-y: 60%; }
-  .route-station.station-projects { --station-y: 75.7%; }
-  .route-station.station-contact { --station-y: 91.4%; }
+  .route-station.station-education { --station-y: 31.4%; }
+  .route-station.station-research { --station-y: 50%; }
+  .route-station.station-projects { --station-y: 68.6%; }
+  .route-station.station-contact { --station-y: 87.1%; }
 }
 @media (prefers-reduced-motion: reduce) {
   .track-runner { display: none; }

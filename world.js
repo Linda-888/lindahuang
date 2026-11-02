@@ -1,8 +1,7 @@
 (() => {
   if (document.body.classList.contains('book-experience')) return;
   const stations = [
-    { href: 'about.html', label: 'About', key: 'about' },
-    { href: 'story.html', label: 'My Story', key: 'story' },
+    { href: 'about.html', label: 'About Me', key: 'about' },
     { href: 'education.html', label: 'Education', key: 'education' },
     { href: 'research.html', label: 'Research', key: 'research' },
     { href: 'projects.html', label: 'Projects', key: 'projects' },
@@ -103,8 +102,8 @@
     const tiesLayer = trackSvg.querySelector('.track-ties');
     const railsLayer = trackSvg.querySelector('.track-rails');
     const beacon = trackSvg.querySelector('.track-beacon');
-    const desktopPath = 'M110 690 C220 690 255 455 400 455 S510 540 600 520 S675 260 780 260 S900 390 970 355 S1060 170 1120 245';
-    const mobilePath = 'M80 72 C180 72 220 160 320 160 C220 160 180 248 80 248 C180 248 220 336 320 336 C220 336 180 424 80 424 C180 424 220 512 320 512';
+    const desktopPath = 'M110 690 C230 690 230 455 350 455 C460 455 485 520 600 520 C715 520 715 260 830 260 C945 260 980 330 1090 330';
+    const mobilePath = 'M80 72 C180 72 220 176 320 176 C220 176 180 280 80 280 C180 280 220 384 320 384 C220 384 180 488 80 488';
     const narrowRoute = matchMedia('(max-width: 780px)');
     const svgNamespace = 'http://www.w3.org/2000/svg';
     let runner = null;
