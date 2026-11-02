@@ -10,7 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;700&family=Playfair+Display:ital,wght@0,600;1,500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css?v=20261101-editorial">
   <link rel="stylesheet" href="editorial.css?v=20261101-bookflip-v1">
-  <link rel="stylesheet" href="world.css?v=20261102-five-stops-v2">
+  <link rel="stylesheet" href="world.css?v=20261102-living-route-v1">
 </head>
 <body class="page-home page-editorial">
   <header class="nav">
@@ -44,18 +44,59 @@
         <div class="route-world">
           <div class="route-world-grid" aria-hidden="true"></div>
           <svg class="route-track" viewBox="0 0 1200 800" preserveAspectRatio="none" aria-hidden="true">
-            <defs><linearGradient id="trackBed" x1="0" x2="0.9" y1="0" y2="1"><stop offset="0" stop-color="#718095"/><stop offset=".48" stop-color="#334a5d"/><stop offset="1" stop-color="#192d3a"/></linearGradient><filter id="trackGlow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="8" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+            <defs>
+              <linearGradient id="threadBed" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#2a5360"/><stop offset=".54" stop-color="#547d7c"/><stop offset="1" stop-color="#a26d65"/></linearGradient>
+              <linearGradient id="threadLight" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#8ed1c8"/><stop offset=".55" stop-color="#f2c09a"/><stop offset="1" stop-color="#ff9775"/></linearGradient>
+            </defs>
             <path class="track-guide" d="M110 690 C220 690 350 390 490 390 C575 390 560 550 650 550 C740 550 740 260 830 260 C945 260 980 330 1090 330"/>
             <path class="track-shadow" d="M110 690 C220 690 350 390 490 390 C575 390 560 550 650 550 C740 550 740 260 830 260 C945 260 980 330 1090 330"/>
             <path class="track-bed" d="M110 690 C220 690 350 390 490 390 C575 390 560 550 650 550 C740 550 740 260 830 260 C945 260 980 330 1090 330"/>
-            <g class="track-ties"></g><g class="track-rails"></g>
+            <g class="thread-waypoints"></g>
             <path class="track-light" d="M110 690 C220 690 350 390 490 390 C575 390 560 550 650 550 C740 550 740 260 830 260 C945 260 980 330 1090 330"/>
-            <circle class="track-beacon" cx="110" cy="690" r="9"/>
           </svg>
-          <a class="route-station station-about" href="about.html"><span class="station-object object-orbit" aria-hidden="true"><i></i><i></i><b></b></span><span class="station-copy"><small>About me</small><strong>Meet Linda!</strong></span></a>
+          <div class="route-orb" data-scene="about" aria-hidden="true">
+            <svg viewBox="0 0 100 100" focusable="false">
+              <defs>
+                <radialGradient id="orbGlass" cx="37%" cy="27%" r="76%"><stop offset="0" stop-color="#b8e0d5" stop-opacity=".44"/><stop offset=".54" stop-color="#5aa6a8" stop-opacity=".34"/><stop offset="1" stop-color="#1c4254" stop-opacity=".93"/></radialGradient>
+                <linearGradient id="orbRim" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#fff9e9"/><stop offset=".42" stop-color="#9dd2cf"/><stop offset="1" stop-color="#efab88"/></linearGradient>
+                <clipPath id="orbClip"><circle cx="50" cy="50" r="42"/></clipPath>
+              </defs>
+              <circle class="orb-shell" cx="50" cy="50" r="43"/>
+              <g clip-path="url(#orbClip)">
+                <path class="orb-land" d="M4 75Q50 61 96 76V102H4Z"/>
+                <g class="orb-scene orb-scene-about">
+                  <circle class="orb-person-head" cx="50" cy="39" r="9"/><path class="orb-person-hair" d="M41 38q0-13 11-12 9 1 9 10-7-7-20 2Z"/>
+                  <path class="orb-person-body" d="M35 72V56q1-9 15-9t15 9v16Z"/><path class="orb-person-arm" d="M37 55 26 49m37 6 11-6"/>
+                  <circle class="orb-scene-detail" cx="23" cy="47" r="3"/><circle class="orb-scene-detail" cx="77" cy="47" r="3"/>
+                </g>
+                <g class="orb-scene orb-scene-education">
+                  <circle class="orb-person-head" cx="48" cy="38" r="9"/><path class="orb-person-hair" d="M39 38q1-14 12-12 7 1 7 8-8-5-19 4Z"/>
+                  <path class="orb-person-body" d="M34 72V57q2-10 14-10 15 0 16 10v15Z"/><path class="orb-person-arm" d="m38 56 8 5m17-5-9 5"/>
+                  <path class="orb-book" d="M29 61q11-4 21 2 10-6 21-2v13q-11-4-21 2-10-6-21-2Z"/><path class="orb-book-spine" d="M50 63v13"/>
+                </g>
+                <g class="orb-scene orb-scene-research">
+                  <circle class="orb-person-head" cx="43" cy="39" r="9"/><path class="orb-person-hair" d="M34 39q0-14 11-12 8 1 8 9-8-5-19 3Z"/>
+                  <path class="orb-person-body" d="M29 72V57q2-10 14-10 13 0 15 10v15Z"/><path class="orb-person-arm" d="m53 55 10-8"/>
+                  <circle class="orb-research-lens" cx="69" cy="41" r="9"/><path class="orb-research-handle" d="m63 47-7 7"/><circle class="orb-research-point" cx="71" cy="39" r="2"/>
+                </g>
+                <g class="orb-scene orb-scene-projects">
+                  <circle class="orb-person-head" cx="41" cy="40" r="9"/><path class="orb-person-hair" d="M32 39q1-13 12-12 8 1 8 9-8-5-20 3Z"/>
+                  <path class="orb-person-body" d="M27 72V58q2-10 14-10 13 0 15 10v14Z"/><path class="orb-person-arm" d="m53 56 10 6"/>
+                  <path class="orb-sapling" d="M70 71V52m0 8-7-7m7 3 8-8"/><path class="orb-sapling-leaf" d="M58 51q8-2 10 6-8 2-10-6Zm21-8q0 9-9 11 0-9 9-11Z"/>
+                </g>
+                <g class="orb-scene orb-scene-contact">
+                  <circle class="orb-person-head" cx="45" cy="39" r="9"/><path class="orb-person-hair" d="M36 39q0-14 11-12 8 1 8 9-8-5-19 3Z"/>
+                  <path class="orb-person-body" d="M30 72V57q2-10 15-10t15 10v15Z"/><path class="orb-person-arm" d="m57 55 11-11m0 0 2-10"/>
+                  <path class="orb-message" d="M63 22h21v14H73l-6 5v-5h-4Z"/><path class="orb-message-line" d="M68 28h11"/>
+                </g>
+              </g>
+              <circle class="orb-outline" cx="50" cy="50" r="43"/><path class="orb-glint" d="M21 40c3-10 9-17 17-20"/><circle class="orb-spark" cx="76" cy="21" r="2"/>
+            </svg>
+          </div>
+          <a class="route-station station-about" href="about.html"><span class="station-object object-orbit" aria-hidden="true"><i></i><i></i><b></b></span><span class="station-copy"><small>Meet Linda!</small><strong>About Me</strong></span></a>
           <a class="route-station station-education" href="education.html"><span class="station-object object-book" aria-hidden="true"><i></i><i></i><b></b></span><span class="station-copy"><small>Learn across disciplines</small><strong>Education</strong></span></a>
-          <a class="route-station station-research" href="research.html"><span class="station-object object-data" aria-hidden="true"><i></i><i></i><b></b></span><span class="station-copy"><small>Questions tested with evidence</small><strong>Research</strong></span></a>
-          <a class="route-station station-projects" href="projects.html"><span class="station-object object-cube" aria-hidden="true"><i></i><i></i><b></b></span><span class="station-copy"><small>Ideas put to work</small><strong>Projects</strong></span></a>
+          <a class="route-station station-research" href="research.html"><span class="station-object object-branch-book" aria-hidden="true"><svg viewBox="0 0 80 76" focusable="false"><path class="art-book-shadow" d="M7 53q16-6 33 2 17-8 33-2v16q-17-6-33 2-16-8-33-2Z"/><path class="art-book-page" d="M7 49q16-7 33 3 17-10 33-3v17q-17-6-33 3-16-9-33-3Z"/><path class="art-book-fold" d="M40 52v17"/><path class="art-branch" d="M40 52V29m0 9L25 23m15 10 14-17m-29 7-9-11m9 11 3-13m26 6 12-7m-12 7 1-12"/><circle class="art-branch-node" cx="16" cy="12" r="3"/><circle class="art-branch-node" cx="28" cy="10" r="3"/><circle class="art-branch-node" cx="66" cy="9" r="3"/><circle class="art-branch-node" cx="55" cy="4" r="3"/></svg></span><span class="station-copy"><small>Questions tested with evidence</small><strong>Research</strong></span></a>
+          <a class="route-station station-projects" href="projects.html"><span class="station-object object-tree" aria-hidden="true"><svg viewBox="0 0 80 76" focusable="false"><path class="art-tree-roots" d="M40 63 26 69m14-6 15 6"/><path class="art-tree-trunk" d="M40 64V29m0 17L23 35m17 5 18-17"/><circle class="art-tree-leaf art-tree-leaf-one" cx="38" cy="22" r="16"/><circle class="art-tree-leaf art-tree-leaf-two" cx="22" cy="35" r="13"/><circle class="art-tree-leaf art-tree-leaf-three" cx="57" cy="33" r="14"/><path class="art-tree-branch" d="M40 60V29m0 18L24 35m16 6 16-15"/><circle class="art-tree-fruit" cx="27" cy="28" r="3"/><circle class="art-tree-fruit" cx="48" cy="18" r="3"/><circle class="art-tree-fruit" cx="58" cy="38" r="3"/></svg></span><span class="station-copy"><small>Ideas put to work</small><strong>Projects</strong></span></a>
           <a class="route-station station-contact" href="contact.html"><span class="station-object object-signal" aria-hidden="true"><i></i><i></i><b></b></span><span class="station-copy"><small>Continue the conversation</small><strong>Contact</strong></span></a>
           <p class="route-thread-label"><span></span> The human-centered thread</p>
         </div>
@@ -96,5 +137,5 @@
     const destination = legacyPages[location.hash.slice(1)];
     if (destination) location.replace(destination);
   </script>
-  <script src="world.js?v=20261102-five-stops-v2"></script></body>
+  <script src="world.js?v=20261102-living-route-v1"></script></body>
 </html>

@@ -1324,21 +1324,67 @@ main { position: relative; }
 .wayfinder-stops a { position: relative; z-index: 1; padding: 5px 7px; background: rgba(8,22,30,.92); }
 .wayfinder-stops a > span { box-shadow: 0 0 0 3px #0b1b25; }
 
-/* The home map is a miniature railway: sleepers, metal rails, and a moving light car. */
+/* A living thread connects the five rooms; the visitor is a person inside a glass orb. */
 .route-world { perspective: 1500px; }
 .route-world::before { background-size: 40px 36px; }
 .route-track { overflow: visible; }
-.track-tie { stroke: #132a37; stroke-width: 6; stroke-linecap: round; opacity: .98; filter: drop-shadow(0 3px 2px rgba(0,0,0,.72)); }
-.track-tie-glint { stroke: rgba(188,207,199,.36); stroke-width: 1.2; stroke-linecap: round; }
-.track-rail-shadow { fill: none; stroke: #09151d; stroke-width: 10; stroke-linecap: round; opacity: .98; }
-.track-rail { fill: none; stroke: url(#trackBed); stroke-width: 4.4; stroke-linecap: round; filter: drop-shadow(0 0 4px rgba(255,211,167,.48)); }
-.track-runner { opacity: .98; pointer-events: none; filter: drop-shadow(0 0 10px rgba(255,137,105,.8)); }
-.track-runner-halo { fill: rgba(255,139,105,.2); filter: blur(4px); }
-.track-runner-body { fill: #f2b28b; stroke: #fff0d2; stroke-width: 1.8; }
-.track-runner-window { fill: #274956; stroke: #d7e6da; stroke-width: .8; }
-.track-runner-light { fill: #fff7dd; filter: url(#trackGlow); }
-.track-runner-wheel { fill: #162b36; stroke: #e7c6a4; stroke-width: 1; }
-.track-beacon { r: 10; }
+.track-shadow { stroke: rgba(1,13,20,.6); stroke-width: 21; transform: translateY(7px); filter: blur(8px); }
+.track-bed { stroke: url(#threadBed); stroke-width: 7; opacity: .95; filter: drop-shadow(0 0 11px rgba(110,191,181,.32)); }
+.track-light { stroke: url(#threadLight); stroke-width: 1.5; stroke-dasharray: 2 29; opacity: .72; filter: drop-shadow(0 0 8px rgba(164,224,207,.62)); animation: thread-flow 13s linear infinite; }
+.thread-node-halo { fill: rgba(129,203,196,.1); stroke: rgba(169,221,204,.35); stroke-width: 1; }
+.thread-node { fill: #ffe5c1; stroke: #6bb6b4; stroke-width: 2; filter: drop-shadow(0 0 7px #f4b092); }
+@keyframes thread-flow { to { stroke-dashoffset: -186; } }
+
+.route-orb {
+  position: absolute;
+  z-index: 8;
+  left: 9.2%; top: 86%;
+  width: clamp(76px, 7.2vw, 98px);
+  aspect-ratio: 1;
+  pointer-events: none;
+  transform: translate(-50%, -88%);
+  filter: drop-shadow(0 14px 15px rgba(0,0,0,.62)) drop-shadow(0 0 18px rgba(131,216,211,.55));
+  transition: filter .35s ease;
+}
+.route-orb::before {
+  content: "";
+  position: absolute;
+  inset: -17px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(134,218,207,.2), transparent 69%);
+  opacity: .8;
+  animation: orb-aura 4s ease-in-out infinite;
+}
+.route-orb svg { position: relative; display: block; width: 100%; height: 100%; overflow: visible; }
+.route-orb.is-spotlight { filter: drop-shadow(0 17px 18px rgba(0,0,0,.65)) drop-shadow(0 0 24px rgba(255,181,139,.82)); }
+.route-orb.is-spotlight svg { animation: orb-greet .6s ease-out; }
+.orb-shell { fill: url(#orbGlass); stroke: rgba(234,252,240,.38); stroke-width: 1; }
+.orb-land { fill: rgba(17,58,66,.78); }
+.orb-outline { fill: none; stroke: url(#orbRim); stroke-width: 3; }
+.orb-glint { fill: none; stroke: #fffefa; stroke-width: 3; stroke-linecap: round; opacity: .9; }
+.orb-spark { fill: #fff5df; filter: drop-shadow(0 0 4px #fff5df); }
+.orb-scene { opacity: 0; transform: translateY(4px) scale(.94); transform-origin: 50px 55px; transition: opacity .42s ease, transform .42s ease; }
+.route-orb[data-scene="about"] .orb-scene-about,
+.route-orb[data-scene="education"] .orb-scene-education,
+.route-orb[data-scene="research"] .orb-scene-research,
+.route-orb[data-scene="projects"] .orb-scene-projects,
+.route-orb[data-scene="contact"] .orb-scene-contact { opacity: 1; transform: translateY(0) scale(1); }
+.orb-person-head { fill: #f7cba8; stroke: #ffe2c0; stroke-width: 1; }
+.orb-person-hair { fill: #243943; }
+.orb-person-body { fill: #df957c; stroke: #ffe0bb; stroke-width: 1.3; }
+.orb-person-arm { fill: none; stroke: #f7cba8; stroke-width: 5; stroke-linecap: round; stroke-linejoin: round; }
+.orb-scene-detail { fill: #ffe8bb; filter: drop-shadow(0 0 3px #ffe8bb); }
+.orb-book { fill: #fff1d5; stroke: #7eafa6; stroke-width: 1.8; stroke-linejoin: round; }
+.orb-book-spine { fill: none; stroke: #bf846e; stroke-width: 1.5; }
+.orb-research-lens { fill: rgba(204,247,230,.33); stroke: #fff2cf; stroke-width: 3; }
+.orb-research-handle { fill: none; stroke: #fff2cf; stroke-width: 3; stroke-linecap: round; }
+.orb-research-point { fill: #ffe3a6; }
+.orb-sapling { fill: none; stroke: #d9c593; stroke-width: 3; stroke-linecap: round; }
+.orb-sapling-leaf { fill: #a9d4ac; stroke: #d7efc5; stroke-width: 1; }
+.orb-message { fill: #fff1db; stroke: #d6a07d; stroke-width: 1.6; stroke-linejoin: round; }
+.orb-message-line { fill: none; stroke: #6d918f; stroke-width: 2; stroke-linecap: round; }
+@keyframes orb-aura { 50% { opacity: 1; transform: scale(1.12); } }
+@keyframes orb-greet { 50% { transform: scale(1.12); } }
 .route-station {
   width: clamp(126px, 14vw, 198px);
   filter: drop-shadow(0 22px 22px rgba(0,0,0,.4));
@@ -1359,23 +1405,41 @@ main { position: relative; }
 }
 .station-copy small { font-size: 8.5px; }
 .station-copy strong { font-size: 16px; }
+.object-branch-book svg,
+.object-tree svg { display: block; width: 100%; height: 100%; overflow: visible; }
+.art-book-shadow { fill: #173641; stroke: #84afab; stroke-width: 1.5; }
+.art-book-page { fill: #f1e9cf; stroke: #ffe8be; stroke-width: 1.5; stroke-linejoin: round; }
+.art-book-fold { fill: none; stroke: #b5846e; stroke-width: 2; }
+.art-branch { fill: none; stroke: #b5ded0; stroke-width: 2.7; stroke-linecap: round; stroke-linejoin: round; }
+.art-branch-node { fill: #ffae8a; stroke: #fff0cb; stroke-width: 1; filter: drop-shadow(0 0 4px rgba(255,166,127,.8)); }
+.art-tree-roots { fill: none; stroke: #cb9b7d; stroke-width: 4; stroke-linecap: round; }
+.art-tree-trunk { fill: none; stroke: #b77964; stroke-width: 9; stroke-linecap: round; stroke-linejoin: round; }
+.art-tree-leaf { stroke: #bedfbd; stroke-width: 1; }
+.art-tree-leaf-one { fill: #5d978a; }
+.art-tree-leaf-two { fill: #83b4a0; }
+.art-tree-leaf-three { fill: #3c796f; }
+.art-tree-branch { fill: none; stroke: #b9dfc2; stroke-width: 1.5; stroke-linecap: round; opacity: .7; }
+.art-tree-fruit { fill: #ffac86; stroke: #ffe8bd; stroke-width: 1; filter: drop-shadow(0 0 3px rgba(255,159,116,.75)); }
+.route-station:hover .art-branch-node,
+.route-station:focus-visible .art-branch-node,
+.route-station:hover .art-tree-fruit,
+.route-station:focus-visible .art-tree-fruit { animation: art-spark .9s ease-in-out alternate infinite; }
+@keyframes art-spark { to { opacity: .55; transform: scale(.85); transform-origin: center; } }
 .route-station:hover .station-copy,
 .route-station:focus-visible .station-copy,
 .route-station.is-active .station-copy { box-shadow: 0 8px 0 rgba(3,12,19,.58), inset 0 1px rgba(255,255,255,.16), 0 0 22px rgba(255,137,105,.2); }
 .route-map-caption { color: #a8bbba; }
 
-/* Scroll sections read as connected exhibit platforms instead of isolated text blocks. */
+/* The thread carries into the selected work sections. */
 .page-home .home-work::before,
 .page-home .home-projects::before,
 .page-home .home-about::before,
 .page-home .home-contact::before {
   left: clamp(23px, 5vw, 70px);
-  width: 19px;
+  width: 3px;
   opacity: .78;
-  background-image:
-    linear-gradient(90deg, transparent 0 3px, rgba(255,151,116,.88) 3px 5px, transparent 5px 13px, rgba(165,201,191,.72) 13px 15px, transparent 15px),
-    repeating-linear-gradient(0deg, transparent 0 23px, rgba(182,211,200,.44) 23px 27px, transparent 27px 48px);
-  box-shadow: 0 0 14px rgba(255,137,105,.2);
+  background: linear-gradient(transparent, rgba(144,213,198,.72) 16%, rgba(255,169,132,.7) 80%, transparent);
+  box-shadow: 0 0 15px rgba(131,203,195,.45);
 }
 .page-home .home-work-card {
   transform: perspective(1300px) rotateY(-1deg) rotateX(2deg) translateZ(0);
@@ -1513,6 +1577,8 @@ main { position: relative; }
 
 @media (min-width: 781px) and (max-width: 920px) {
   .route-station { width: clamp(98px, 13vw, 120px); }
+  .route-station.station-education { --station-x: 45.8%; }
+  .route-map-caption { display: none; }
 }
 
 @media (max-width: 780px) {
@@ -1534,6 +1600,7 @@ main { position: relative; }
   .route-world { top: 575px; right: 0; bottom: auto; left: 0; width: 100%; height: 665px; min-height: 0; }
   .route-world::before { left: -30%; right: -30%; bottom: -22%; height: 75%; transform: perspective(680px) rotateX(58deg); background-size: 29px 29px; }
   .route-world-grid { display: block; }
+  .route-orb { left: 20%; top: 12.9%; width: 70px; }
   .route-station { width: min(126px, 34vw); }
   .route-station::before { bottom: 40px; height: 45px; }
   .station-object { width: 44px; height: 42px; transform: scale(1.12) translateZ(24px) rotateY(-10deg); }
@@ -1582,7 +1649,10 @@ main { position: relative; }
   .route-station.station-contact { --station-y: 87.1%; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .track-runner { display: none; }
+  .track-light,
+  .route-orb::before,
+  .route-orb.is-spotlight svg { animation: none !important; }
+  .orb-scene { transition: none !important; }
   .page-route-spine .spine-light { stroke-dasharray: none; }
   .station-page-hero .research-item,
   .station-page-hero .project,

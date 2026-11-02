@@ -99,14 +99,27 @@
   const trackSvg = document.querySelector('.route-track');
   if (trackSvg) {
     const guide = trackSvg.querySelector('.track-guide');
-    const tiesLayer = trackSvg.querySelector('.track-ties');
-    const railsLayer = trackSvg.querySelector('.track-rails');
-    const beacon = trackSvg.querySelector('.track-beacon');
+    const waypoints = trackSvg.querySelector('.thread-waypoints');
+    const orb = routeWorld.querySelector('.route-orb');
+    const routeStations = [...routeWorld.querySelectorAll('.route-station')];
     const desktopPath = 'M110 690 C220 690 350 390 490 390 C575 390 560 550 650 550 C740 550 740 260 830 260 C945 260 980 330 1090 330';
+    const mediumPath = 'M110 690 C235 690 405 390 550 390 C595 390 560 550 650 550 C740 550 740 260 830 260 C945 260 980 330 1090 330';
     const mobilePath = 'M80 72 C180 72 220 176 320 176 C220 176 180 280 80 280 C180 280 220 384 320 384 C220 384 180 488 80 488';
+    const desktopStops = [[110, 690], [490, 390], [650, 550], [830, 260], [1090, 330]];
+    const mediumStops = [[110, 690], [550, 390], [650, 550], [830, 260], [1090, 330]];
+    const mobileStops = [[80, 72], [320, 176], [80, 280], [320, 384], [80, 488]];
+    const scenes = ['about', 'education', 'research', 'projects', 'contact'];
     const narrowRoute = matchMedia('(max-width: 780px)');
+    const mediumRoute = matchMedia('(min-width: 781px) and (max-width: 920px)');
+    const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
     const svgNamespace = 'http://www.w3.org/2000/svg';
-    let runner = null;
+    let pathLength = 0;
+    let stopDistances = [];
+    let orbDistance = 0;
+    let direction = 1;
+    let pinnedStation = null;
+    let animationFrame = 0;
+    let lastTime = 0;
 
     const svgElement = (name, attributes = {}) => {
       const element = document.createElementNS(svgNamespace, name);
@@ -136,84 +149,103 @@
       return commands.join(' ');
     };
 
-    const buildPhysicalTrack = () => {
-      const pathData = narrowRoute.matches ? mobilePath : desktopPath;
-      trackSvg.setAttribute('viewBox', narrowRoute.matches ? '0 0 400 560' : '0 0 1200 800');
-      trackSvg.querySelectorAll('.track-guide, .track-shadow, .track-bed, .track-light').forEach((path) => path.setAttribute('d', pathData));
-      guide.setAttribute('d', pathData);
-      tiesLayer.replaceChildren();
-      railsLayer.replaceChildren();
-
-      const railOffset = narrowRoute.matches ? 10 : 15;
-      [-railOffset, railOffset].forEach((offset) => {
-        railsLayer.append(svgElement('path', { class: 'track-rail-shadow', d: offsetPathData(guide, offset, 4) }));
-      });
-
-      const length = guide.getTotalLength();
-      const tieSpacing = narrowRoute.matches ? 17 : 18;
-      for (let distance = 8; distance < length - 8; distance += tieSpacing) {
-        const { point, normal } = pointAndNormal(guide, distance);
-        const halfWidth = narrowRoute.matches ? 31 : 31;
-        const start = { x: point.x - normal.x * halfWidth, y: point.y - normal.y * halfWidth };
-        const end = { x: point.x + normal.x * halfWidth, y: point.y + normal.y * halfWidth };
-        const tie = svgElement('line', {
-          class: 'track-tie',
-          x1: start.x.toFixed(2), y1: start.y.toFixed(2),
-          x2: end.x.toFixed(2), y2: end.y.toFixed(2),
-        });
-        const plate = svgElement('line', {
-          class: 'track-tie-glint',
-          x1: (start.x + normal.x * 4).toFixed(2), y1: (start.y + normal.y * 4).toFixed(2),
-          x2: (end.x - normal.x * 4).toFixed(2), y2: (end.y - normal.y * 4).toFixed(2),
-        });
-        tiesLayer.append(tie, plate);
+    const closestDistance = (target, length) => {
+      let nearest = 0;
+      let gap = Infinity;
+      for (let sample = 0; sample <= 1200; sample += 1) {
+        const distance = length * sample / 1200;
+        const point = guide.getPointAtLength(distance);
+        const delta = Math.hypot(point.x - target[0], point.y - target[1]);
+        if (delta < gap) { gap = delta; nearest = distance; }
       }
+      return nearest;
+    };
 
-      [-railOffset, railOffset].forEach((offset) => {
-        railsLayer.append(svgElement('path', { class: 'track-rail', d: offsetPathData(guide, offset, 4) }));
-      });
-
-      const start = guide.getPointAtLength(0);
-      beacon.setAttribute('cx', start.x.toFixed(2));
-      beacon.setAttribute('cy', start.y.toFixed(2));
-      if (!runner) {
-        runner = svgElement('g', { class: 'track-runner', 'aria-hidden': 'true' });
-        runner.innerHTML = '<ellipse class="track-runner-halo" cx="0" cy="0" rx="25" ry="13"/><rect class="track-runner-body" x="-13" y="-6" width="26" height="12" rx="5"/><rect class="track-runner-window" x="-6" y="-3.5" width="7" height="5" rx="1.5"/><circle class="track-runner-light" cx="10" cy="0" r="2.4"/><circle class="track-runner-wheel" cx="-7" cy="7" r="2"/><circle class="track-runner-wheel" cx="7" cy="7" r="2"/>';
-        trackSvg.append(runner);
+    const placeOrb = () => {
+      if (!orb || !pathLength) return;
+      const point = guide.getPointAtLength(Math.max(0, Math.min(pathLength, orbDistance)));
+      const width = narrowRoute.matches ? 400 : 1200;
+      const height = narrowRoute.matches ? 560 : 800;
+      orb.style.left = `${(point.x / width * 100).toFixed(3)}%`;
+      orb.style.top = `${(point.y / height * 100).toFixed(3)}%`;
+      if (pinnedStation !== null) {
+        orb.dataset.scene = scenes[pinnedStation];
+      } else {
+        let scene = 0;
+        for (let index = 1; index < stopDistances.length; index += 1) {
+          if (orbDistance >= stopDistances[index] - 22) scene = index;
+        }
+        orb.dataset.scene = scenes[scene];
       }
     };
 
-    buildPhysicalTrack();
-    narrowRoute.addEventListener('change', buildPhysicalTrack);
+    const buildLivingRoute = () => {
+      const previousLength = pathLength;
+      const pathData = narrowRoute.matches ? mobilePath : mediumRoute.matches ? mediumPath : desktopPath;
+      trackSvg.setAttribute('viewBox', narrowRoute.matches ? '0 0 400 560' : '0 0 1200 800');
+      trackSvg.querySelectorAll('.track-guide, .track-shadow, .track-bed, .track-light').forEach((path) => path.setAttribute('d', pathData));
+      guide.setAttribute('d', pathData);
+      pathLength = guide.getTotalLength();
+      orbDistance = previousLength ? orbDistance / previousLength * pathLength : 0;
+      const stops = narrowRoute.matches ? mobileStops : mediumRoute.matches ? mediumStops : desktopStops;
+      stopDistances = stops.map((point) => closestDistance(point, pathLength));
+      waypoints.replaceChildren();
+      stops.forEach(([x, y]) => {
+        waypoints.append(svgElement('circle', { class: 'thread-node-halo', cx: x, cy: y, r: 18 }));
+        waypoints.append(svgElement('circle', { class: 'thread-node', cx: x, cy: y, r: 5 }));
+      });
+      placeOrb();
+    };
 
-    if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      let animationFrame = 0;
-      let startTime = 0;
-      const animateRunner = (time) => {
-        if (document.hidden) {
-          animationFrame = 0;
-          return;
-        }
-        if (!startTime) startTime = time;
-        const length = guide.getTotalLength();
-        const distance = ((time - startTime) * 0.019) % length;
-        const { point } = pointAndNormal(guide, distance);
-        const before = guide.getPointAtLength(Math.max(0, distance - 2));
-        const after = guide.getPointAtLength(Math.min(length, distance + 2));
-        const angle = Math.atan2(after.y - before.y, after.x - before.x) * 180 / Math.PI;
-        runner.setAttribute('transform', `translate(${point.x.toFixed(2)} ${point.y.toFixed(2)}) rotate(${angle.toFixed(2)})`);
-        animationFrame = requestAnimationFrame(animateRunner);
+    buildLivingRoute();
+    narrowRoute.addEventListener('change', buildLivingRoute);
+    mediumRoute.addEventListener('change', buildLivingRoute);
+
+    routeStations.forEach((station, index) => {
+      const pin = () => {
+        pinnedStation = index;
+        orb.classList.add('is-spotlight');
+        if (reducedMotion.matches) orbDistance = stopDistances[index];
+        placeOrb();
       };
-      const startRunner = () => {
-        if (!animationFrame && !document.hidden) animationFrame = requestAnimationFrame(animateRunner);
+      const release = () => {
+        pinnedStation = null;
+        orb.classList.remove('is-spotlight');
+        placeOrb();
       };
-      const stopRunner = () => {
-        if (animationFrame) cancelAnimationFrame(animationFrame);
-        animationFrame = 0;
-      };
-      document.addEventListener('visibilitychange', () => document.hidden ? stopRunner() : startRunner());
-      startRunner();
-    }
+      station.addEventListener('mouseenter', pin);
+      station.addEventListener('focus', pin);
+      station.addEventListener('mouseleave', release);
+      station.addEventListener('blur', release);
+    });
+
+    const animateOrb = (time) => {
+      animationFrame = 0;
+      if (document.hidden || reducedMotion.matches) return;
+      const elapsed = Math.min(50, time - (lastTime || time));
+      lastTime = time;
+      if (pinnedStation !== null) {
+        const target = stopDistances[pinnedStation];
+        orbDistance += (target - orbDistance) * Math.min(1, elapsed / 170);
+      } else {
+        orbDistance += direction * pathLength / 24000 * elapsed;
+        if (orbDistance > pathLength) { orbDistance = 2 * pathLength - orbDistance; direction = -1; }
+        if (orbDistance < 0) { orbDistance = -orbDistance; direction = 1; }
+      }
+      placeOrb();
+      animationFrame = requestAnimationFrame(animateOrb);
+    };
+    const startOrb = () => {
+      lastTime = 0;
+      if (!animationFrame && !document.hidden && !reducedMotion.matches) animationFrame = requestAnimationFrame(animateOrb);
+    };
+    const stopOrb = () => {
+      if (animationFrame) cancelAnimationFrame(animationFrame);
+      animationFrame = 0;
+    };
+    document.addEventListener('visibilitychange', () => document.hidden ? stopOrb() : startOrb());
+    reducedMotion.addEventListener('change', () => reducedMotion.matches ? stopOrb() : startOrb());
+    startOrb();
   }
 
   if (main && page !== 'home') {
