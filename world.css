@@ -1505,6 +1505,12 @@ main { position: relative; }
 .page-research-detail .paper-figure-grid img { background: #edf0e8; }
 .page-research-detail .room-sculpture { opacity: .38; width: clamp(300px, 36vw, 480px); }
 
+.route-station.station-about { --station-x: 9.2%; --station-y: 86%; }
+.route-station.station-education { --station-x: 40.8%; --station-y: 48.8%; }
+.route-station.station-research { --station-x: 54.2%; --station-y: 68.8%; }
+.route-station.station-projects { --station-x: 69.2%; --station-y: 32.5%; }
+.route-station.station-contact { --station-x: 90.8%; --station-y: 41.3%; }
+
 @media (min-width: 781px) and (max-width: 920px) {
   .route-station { width: clamp(98px, 13vw, 120px); }
 }

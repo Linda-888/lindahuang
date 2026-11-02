@@ -10,7 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;700&family=Playfair+Display:ital,wght@0,600;1,500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css?v=20261101-editorial">
   <link rel="stylesheet" href="editorial.css?v=20261101-bookflip-v1">
-  <link rel="stylesheet" href="world.css?v=20261102-five-stops">
+  <link rel="stylesheet" href="world.css?v=20261102-five-stops-v2">
 </head>
 <body class="page-home page-editorial">
   <header class="nav">
@@ -45,18 +45,18 @@
           <div class="route-world-grid" aria-hidden="true"></div>
           <svg class="route-track" viewBox="0 0 1200 800" preserveAspectRatio="none" aria-hidden="true">
             <defs><linearGradient id="trackBed" x1="0" x2="0.9" y1="0" y2="1"><stop offset="0" stop-color="#718095"/><stop offset=".48" stop-color="#334a5d"/><stop offset="1" stop-color="#192d3a"/></linearGradient><filter id="trackGlow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="8" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
-            <path class="track-guide" d="M110 690 C230 690 230 455 350 455 C460 455 485 520 600 520 C715 520 715 260 830 260 C945 260 980 330 1090 330"/>
-            <path class="track-shadow" d="M110 690 C230 690 230 455 350 455 C460 455 485 520 600 520 C715 520 715 260 830 260 C945 260 980 330 1090 330"/>
-            <path class="track-bed" d="M110 690 C230 690 230 455 350 455 C460 455 485 520 600 520 C715 520 715 260 830 260 C945 260 980 330 1090 330"/>
+            <path class="track-guide" d="M110 690 C220 690 350 390 490 390 C575 390 560 550 650 550 C740 550 740 260 830 260 C945 260 980 330 1090 330"/>
+            <path class="track-shadow" d="M110 690 C220 690 350 390 490 390 C575 390 560 550 650 550 C740 550 740 260 830 260 C945 260 980 330 1090 330"/>
+            <path class="track-bed" d="M110 690 C220 690 350 390 490 390 C575 390 560 550 650 550 C740 550 740 260 830 260 C945 260 980 330 1090 330"/>
             <g class="track-ties"></g><g class="track-rails"></g>
-            <path class="track-light" d="M110 690 C230 690 230 455 350 455 C460 455 485 520 600 520 C715 520 715 260 830 260 C945 260 980 330 1090 330"/>
+            <path class="track-light" d="M110 690 C220 690 350 390 490 390 C575 390 560 550 650 550 C740 550 740 260 830 260 C945 260 980 330 1090 330"/>
             <circle class="track-beacon" cx="110" cy="690" r="9"/>
           </svg>
-          <a class="route-station station-about" href="about.html" style="--station-x:9.2%;--station-y:86%"><span class="station-object object-orbit" aria-hidden="true"><i></i><i></i><b></b></span><span class="station-copy"><small>About me</small><strong>Meet Linda!</strong></span></a>
-          <a class="route-station station-education" href="education.html" style="--station-x:29.2%;--station-y:56.8%"><span class="station-object object-book" aria-hidden="true"><i></i><i></i><b></b></span><span class="station-copy"><small>Learn across disciplines</small><strong>Education</strong></span></a>
-          <a class="route-station station-research" href="research.html" style="--station-x:50%;--station-y:65%"><span class="station-object object-data" aria-hidden="true"><i></i><i></i><b></b></span><span class="station-copy"><small>Questions tested with evidence</small><strong>Research</strong></span></a>
-          <a class="route-station station-projects" href="projects.html" style="--station-x:69.2%;--station-y:32.5%"><span class="station-object object-cube" aria-hidden="true"><i></i><i></i><b></b></span><span class="station-copy"><small>Ideas put to work</small><strong>Projects</strong></span></a>
-          <a class="route-station station-contact" href="contact.html" style="--station-x:90.8%;--station-y:41.3%"><span class="station-object object-signal" aria-hidden="true"><i></i><i></i><b></b></span><span class="station-copy"><small>Continue the conversation</small><strong>Contact</strong></span></a>
+          <a class="route-station station-about" href="about.html"><span class="station-object object-orbit" aria-hidden="true"><i></i><i></i><b></b></span><span class="station-copy"><small>About me</small><strong>Meet Linda!</strong></span></a>
+          <a class="route-station station-education" href="education.html"><span class="station-object object-book" aria-hidden="true"><i></i><i></i><b></b></span><span class="station-copy"><small>Learn across disciplines</small><strong>Education</strong></span></a>
+          <a class="route-station station-research" href="research.html"><span class="station-object object-data" aria-hidden="true"><i></i><i></i><b></b></span><span class="station-copy"><small>Questions tested with evidence</small><strong>Research</strong></span></a>
+          <a class="route-station station-projects" href="projects.html"><span class="station-object object-cube" aria-hidden="true"><i></i><i></i><b></b></span><span class="station-copy"><small>Ideas put to work</small><strong>Projects</strong></span></a>
+          <a class="route-station station-contact" href="contact.html"><span class="station-object object-signal" aria-hidden="true"><i></i><i></i><b></b></span><span class="station-copy"><small>Continue the conversation</small><strong>Contact</strong></span></a>
           <p class="route-thread-label"><span></span> The human-centered thread</p>
         </div>
         <p class="route-map-caption">A connected path through human-computer interaction, education technology, research, and making.</p>
@@ -96,5 +96,5 @@
     const destination = legacyPages[location.hash.slice(1)];
     if (destination) location.replace(destination);
   </script>
-  <script src="world.js?v=20261102-five-stops"></script></body>
+  <script src="world.js?v=20261102-five-stops-v2"></script></body>
 </html>
