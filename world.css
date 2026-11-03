@@ -1355,7 +1355,7 @@ main { position: relative; }
   cursor: pointer;
   overflow: visible;
   pointer-events: auto;
-  filter: drop-shadow(0 15px 17px rgba(12,5,27,.68)) drop-shadow(0 0 21px rgba(169,121,255,.63));
+  filter: drop-shadow(0 14px 15px rgba(0,0,0,.62)) drop-shadow(0 0 18px rgba(131,216,211,.55));
   transition: filter .35s ease;
 }
 .route-orb:focus-visible { outline: 2px solid #ffe4bc; outline-offset: 4px; }
@@ -1364,64 +1364,38 @@ main { position: relative; }
   position: absolute;
   inset: -17px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(191,153,255,.34), rgba(130,83,213,.13) 34%, transparent 71%);
+  background: radial-gradient(circle, rgba(134,218,207,.2), transparent 69%);
   opacity: .8;
   animation: orb-aura 4s ease-in-out infinite;
 }
 .route-orb svg { position: relative; display: block; width: 100%; height: 100%; overflow: visible; }
-.route-orb.is-spotlight { filter: drop-shadow(0 17px 18px rgba(12,5,27,.7)) drop-shadow(0 0 27px rgba(214,164,255,.9)); }
+.route-orb.is-spotlight { filter: drop-shadow(0 17px 18px rgba(0,0,0,.65)) drop-shadow(0 0 24px rgba(255,181,139,.82)); }
 .route-orb.is-spotlight svg { animation: orb-greet .6s ease-out; }
-.orb-shell { fill: url(#orbGlass); stroke: rgba(249,239,255,.62); stroke-width: 1; }
-.orb-inner-light { fill: url(#orbInnerLight); }
-.orb-land { fill: url(#orbGround); }
-.orb-crystal-facet { stroke: rgba(239,220,255,.22); stroke-width: .7; }
-.orb-crystal-facet-one { fill: rgba(225,198,255,.12); }
-.orb-outline { fill: none; stroke: url(#orbRim); stroke-width: 3.2; filter: drop-shadow(0 0 2px rgba(231,203,255,.66)); }
-.orb-glint { fill: none; stroke: #fffaff; stroke-width: 2.4; stroke-linecap: round; opacity: .96; }
-.orb-glint-lower { stroke: #d8baff; stroke-width: 1.5; opacity: .72; }
-.orb-crystal-sheen { fill: none; stroke: rgba(255,248,255,.19); stroke-width: .8; stroke-linecap: round; }
-.orb-spark { fill: #fff8ff; filter: drop-shadow(0 0 4px #dfc1ff); }
-.orb-twinkle { fill: #fffaff; filter: drop-shadow(0 0 3px #ead5ff); transform-box: fill-box; transform-origin: center; animation: orb-twinkle 2.3s ease-in-out infinite; }
-.orb-twinkle-two { animation-delay: .7s; }
-.orb-twinkle-three { animation-delay: 1.35s; }
+.orb-shell { fill: url(#orbGlass); stroke: rgba(234,252,240,.38); stroke-width: 1; }
+.orb-land { fill: rgba(17,58,66,.78); }
+.orb-outline { fill: none; stroke: url(#orbRim); stroke-width: 3; }
+.orb-glint { fill: none; stroke: #fffefa; stroke-width: 3; stroke-linecap: round; opacity: .9; }
+.orb-spark { fill: #fff5df; filter: drop-shadow(0 0 4px #fff5df); }
 .orb-scene { opacity: 0; transform: translateY(4px) scale(.94); transform-origin: 50px 55px; transition: opacity .42s ease, transform .42s ease; }
 .route-companion[data-scene="about"] .orb-scene-about,
 .route-companion[data-scene="education"] .orb-scene-education,
 .route-companion[data-scene="research"] .orb-scene-research,
 .route-companion[data-scene="projects"] .orb-scene-projects,
 .route-companion[data-scene="contact"] .orb-scene-contact { opacity: 1; transform: translateY(0) scale(1); }
-.orb-human-hair-back,
-.orb-human-hair-front { fill: url(#orbHair); stroke: rgba(28,20,42,.56); stroke-width: .55; stroke-linejoin: round; }
-.orb-human-neck,
-.orb-human-face,
-.orb-human-ear,
-.orb-human-hand { fill: url(#orbSkin); stroke: rgba(111,57,69,.34); stroke-width: .55; stroke-linejoin: round; }
-.orb-human-body { fill: url(#orbClothing); stroke: rgba(255,224,220,.28); stroke-width: .7; stroke-linejoin: round; }
-.orb-human-blouse { fill: #f3d7ce; opacity: .95; }
-.orb-human-face-shadow { fill: #a96469; opacity: .23; }
-.orb-human-hair-shine { fill: none; stroke: rgba(255,220,239,.44); stroke-width: 1.05; stroke-linecap: round; }
-.orb-human-brow,
-.orb-human-eye,
-.orb-human-nose,
-.orb-human-mouth { fill: none; stroke: #684552; stroke-width: .8; stroke-linecap: round; stroke-linejoin: round; opacity: .83; }
-.orb-human-eye { stroke: #4b3544; stroke-width: 1; }
-.orb-human-mouth { stroke: #a25f68; stroke-width: .72; }
-.orb-human-collar { fill: none; stroke: #fff0e8; stroke-width: 1; stroke-linecap: round; opacity: .78; }
-.orb-human-seam { fill: none; stroke: rgba(255,226,223,.44); stroke-width: .75; }
-.orb-human-arm { fill: none; stroke: url(#orbSkin); stroke-width: 5.4; stroke-linecap: round; stroke-linejoin: round; filter: drop-shadow(0 .5px .6px rgba(61,29,53,.4)); }
-.orb-human-hand { fill: url(#orbSkin); stroke-width: .55; }
-.orb-book { fill: url(#orbPaper); stroke: #f2e8ff; stroke-width: .85; stroke-linejoin: round; filter: drop-shadow(0 1px 1px rgba(28,15,54,.42)); }
-.orb-book-spine { fill: none; stroke: #8f72bd; stroke-width: .9; }
-.orb-research-paper { fill: url(#orbPaper); stroke: #fbf4ff; stroke-width: .8; filter: drop-shadow(0 1px 1px rgba(28,15,54,.4)); }
-.orb-research-paper-line { fill: none; stroke: #9e82bf; stroke-width: .8; stroke-linecap: round; }
-.orb-research-lens { fill: rgba(227,208,255,.3); stroke: #f8eaff; stroke-width: 2.2; filter: drop-shadow(0 0 2px rgba(224,196,255,.7)); }
-.orb-research-handle { fill: none; stroke: #e3caff; stroke-width: 2.4; stroke-linecap: round; }
-.orb-sapling { fill: none; stroke: #d2b7a4; stroke-width: 1.8; stroke-linecap: round; }
-.orb-sapling-pot { fill: #d795a7; stroke: #f5d5e3; stroke-width: .7; }
-.orb-sapling-leaf { fill: #b9d5aa; stroke: #edf3d8; stroke-width: .55; }
-.orb-message { fill: #f8edff; stroke: #d6b9ff; stroke-width: 1; stroke-linejoin: round; filter: drop-shadow(0 1px 2px rgba(24,12,48,.35)); }
-.orb-message-line { fill: none; stroke: #8765b8; stroke-width: 1.1; stroke-linecap: round; }
-@keyframes orb-twinkle { 0%,100% { opacity: .55; transform: scale(.76); } 50% { opacity: 1; transform: scale(1.14); } }
+.orb-person-head { fill: #f7cba8; stroke: #ffe2c0; stroke-width: 1; }
+.orb-person-hair { fill: #243943; }
+.orb-person-body { fill: #df957c; stroke: #ffe0bb; stroke-width: 1.3; }
+.orb-person-arm { fill: none; stroke: #f7cba8; stroke-width: 5; stroke-linecap: round; stroke-linejoin: round; }
+.orb-scene-detail { fill: #ffe8bb; filter: drop-shadow(0 0 3px #ffe8bb); }
+.orb-book { fill: #fff1d5; stroke: #7eafa6; stroke-width: 1.8; stroke-linejoin: round; }
+.orb-book-spine { fill: none; stroke: #bf846e; stroke-width: 1.5; }
+.orb-research-lens { fill: rgba(204,247,230,.33); stroke: #fff2cf; stroke-width: 3; }
+.orb-research-handle { fill: none; stroke: #fff2cf; stroke-width: 3; stroke-linecap: round; }
+.orb-research-point { fill: #ffe3a6; }
+.orb-sapling { fill: none; stroke: #d9c593; stroke-width: 3; stroke-linecap: round; }
+.orb-sapling-leaf { fill: #a9d4ac; stroke: #d7efc5; stroke-width: 1; }
+.orb-message { fill: #fff1db; stroke: #d6a07d; stroke-width: 1.6; stroke-linejoin: round; }
+.orb-message-line { fill: none; stroke: #6d918f; stroke-width: 2; stroke-linecap: round; }
 .route-orb-dialog {
   position: absolute;
   z-index: 12;
@@ -1789,7 +1763,6 @@ main { position: relative; }
   .track-light,
   .route-orb::before,
   .route-orb.is-spotlight svg,
-  .orb-twinkle,
   .route-orb-dialog { animation: none !important; }
   .orb-scene { transition: none !important; }
   .page-route-spine .spine-light { stroke-dasharray: none; }

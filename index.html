@@ -10,7 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;700&family=Playfair+Display:ital,wght@0,600;1,500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css?v=20261101-editorial">
   <link rel="stylesheet" href="editorial.css?v=20261101-bookflip-v1">
-  <link rel="stylesheet" href="world.css?v=20261103-cartoon-orb-v1">
+  <link rel="stylesheet" href="world.css?v=20261103-original-cartoon-v1">
 </head>
 <body class="page-home page-editorial">
   <header class="nav">
@@ -58,76 +58,40 @@
             <button class="route-orb" type="button" aria-label="Ask about me" aria-expanded="false" aria-controls="route-orb-dialog">
               <svg viewBox="0 0 100 100" aria-hidden="true" focusable="false">
               <defs>
-                <radialGradient id="orbGlass" cx="31%" cy="19%" r="91%"><stop offset="0" stop-color="#f5eaff" stop-opacity=".9"/><stop offset=".19" stop-color="#d4b3ff" stop-opacity=".68"/><stop offset=".53" stop-color="#8c5be0" stop-opacity=".76"/><stop offset=".82" stop-color="#4d278f" stop-opacity=".91"/><stop offset="1" stop-color="#21123f" stop-opacity=".98"/></radialGradient>
-                <radialGradient id="orbInnerLight" cx="52%" cy="28%" r="62%"><stop offset="0" stop-color="#efc9ff" stop-opacity=".48"/><stop offset="1" stop-color="#8f63e8" stop-opacity="0"/></radialGradient>
-                <linearGradient id="orbRim" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#fff8ff"/><stop offset=".25" stop-color="#dfc8ff"/><stop offset=".59" stop-color="#9872e7"/><stop offset=".83" stop-color="#f4d8ff"/><stop offset="1" stop-color="#6942b6"/></linearGradient>
-                <linearGradient id="orbSkin" x1=".16" x2=".88" y1=".18" y2=".88"><stop offset="0" stop-color="#ffe0be"/><stop offset=".48" stop-color="#e9b18f"/><stop offset="1" stop-color="#b97570"/></linearGradient>
-                <linearGradient id="orbHair" x1=".15" x2=".92" y1=".08" y2=".96"><stop offset="0" stop-color="#6d4b63"/><stop offset=".36" stop-color="#38283f"/><stop offset=".78" stop-color="#211d35"/><stop offset="1" stop-color="#15162c"/></linearGradient>
-                <linearGradient id="orbClothing" x1=".15" x2=".86" y1=".1" y2="1"><stop offset="0" stop-color="#e3a594"/><stop offset=".46" stop-color="#b7758c"/><stop offset="1" stop-color="#654a83"/></linearGradient>
-                <linearGradient id="orbPaper" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#fff9e8"/><stop offset="1" stop-color="#d5c5f2"/></linearGradient>
-                <radialGradient id="orbGround" cx="50%" cy="0%" r="100%"><stop offset="0" stop-color="#bc8bfa" stop-opacity=".62"/><stop offset="1" stop-color="#3a1c73" stop-opacity=".9"/></radialGradient>
+                <radialGradient id="orbGlass" cx="37%" cy="27%" r="76%"><stop offset="0" stop-color="#b8e0d5" stop-opacity=".44"/><stop offset=".54" stop-color="#5aa6a8" stop-opacity=".34"/><stop offset="1" stop-color="#1c4254" stop-opacity=".93"/></radialGradient>
+                <linearGradient id="orbRim" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#fff9e9"/><stop offset=".42" stop-color="#9dd2cf"/><stop offset="1" stop-color="#efab88"/></linearGradient>
                 <clipPath id="orbClip"><circle cx="50" cy="50" r="42"/></clipPath>
-                <g id="orbHumanBase">
-                  <path class="orb-human-hair-back" d="M31 43C28 26 36 14 50 13c14-1 22 9 20 26l-2 15c-.8 10-6 18-15 23l-12-1c-7-7-10-14-10-24Z"/>
-                  <path class="orb-human-neck" d="M44 45h11l1 11 8 4-13 12-16-12 9-4Z"/>
-                  <path class="orb-human-body" d="M39 53c3-3 7-4 12-4s10 2 13 5l8 7 5 24H23l5-23 10-7Z"/>
-                  <path class="orb-human-blouse" d="m43 52 7 8 7-8 5 5-5 8H42l-5-8Z"/>
-                  <path class="orb-human-face" d="M39 27c2-7 8-10 15-8 7 2 10 8 9 15l-1 7c-1 7-6 12-12 12-7 0-12-6-13-13l-1-6c0-3 1-5 3-7Z"/>
-                  <path class="orb-human-face-shadow" d="M57 25c3 3 4 8 3 13l-1 4c-1 4-4 7-7 9 7 0 12-6 12-14l-1-7c-1-3-3-5-6-6Z"/>
-                  <path class="orb-human-hair-front" d="M37 35c-2-13 4-21 14-22 9-1 17 5 18 15-5-1-9-4-12-8-3 5-10 8-20 9l3 13-4 8c-3-4-4-10-3-15Z"/>
-                  <path class="orb-human-hair-shine" d="M40 28c2-7 7-11 13-12"/>
-                  <path class="orb-human-brow" d="M53 31c2-1 4-1 5 0"/>
-                  <path class="orb-human-eye" d="M54 34c1-1 3-1 4 0"/>
-                  <path class="orb-human-nose" d="m61 34 2 5-3 1"/>
-                  <path class="orb-human-mouth" d="M56 43c2 1 3 1 5 0"/>
-                  <path class="orb-human-ear" d="M40 34c-3-1-4 1-3 5 1 2 2 3 4 2"/>
-                  <path class="orb-human-collar" d="m43 53 7 8 7-8"/>
-                  <path class="orb-human-seam" d="M50 61v23"/>
-                </g>
               </defs>
               <circle class="orb-shell" cx="50" cy="50" r="43"/>
               <g clip-path="url(#orbClip)">
-                <circle class="orb-inner-light" cx="50" cy="43" r="42"/>
-                <path class="orb-crystal-facet orb-crystal-facet-one" d="m12 28 20-20 10 35-18 18Z"/>
                 <path class="orb-land" d="M4 75Q50 61 96 76V102H4Z"/>
                 <g class="orb-scene orb-scene-about">
-                  <use href="#orbHumanBase"/>
-                  <path class="orb-human-arm" d="M31 62c-3 4-4 9-3 14l7 5m33-19c4 4 5 9 4 14l-7 5"/>
-                  <path class="orb-human-hand" d="M27 75q-3 1-2 4l5 4 5-3-2-4Zm38 1q-2 2-1 4l5 3 4-4-2-4Z"/>
+                  <circle class="orb-person-head" cx="50" cy="39" r="9"/><path class="orb-person-hair" d="M41 38q0-13 11-12 9 1 9 10-7-7-20 2Z"/>
+                  <path class="orb-person-body" d="M35 72V56q1-9 15-9t15 9v16Z"/><path class="orb-person-arm" d="M37 55 26 49m37 6 11-6"/>
+                  <circle class="orb-scene-detail" cx="23" cy="47" r="3"/><circle class="orb-scene-detail" cx="77" cy="47" r="3"/>
                 </g>
                 <g class="orb-scene orb-scene-education">
-                  <use href="#orbHumanBase" transform="translate(-7 0)"/>
-                  <path class="orb-human-arm" d="M53 59c5 2 9 6 12 11l5 1"/>
-                  <path class="orb-human-hand" d="M67 67q4-2 6 1l-2 5-5-1Z"/>
-                  <path class="orb-book" d="M55 65q8-4 14 0 6-4 13-1v14q-7-3-13 1-6-4-14-1Z"/>
-                  <path class="orb-book-spine" d="M69 67v12m-10-9 7 2m7-2 8-2"/>
+                  <circle class="orb-person-head" cx="48" cy="38" r="9"/><path class="orb-person-hair" d="M39 38q1-14 12-12 7 1 7 8-8-5-19 4Z"/>
+                  <path class="orb-person-body" d="M34 72V57q2-10 14-10 15 0 16 10v15Z"/><path class="orb-person-arm" d="m38 56 8 5m17-5-9 5"/>
+                  <path class="orb-book" d="M29 61q11-4 21 2 10-6 21-2v13q-11-4-21 2-10-6-21-2Z"/><path class="orb-book-spine" d="M50 63v13"/>
                 </g>
                 <g class="orb-scene orb-scene-research">
-                  <use href="#orbHumanBase" transform="translate(-12 0)"/>
-                  <path class="orb-research-paper" d="M63 23h16v26H63z"/>
-                  <path class="orb-research-paper-line" d="M66 29h9m-9 4h8m-8 4h5"/>
-                  <path class="orb-human-arm" d="M49 59c7-3 12-8 15-13"/>
-                  <path class="orb-human-hand" d="M61 44q1-4 4-4l3 3-2 4-4 1Z"/>
-                  <circle class="orb-research-lens" cx="72" cy="41" r="8"/><path class="orb-research-handle" d="m77 47 5 7"/>
+                  <circle class="orb-person-head" cx="43" cy="39" r="9"/><path class="orb-person-hair" d="M34 39q0-14 11-12 8 1 8 9-8-5-19 3Z"/>
+                  <path class="orb-person-body" d="M29 72V57q2-10 14-10 13 0 15 10v15Z"/><path class="orb-person-arm" d="m53 55 10-8"/>
+                  <circle class="orb-research-lens" cx="69" cy="41" r="9"/><path class="orb-research-handle" d="m63 47-7 7"/><circle class="orb-research-point" cx="71" cy="39" r="2"/>
                 </g>
                 <g class="orb-scene orb-scene-projects">
-                  <use href="#orbHumanBase" transform="translate(-13 0)"/>
-                  <path class="orb-sapling-pot" d="M69 67h13l-2 12H71Z"/>
-                  <path class="orb-sapling" d="M75 68V49m0 12-7-7m7 3 8-8"/>
-                  <path class="orb-sapling-leaf" d="M64 52q8-3 11 5-8 3-11-5Zm20-8q0 9-9 12 0-9 9-12Z"/>
-                  <path class="orb-human-arm" d="M47 59c8-4 13-6 20-5"/>
-                  <path class="orb-human-hand" d="M65 51q3-3 6-1l1 4-4 3-4-2Z"/>
+                  <circle class="orb-person-head" cx="41" cy="40" r="9"/><path class="orb-person-hair" d="M32 39q1-13 12-12 8 1 8 9-8-5-20 3Z"/>
+                  <path class="orb-person-body" d="M27 72V58q2-10 14-10 13 0 15 10v14Z"/><path class="orb-person-arm" d="m53 56 10 6"/>
+                  <path class="orb-sapling" d="M70 71V52m0 8-7-7m7 3 8-8"/><path class="orb-sapling-leaf" d="M58 51q8-2 10 6-8 2-10-6Zm21-8q0 9-9 11 0-9 9-11Z"/>
                 </g>
                 <g class="orb-scene orb-scene-contact">
-                  <use href="#orbHumanBase" transform="translate(-7 0)"/>
-                  <path class="orb-human-arm" d="M55 59c5-4 9-10 10-17l-3-8"/>
-                  <path class="orb-human-hand" d="M60 32q-2-4 1-6l4 1 2 5-2 4-4-1Z"/>
-                  <path class="orb-message" d="M68 17h17v14h-8l-5 5v-5h-4Z"/>
-                  <path class="orb-message-line" d="M72 22h9m-9 4h6"/>
+                  <circle class="orb-person-head" cx="45" cy="39" r="9"/><path class="orb-person-hair" d="M36 39q0-14 11-12 8 1 8 9-8-5-19 3Z"/>
+                  <path class="orb-person-body" d="M30 72V57q2-10 15-10t15 10v15Z"/><path class="orb-person-arm" d="m57 55 11-11m0 0 2-10"/>
+                  <path class="orb-message" d="M63 22h21v14H73l-6 5v-5h-4Z"/><path class="orb-message-line" d="M68 28h11"/>
                 </g>
-                <path class="orb-crystal-sheen" d="M18 43c4-13 10-22 18-27m34 54c4-4 7-9 9-15"/>
               </g>
-              <circle class="orb-outline" cx="50" cy="50" r="43"/><path class="orb-glint" d="M20 39c3-11 10-20 19-24"/><path class="orb-glint orb-glint-lower" d="M76 67c-2 5-5 8-8 10"/><path class="orb-twinkle orb-twinkle-one" d="M21 50q1 3 4 4-3 1-4 4-1-3-4-4 3-1 4-4Z"/><path class="orb-twinkle orb-twinkle-two" d="M78 43q1 3 4 4-3 1-4 4-1-3-4-4 3-1 4-4Z"/><path class="orb-twinkle orb-twinkle-three" d="M74 72q1 2 3 3-2 1-3 3-1-2-3-3 2-1 3-3Z"/><circle class="orb-spark" cx="77" cy="19" r="2.3"/>
+              <circle class="orb-outline" cx="50" cy="50" r="43"/><path class="orb-glint" d="M21 40c3-10 9-17 17-20"/><circle class="orb-spark" cx="76" cy="21" r="2"/>
               </svg>
             </button>
             <div class="route-orb-dialog" id="route-orb-dialog" role="group" aria-label="Explore this station" hidden>
