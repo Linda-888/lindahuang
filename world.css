@@ -1374,10 +1374,12 @@ main { position: relative; }
 .orb-shell { fill: url(#orbGlass); stroke: rgba(249,239,255,.62); stroke-width: 1; }
 .orb-inner-light { fill: url(#orbInnerLight); }
 .orb-land { fill: url(#orbGround); }
+.orb-crystal-facet { stroke: rgba(239,220,255,.22); stroke-width: .7; }
+.orb-crystal-facet-one { fill: rgba(225,198,255,.12); }
 .orb-outline { fill: none; stroke: url(#orbRim); stroke-width: 3.2; filter: drop-shadow(0 0 2px rgba(231,203,255,.66)); }
 .orb-glint { fill: none; stroke: #fffaff; stroke-width: 2.4; stroke-linecap: round; opacity: .96; }
 .orb-glint-lower { stroke: #d8baff; stroke-width: 1.5; opacity: .72; }
-.orb-crystal-sheen { fill: none; stroke: rgba(255,248,255,.3); stroke-width: .8; stroke-linecap: round; }
+.orb-crystal-sheen { fill: none; stroke: rgba(255,248,255,.19); stroke-width: .8; stroke-linecap: round; }
 .orb-spark { fill: #fff8ff; filter: drop-shadow(0 0 4px #dfc1ff); }
 .orb-twinkle { fill: #fffaff; filter: drop-shadow(0 0 3px #ead5ff); transform-box: fill-box; transform-origin: center; animation: orb-twinkle 2.3s ease-in-out infinite; }
 .orb-twinkle-two { animation-delay: .7s; }
@@ -1388,7 +1390,26 @@ main { position: relative; }
 .route-companion[data-scene="research"] .orb-scene-research,
 .route-companion[data-scene="projects"] .orb-scene-projects,
 .route-companion[data-scene="contact"] .orb-scene-contact { opacity: 1; transform: translateY(0) scale(1); }
-.orb-portrait { opacity: 1; filter: saturate(.92) contrast(1.03) brightness(1); }
+.orb-human-hair-back,
+.orb-human-hair-front { fill: url(#orbHair); stroke: rgba(28,20,42,.56); stroke-width: .55; stroke-linejoin: round; }
+.orb-human-neck,
+.orb-human-face,
+.orb-human-ear,
+.orb-human-hand { fill: url(#orbSkin); stroke: rgba(111,57,69,.34); stroke-width: .55; stroke-linejoin: round; }
+.orb-human-body { fill: url(#orbClothing); stroke: rgba(255,224,220,.28); stroke-width: .7; stroke-linejoin: round; }
+.orb-human-blouse { fill: #f3d7ce; opacity: .95; }
+.orb-human-face-shadow { fill: #a96469; opacity: .23; }
+.orb-human-hair-shine { fill: none; stroke: rgba(255,220,239,.44); stroke-width: 1.05; stroke-linecap: round; }
+.orb-human-brow,
+.orb-human-eye,
+.orb-human-nose,
+.orb-human-mouth { fill: none; stroke: #684552; stroke-width: .8; stroke-linecap: round; stroke-linejoin: round; opacity: .83; }
+.orb-human-eye { stroke: #4b3544; stroke-width: 1; }
+.orb-human-mouth { stroke: #a25f68; stroke-width: .72; }
+.orb-human-collar { fill: none; stroke: #fff0e8; stroke-width: 1; stroke-linecap: round; opacity: .78; }
+.orb-human-seam { fill: none; stroke: rgba(255,226,223,.44); stroke-width: .75; }
+.orb-human-arm { fill: none; stroke: url(#orbSkin); stroke-width: 5.4; stroke-linecap: round; stroke-linejoin: round; filter: drop-shadow(0 .5px .6px rgba(61,29,53,.4)); }
+.orb-human-hand { fill: url(#orbSkin); stroke-width: .55; }
 .orb-book { fill: url(#orbPaper); stroke: #f2e8ff; stroke-width: .85; stroke-linejoin: round; filter: drop-shadow(0 1px 1px rgba(28,15,54,.42)); }
 .orb-book-spine { fill: none; stroke: #8f72bd; stroke-width: .9; }
 .orb-research-paper { fill: url(#orbPaper); stroke: #fbf4ff; stroke-width: .8; filter: drop-shadow(0 1px 1px rgba(28,15,54,.4)); }
