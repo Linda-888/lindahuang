@@ -1388,8 +1388,7 @@ main { position: relative; }
 .route-companion[data-scene="research"] .orb-scene-research,
 .route-companion[data-scene="projects"] .orb-scene-projects,
 .route-companion[data-scene="contact"] .orb-scene-contact { opacity: 1; transform: translateY(0) scale(1); }
-.orb-portrait { opacity: .96; filter: saturate(.72) contrast(1.05) brightness(.94); }
-.orb-photo-veil { fill: url(#orbPhotoTint); }
+.orb-portrait { opacity: 1; filter: saturate(.92) contrast(1.03) brightness(1); }
 .orb-book { fill: url(#orbPaper); stroke: #f2e8ff; stroke-width: .85; stroke-linejoin: round; filter: drop-shadow(0 1px 1px rgba(28,15,54,.42)); }
 .orb-book-spine { fill: none; stroke: #8f72bd; stroke-width: .9; }
 .orb-research-paper { fill: url(#orbPaper); stroke: #fbf4ff; stroke-width: .8; filter: drop-shadow(0 1px 1px rgba(28,15,54,.4)); }
