@@ -155,6 +155,9 @@
       const meta = body.querySelector(':scope > span')?.textContent.trim() || '';
       const illustration = card.querySelector('.project-image')?.innerHTML || '';
       const imageClass = card.querySelector('.project-image')?.className || '';
+      const hasCoverImage = Boolean(card.querySelector('.project-image img'));
+      const visualAttributes = hasCoverImage ? '' : `role="img" aria-label="Illustration for ${escapeHtml(title)}"`;
+      const visualCaption = hasCoverImage ? `${escapeHtml(title)} project cover` : 'Project illustration';
       const tags = [...card.querySelectorAll('.tags span')].map((tag) => `<span>${escapeHtml(tag.textContent.trim())}</span>`).join('');
       const actions = document.createElement('div');
       actions.className = 'project-card-actions';
@@ -173,7 +176,7 @@
         <h2>${escapeHtml(title)}</h2>
         <p class="project-chapter-question">${escapeHtml(note.question)}</p>
         <div class="project-chapter-layout">
-          <figure class="project-chapter-visual ${escapeHtml(imageClass)}" role="img" aria-label="Illustration for ${escapeHtml(title)}">${illustration}<figcaption>Project illustration</figcaption></figure>
+          <figure class="project-chapter-visual ${escapeHtml(imageClass)}" ${visualAttributes}>${illustration}<figcaption>${visualCaption}</figcaption></figure>
           <div class="project-chapter-copy"><p class="project-chapter-meta">${escapeHtml(meta)}</p><h3>What I worked on</h3><p>${escapeHtml(note.work)}</p><h3>The human-centered thread</h3><p>${escapeHtml(note.thread)}</p><div class="tags">${tags}</div>${note.actions ? `<div class="project-chapter-actions">${note.actions}</div>` : ''}</div>
         </div>`;
       grid.after(panel);

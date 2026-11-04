@@ -297,7 +297,10 @@ body.chapter-page.chapter-direct main.chapter-main { animation: direct-page-arri
 
 /* Work cards and reading pages carry the same cues as their entrances. */
 body.chapter-page .project-image.project-mindjoy,
-body.chapter-page .project-chapter-visual.project-mindjoy { background: radial-gradient(circle at 45% 42%,#f6dfd4,#b9d9cf 67%,#6e9d9b); }
+body.chapter-page .project-chapter-visual.project-mindjoy { background: #fbfaf8; }
+body.chapter-page .project-image.project-mindjoy img { display: block; width: 100%; height: 100%; object-fit: contain; }
+body.chapter-page .project-chapter-visual.project-mindjoy { min-height: 0; height: auto; padding: 12px 12px 38px; }
+body.chapter-page .project-chapter-visual.project-mindjoy img { display: block; width: 100%; height: auto; }
 body.chapter-page .project-image.project-security,
 body.chapter-page .project-chapter-visual.project-security { background: radial-gradient(circle at 48% 40%,#7ba3a7,#345d69 66%,#183b50); }
 body.chapter-page .project-image.project-robot,
