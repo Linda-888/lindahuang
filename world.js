@@ -4,8 +4,7 @@
     { href: 'about.html', label: 'About Me', key: 'about' },
     { href: 'research.html', label: 'Research', key: 'research' },
     { href: 'projects.html', label: 'Projects', key: 'projects' },
-    { href: 'extracurricular.html', label: 'Extracurricular Activities', key: 'extracurricular' },
-    { href: 'volunteer.html', label: 'Volunteer Experience', key: 'volunteer' },
+    { href: 'extracurricular.html', label: 'Activities & Leadership', key: 'extracurricular' },
     { href: 'contact.html', label: 'Contact', key: 'contact' },
   ];
 
@@ -109,19 +108,18 @@
     const goLink = dialog.querySelector('.route-orb-go');
     const closeButton = dialog.querySelector('.route-orb-close');
     const routeStations = [...routeWorld.querySelectorAll('.route-station')];
-    const desktopPath = 'M110 690 C260 690 390 500 500 500 C575 500 550 650 650 650 C760 650 680 325 790 325 C880 325 860 540 940 540 C1030 540 990 240 1090 240';
-    const mediumPath = 'M110 690 C280 690 460 500 600 500 C680 500 570 650 650 650 C760 650 680 325 790 325 C880 325 860 540 940 540 C1030 540 990 240 1090 240';
-    const mobilePath = 'M80 80 C180 80 220 215 320 215 C220 215 180 350 80 350 C180 350 220 485 320 485 C220 485 180 620 80 620 C180 620 220 755 320 755';
-    const desktopStops = [[110, 690], [500, 500], [650, 650], [790, 325], [940, 540], [1090, 240]];
-    const mediumStops = [[110, 690], [600, 500], [650, 650], [790, 325], [940, 540], [1090, 240]];
-    const mobileStops = [[80, 80], [320, 215], [80, 350], [320, 485], [80, 620], [320, 755]];
-    const scenes = ['about', 'research', 'projects', 'extracurricular', 'volunteer', 'contact'];
+    const desktopPath = 'M110 690 C245 690 300 500 420 500 C535 500 535 650 650 650 C760 650 730 400 840 400 C960 400 960 240 1090 240';
+    const mediumPath = 'M110 690 C260 690 390 500 520 500 C610 500 555 650 650 650 C760 650 730 400 840 400 C960 400 960 240 1090 240';
+    const mobilePath = 'M80 80 C185 80 215 240 320 240 C215 240 185 400 80 400 C185 400 215 560 320 560 C215 560 185 720 80 720';
+    const desktopStops = [[110, 690], [420, 500], [650, 650], [840, 400], [1090, 240]];
+    const mediumStops = [[110, 690], [520, 500], [650, 650], [840, 400], [1090, 240]];
+    const mobileStops = [[80, 80], [320, 240], [80, 400], [320, 560], [80, 720]];
+    const scenes = ['about', 'research', 'projects', 'extracurricular', 'contact'];
     const stageInfo = [
       { label: 'About Me', question: 'Wanna know about me?', href: 'about.html' },
       { label: 'Research', question: 'Wanna know about my research?', href: 'research.html' },
       { label: 'Projects', question: 'Wanna know about my projects?', href: 'projects.html' },
-      { label: 'Extracurricular Activities', question: 'Wanna know about my extracurricular activities?', href: 'extracurricular.html' },
-      { label: 'Volunteer Experience', question: 'Wanna know about my volunteer experience?', href: 'volunteer.html' },
+      { label: 'Activities & Leadership', question: 'Wanna know about my activities and leadership?', href: 'extracurricular.html' },
       { label: 'Contact', question: 'Wanna know about reaching me?', href: 'contact.html' },
     ];
     const narrowRoute = matchMedia('(max-width: 780px)');

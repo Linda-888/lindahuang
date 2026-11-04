@@ -9,8 +9,7 @@
     'about.html': 'Meet Linda!',
     'projects.html': 'Projects',
     'research.html': 'Research',
-    'extracurricular.html': 'Extracurricular Activities',
-    'volunteer.html': 'Volunteer Experience',
+    'extracurricular.html': 'Activities & Leadership',
     'contact.html': 'Contact',
     'research-llm.html': 'LLM research',
     'research-mental-health.html': 'Mental health research',
@@ -82,12 +81,12 @@
   };
 
   document.body.classList.add('chapter-page');
-  const directPage = ['about.html', 'extracurricular.html', 'volunteer.html', 'contact.html'].includes(file);
+  const directPage = ['about.html', 'extracurricular.html', 'contact.html'].includes(file);
   if (directPage) document.body.classList.add('chapter-direct');
   main.classList.add('chapter-main');
   const topline = document.createElement('div');
   topline.className = 'chapter-topline';
-  const noteLabel = file === 'about.html' ? 'About me' : file === 'extracurricular.html' ? 'Extracurricular activities' : file === 'volunteer.html' ? 'Volunteer experience' : file === 'contact.html' ? 'Say hello' : 'Field notes';
+  const noteLabel = file === 'about.html' ? 'About me' : file === 'extracurricular.html' ? 'Activities & leadership' : file === 'contact.html' ? 'Say hello' : 'Field notes';
   topline.innerHTML = `<span>Linda Huang / ${noteLabel}</span><a href="index.html#route-map">← Back to the route</a>`;
   main.prepend(topline);
 

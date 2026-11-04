@@ -355,7 +355,7 @@ body.chapter-page.page-research-health .detail-tint { background: #f3eae3; }
   body.chapter-page.chapter-direct main.chapter-main { animation: none !important; }
 }
 
-/* Education now lives within About Me; activities have their own reading pages. */
+/* Education lives within About Me; activities and service share one page. */
 .meet-learning { scroll-margin-top: 110px; padding: clamp(70px,8vw,112px) 24px; border-top: 1px solid #d1dbcf; background: #e9eee6; }
 .meet-learning-inner { width: min(100%,1180px); margin: 0 auto; display: grid; grid-template-columns: minmax(0,.78fr) minmax(0,1.22fr); gap: clamp(34px,7vw,100px); }
 .meet-learning-heading h2 { max-width: 490px; margin: 18px 0 22px; color: #1d3f47; font: 700 clamp(43px,4.8vw,70px)/1.04 var(--sans); letter-spacing: -.075em; }
@@ -377,15 +377,17 @@ body.chapter-page .activity-page { width: min(100%,1100px); padding-top: clamp(5
 .activity-page h1 { max-width: 950px; margin: 0 0 22px; color: #1c3d45; font: 700 clamp(45px,6.2vw,85px)/1.04 var(--sans); letter-spacing: -.075em; }
 .activity-page h1 em { color: #b66f53; font: 500 .95em var(--serif); }
 .activity-intro { max-width: 680px; margin: 0 0 52px; color: #526b68; font: 18px/1.65 var(--sans); }
+.activity-group-heading { display: flex; flex-wrap: wrap; align-items: baseline; gap: 12px 25px; margin-bottom: 27px; }
+.activity-group-heading span { color: #ae684f; font: 10px/1.5 var(--mono); letter-spacing: .08em; text-transform: uppercase; }
+body.chapter-page .activity-group-heading h2 { margin: 0; color: #25464e; font: 600 clamp(25px,3.2vw,39px)/1.15 var(--sans); letter-spacing: -.055em; }
 .activity-list { border-top: 1px solid #c5d5c8; }
 .activity-entry { display: grid; grid-template-columns: 160px minmax(0,1fr); gap: 30px; padding: 32px 0 36px; border-bottom: 1px solid #c5d5c8; }
 .activity-date { padding-top: 4px; color: #ae684f; font: 11px/1.5 var(--mono); white-space: nowrap; }
 .activity-organization { margin: 0 0 9px; color: #60827c; font: 10px/1.5 var(--mono); text-transform: uppercase; letter-spacing: .08em; }
-body.chapter-page .activity-entry h2 { margin: 0 0 12px; color: #25464e; font: 600 clamp(27px,3.2vw,41px)/1.14 var(--sans); letter-spacing: -.055em; }
+body.chapter-page .activity-entry h3 { margin: 0 0 12px; color: #25464e; font: 600 clamp(27px,3.2vw,41px)/1.14 var(--sans); letter-spacing: -.055em; }
 .activity-entry p:last-child { max-width: 640px; margin: 0; color: #586f6b; font: 16px/1.65 var(--sans); }
-.activity-placeholder { max-width: 680px; padding: clamp(28px,4vw,46px); border: 1px dashed #acc5b9; border-radius: 4px 18px 4px 4px; background: #ebf0e9; }
-.activity-placeholder span { color: #ae684f; font: 10px/1.5 var(--mono); text-transform: uppercase; letter-spacing: .1em; }
-.activity-placeholder p { margin: 14px 0 0; color: #526d68; font: 17px/1.65 var(--sans); }
+.activity-service { scroll-margin-top: 110px; margin-top: clamp(54px,7vw,90px); padding-top: 30px; border-top: 1px solid #c5d5c8; }
+.activity-service > p { max-width: 620px; margin: 0; color: #586f6b; font: 16px/1.65 var(--sans); }
 
 @media (max-width: 780px) {
   .meet-learning-inner { grid-template-columns: 1fr; gap: 27px; }
