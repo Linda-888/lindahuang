@@ -344,9 +344,9 @@ body.chapter-page.page-research-health .detail-tint { background: #f3eae3; }
 .meet-learning-years { color: #a7654c; font: 10px/1.6 var(--mono); letter-spacing: .04em; text-transform: uppercase; }
 .meet-learning-list h3 { margin: -4px 0 12px; color: #254850; font: 600 clamp(23px,2.4vw,32px)/1.2 var(--sans); letter-spacing: -.045em; }
 .meet-learning-list article p:not(.meet-learning-distinction) { max-width: 530px; margin: 0; color: #55716d; font: 15px/1.7 var(--sans); }
-.meet-learning-distinction { display: flex; flex-wrap: wrap; gap: 5px 15px; align-items: baseline; margin: 18px 0 0; padding-top: 14px; border-top: 1px solid rgba(58,104,96,.19); }
-.meet-learning-distinction strong { color: #b26e52; font: 500 22px/1.35 var(--serif); }
-.meet-learning-distinction span { max-width: 360px; color: #56716c; font: 12px/1.5 var(--sans); }
+.meet-learning-distinction { display: flex; flex-direction: column; align-items: flex-start; gap: 3px; margin: 13px 0 0; padding-left: 12px; border-left: 2px solid #bc8d75; }
+.meet-learning-distinction strong { color: #925b47; font: 500 12px/1.5 var(--mono); letter-spacing: .02em; }
+.meet-learning-distinction span { max-width: 420px; color: #60746f; font: 11px/1.5 var(--sans); }
 .meet-learning-source { margin: 17px 0 0; font: 10px/1.5 var(--mono); }
 .meet-learning-source a { color: #27565b; text-decoration-thickness: 1px; text-underline-offset: 3px; }
 .meet-learning-source a:hover { color: #af684f; }
