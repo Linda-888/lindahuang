@@ -45,12 +45,12 @@
       thread: 'A questionnaire survey of 327 individuals informed MindJoy’s design. Its features offer different ways for people to reflect and seek support.',
       actions: '<a class="button" href="http://8.137.13.98/" target="_blank" rel="noopener noreferrer">Check out MindJoy platform ↗</a>',
     },
-    'Security analysis system': {
-      id: 'security', theme: 'AI agents, made accountable',
-      question: 'How can threat knowledge become a more usable security analysis workflow?',
-      work: 'This project combines the ATT&CK framework with an AI Agent Harness for enterprise attack simulation, vulnerability assessment, and reporting.',
-      contextHeading: 'Making risks easier to review',
-      thread: 'The work connects structured threat knowledge with a workflow that helps people inspect risks and communicate findings.',
+    'AI Agent Harness': {
+      id: 'security', theme: 'Security boundaries for AI agents',
+      question: 'How can an AI security agent analyze a target and stay inside its authorized scope?',
+      work: 'I built a local Docker lab with DVWA and mapped a simulated enterprise attack chain to MITRE ATT&CK. The agent follows a repeatable reconnaissance workflow and produces a structured findings report.',
+      contextHeading: 'A four-layer safety harness',
+      thread: 'CLAUDE.md defines the local lab and target scope; the recon-a-host skill guides the workflow; FastMCP connects the agent to tools; and a PreToolUse hook checks target scope, tool permissions, and parameters before each call. Eight scope checks allowed 3 in-scope targets and blocked all 5 out-of-scope targets. The report grouped findings into 8 vulnerability classes and paired them with remediation guidance.',
       actions: '',
     },
     'Underwater Robot': {

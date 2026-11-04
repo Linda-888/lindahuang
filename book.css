@@ -381,3 +381,10 @@ body.chapter-page .activity-entry h2 { margin: 0 0 12px; color: #25464e; font: 6
 .mindjoy-cover-link:hover img { filter: brightness(.96); }
 .mindjoy-cover-link:focus-visible { outline: 3px solid var(--accent); outline-offset: -3px; }
 body.chapter-page .project-chapter-visual.project-mindjoy .mindjoy-cover-link { height: auto; }
+
+
+/* Security project cover: preserve the supplied 16:9 composition. */
+body.chapter-page .project-image.project-security { background: #07100f; }
+body.chapter-page .project-image.project-security img { display: block; width: 100%; height: 100%; object-fit: contain; }
+body.chapter-page .project-chapter-visual.project-security { min-height: 0; height: auto; padding: 12px; background: #07100f; }
+body.chapter-page .project-chapter-visual.project-security img { display: block; width: 100%; height: auto; }
