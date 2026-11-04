@@ -78,7 +78,7 @@ body.chapter-page .project-card-actions a:hover { background: #bd7053; border-co
 .projects.is-detail-open > .section-intro,
 .projects.is-detail-open > .project-grid { display: none; }
 .project-chapter[hidden] { display: none !important; }
-.project-chapter { padding: 0; }
+.project-chapter { padding: 0; scroll-margin-top: 100px; }
 .project-back { color: #aa684f; font: 11px var(--mono); text-decoration: none; border-bottom: 1px solid #bc8d75; }
 .project-chapter-kicker { color: #b16c52; margin: 41px 0 14px; font: 11px/1.5 var(--mono); text-transform: uppercase; letter-spacing: .08em; }
 body.chapter-page .project-chapter h2 { margin: 0 0 18px; font-size: clamp(58px,8vw,110px); }
