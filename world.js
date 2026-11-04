@@ -4,6 +4,7 @@
     { href: 'about.html', label: 'About Me', key: 'about' },
     { href: 'research.html', label: 'Research', key: 'research' },
     { href: 'projects.html', label: 'Projects', key: 'projects' },
+    { href: 'internship.html', label: 'Internships', key: 'internship' },
     { href: 'extracurricular.html', label: 'Activities & Leadership', key: 'extracurricular' },
     { href: 'contact.html', label: 'Contact', key: 'contact' },
   ];
@@ -108,17 +109,18 @@
     const goLink = dialog.querySelector('.route-orb-go');
     const closeButton = dialog.querySelector('.route-orb-close');
     const routeStations = [...routeWorld.querySelectorAll('.route-station')];
-    const desktopPath = 'M110 690 C245 690 300 500 420 500 C535 500 535 650 650 650 C760 650 730 400 840 400 C960 400 960 240 1090 240';
-    const mediumPath = 'M110 690 C260 690 390 500 520 500 C610 500 555 650 650 650 C760 650 730 400 840 400 C960 400 960 240 1090 240';
-    const mobilePath = 'M80 80 C185 80 215 240 320 240 C215 240 185 400 80 400 C185 400 215 560 320 560 C215 560 185 720 80 720';
-    const desktopStops = [[110, 690], [420, 500], [650, 650], [840, 400], [1090, 240]];
-    const mediumStops = [[110, 690], [520, 500], [650, 650], [840, 400], [1090, 240]];
-    const mobileStops = [[80, 80], [320, 240], [80, 400], [320, 560], [80, 720]];
-    const scenes = ['about', 'research', 'projects', 'extracurricular', 'contact'];
+    const desktopPath = 'M110 690 C245 690 300 500 420 500 C520 500 520 650 630 650 C710 650 760 620 850 620 C930 620 865 400 930 400 C1000 400 1000 240 1090 240';
+    const mediumPath = 'M110 690 C270 690 400 500 520 500 C590 500 550 650 650 650 C730 650 780 620 850 620 C930 620 865 400 930 400 C1000 400 1000 240 1090 240';
+    const mobilePath = 'M80 70 C190 70 210 210 320 210 C210 210 190 350 80 350 C190 350 210 490 320 490 C210 490 190 630 80 630 C190 630 210 770 320 770';
+    const desktopStops = [[110, 690], [420, 500], [630, 650], [850, 620], [930, 400], [1090, 240]];
+    const mediumStops = [[110, 690], [520, 500], [650, 650], [850, 620], [930, 400], [1090, 240]];
+    const mobileStops = [[80, 70], [320, 210], [80, 350], [320, 490], [80, 630], [320, 770]];
+    const scenes = ['about', 'research', 'projects', 'internship', 'extracurricular', 'contact'];
     const stageInfo = [
       { label: 'About Me', question: 'Wanna know about me?', href: 'about.html' },
       { label: 'Research', question: 'Wanna know about my research?', href: 'research.html' },
       { label: 'Projects', question: 'Wanna know about my projects?', href: 'projects.html' },
+      { label: 'Internships', question: 'Wanna know about my internships?', href: 'internship.html' },
       { label: 'Activities & Leadership', question: 'Wanna know about my activities and leadership?', href: 'extracurricular.html' },
       { label: 'Contact', question: 'Wanna know about reaching me?', href: 'contact.html' },
     ];

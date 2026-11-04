@@ -1381,6 +1381,7 @@ main { position: relative; }
 .route-companion[data-scene="about"] .orb-scene-about,
 .route-companion[data-scene="research"] .orb-scene-research,
 .route-companion[data-scene="projects"] .orb-scene-projects,
+.route-companion[data-scene="internship"] .orb-scene-internship,
 .route-companion[data-scene="extracurricular"] .orb-scene-extracurricular,
 .route-companion[data-scene="contact"] .orb-scene-contact { opacity: 1; transform: translateY(0) scale(1); }
 .orb-person-head { fill: #f7cba8; stroke: #ffe2c0; stroke-width: 1; }
@@ -1395,6 +1396,8 @@ main { position: relative; }
 .orb-research-point { fill: #ffe3a6; }
 .orb-sapling { fill: none; stroke: #d9c593; stroke-width: 3; stroke-linecap: round; }
 .orb-sapling-leaf { fill: #a9d4ac; stroke: #d7efc5; stroke-width: 1; }
+.orb-screen { fill: #e6e3cc; stroke: #9fcac2; stroke-width: 1.6; }
+.orb-screen-line { fill: none; stroke: #bd876d; stroke-width: 1.7; stroke-linecap: round; }
 .orb-message { fill: #fff1db; stroke: #d6a07d; stroke-width: 1.6; stroke-linejoin: round; }
 .orb-message-line { fill: none; stroke: #6d918f; stroke-width: 2; stroke-linecap: round; }
 .route-orb-dialog {
@@ -1517,6 +1520,7 @@ main { position: relative; }
 .station-copy strong { font-size: 16px; }
 .object-paper-search svg,
 .object-tree svg,
+.object-briefcase svg,
 .object-heart svg { display: block; width: 100%; height: 100%; overflow: visible; }
 .art-paper-shadow { fill: #122e38; opacity: .9; }
 .art-paper { fill: #f2e8ce; stroke: #fff2d3; stroke-width: 1.5; stroke-linejoin: round; }
@@ -1533,6 +1537,11 @@ main { position: relative; }
 .art-tree-leaf-three { fill: #3c796f; }
 .art-tree-branch { fill: none; stroke: #b9dfc2; stroke-width: 1.5; stroke-linecap: round; opacity: .7; }
 .art-tree-fruit { fill: #ffac86; stroke: #ffe8bd; stroke-width: 1; filter: drop-shadow(0 0 3px rgba(255,159,116,.75)); }
+.art-case-shadow { fill: #183640; }
+.art-case-handle { fill: none; stroke: #f8e8cb; stroke-width: 5; stroke-linecap: round; }
+.art-case { fill: #bd8f77; stroke: #ffe5c8; stroke-width: 2; stroke-linejoin: round; }
+.art-case-lid { fill: #e9d7b5; stroke: #fff0d3; stroke-width: 1.5; stroke-linejoin: round; }
+.art-case-clasp { fill: #80aaa3; stroke: #d9efe1; stroke-width: 1.5; }
 .art-heart-shadow { fill: #132d37; }
 .art-heart { fill: #e69079; stroke: #ffe0be; stroke-width: 2; stroke-linejoin: round; }
 .art-heart-glint { fill: none; stroke: #fff1d8; stroke-width: 2; stroke-linecap: round; }
@@ -1687,13 +1696,15 @@ main { position: relative; }
 
 .route-station.station-about { --station-x: 9.17%; --station-y: 86.25%; }
 .route-station.station-research { --station-x: 35%; --station-y: 62.5%; }
-.route-station.station-projects { --station-x: 54.17%; --station-y: 81.25%; }
-.route-station.station-extracurricular { --station-x: 70%; --station-y: 50%; }
+.route-station.station-projects { --station-x: 52.5%; --station-y: 81.25%; }
+.route-station.station-internship { --station-x: 70.83%; --station-y: 77.5%; }
+.route-station.station-extracurricular { --station-x: 77.5%; --station-y: 50%; }
 .route-station.station-contact { --station-x: 90.83%; --station-y: 30%; }
 
 @media (min-width: 781px) and (max-width: 1100px) {
   .route-station { width: clamp(115px, 13vw, 150px); }
   .route-station.station-research { --station-x: 43.33%; }
+  .route-station.station-projects { --station-x: 54.17%; }
   .route-map-caption { display: none; }
 }
 
@@ -1716,7 +1727,7 @@ main { position: relative; }
   .route-world { top: 575px; right: 0; bottom: auto; left: 0; width: 100%; height: 900px; min-height: 0; }
   .route-world::before { left: -30%; right: -30%; bottom: -22%; height: 75%; transform: perspective(680px) rotateX(58deg); background-size: 29px 29px; }
   .route-world-grid { display: block; }
-  .route-companion { left: 20%; top: 9.52%; width: 70px; }
+  .route-companion { left: 20%; top: 8.33%; width: 70px; }
   .route-orb-dialog { width: min(164px, calc(100vw - 180px)); min-height: 0; padding: 17px 12px 11px; left: calc(100% + 8px); }
   .route-companion[data-side="left"] .route-orb-dialog { right: calc(100% + 8px); }
   .route-orb-question { font-size: 13px; line-height: 1.35; }
@@ -1727,11 +1738,12 @@ main { position: relative; }
   .station-copy { min-height: 46px; padding: 6px 7px; }
   .station-copy small { font-size: 7px; }
   .station-copy strong { font-size: 12px; }
-  .route-station.station-about { --station-x: 20%; --station-y: 9.52%; }
-  .route-station.station-research { --station-x: 80%; --station-y: 28.57%; }
-  .route-station.station-projects { --station-x: 20%; --station-y: 47.62%; }
-  .route-station.station-extracurricular { --station-x: 80%; --station-y: 66.67%; }
-  .route-station.station-contact { --station-x: 20%; --station-y: 85.71%; }
+  .route-station.station-about { --station-x: 20%; --station-y: 8.33%; }
+  .route-station.station-research { --station-x: 80%; --station-y: 25%; }
+  .route-station.station-projects { --station-x: 20%; --station-y: 41.67%; }
+  .route-station.station-internship { --station-x: 80%; --station-y: 58.33%; }
+  .route-station.station-extracurricular { --station-x: 20%; --station-y: 75%; }
+  .route-station.station-contact { --station-x: 80%; --station-y: 91.67%; }
   .route-thread-label { bottom: 10px; font-size: 6.5px; }
   .route-thread-label { display: none; }
   .route-map-caption { display: none; }

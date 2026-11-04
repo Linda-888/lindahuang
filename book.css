@@ -355,7 +355,7 @@ body.chapter-page.page-research-health .detail-tint { background: #f3eae3; }
   body.chapter-page.chapter-direct main.chapter-main { animation: none !important; }
 }
 
-/* Education lives within About Me; activities and service share one page. */
+/* Education lives within About Me; internships and activities open directly. */
 .meet-learning { scroll-margin-top: 110px; padding: clamp(70px,8vw,112px) 24px; border-top: 1px solid #d1dbcf; background: #e9eee6; }
 .meet-learning-inner { width: min(100%,1180px); margin: 0 auto; display: grid; grid-template-columns: minmax(0,.78fr) minmax(0,1.22fr); gap: clamp(34px,7vw,100px); }
 .meet-learning-heading h2 { max-width: 490px; margin: 18px 0 22px; color: #1d3f47; font: 700 clamp(43px,4.8vw,70px)/1.04 var(--sans); letter-spacing: -.075em; }
@@ -390,6 +390,11 @@ body.chapter-page .activity-entry h3 { margin: 0 0 12px; color: #25464e; font: 6
 .activity-highlights { max-width: 740px; margin: 0; padding-left: 1.25em; color: #586f6b; font: 16px/1.65 var(--sans); }
 .activity-highlights li + li { margin-top: 10px; }
 .activity-highlights li::marker { color: #ae684f; }
+.internship-page h1 em { color: #6c938e; }
+.internship-page .activity-group-heading span,
+.internship-page .activity-date { color: #5d817f; }
+.internship-page .activity-highlights li::marker { color: #5d817f; }
+.internship-page .activity-service { border-top-color: #a9c5c1; }
 
 @media (max-width: 780px) {
   .meet-learning-inner { grid-template-columns: 1fr; gap: 27px; }
