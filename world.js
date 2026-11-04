@@ -2,16 +2,17 @@
   if (document.body.classList.contains('book-experience')) return;
   const stations = [
     { href: 'about.html', label: 'About Me', key: 'about' },
-    { href: 'education.html', label: 'Education', key: 'education' },
     { href: 'research.html', label: 'Research', key: 'research' },
     { href: 'projects.html', label: 'Projects', key: 'projects' },
+    { href: 'extracurricular.html', label: 'Extracurricular Activities', key: 'extracurricular' },
+    { href: 'volunteer.html', label: 'Volunteer Experience', key: 'volunteer' },
     { href: 'contact.html', label: 'Contact', key: 'contact' },
   ];
 
   const pageForPath = (path) => {
     if (path.startsWith('research-')) return 'research';
     if (path === 'index.html' || path === '') return 'home';
-    if (path === 'education.html') return 'education';
+    if (path === 'education.html') return 'about';
     return path.replace('.html', '') || 'home';
   };
 
@@ -108,22 +109,20 @@
     const goLink = dialog.querySelector('.route-orb-go');
     const closeButton = dialog.querySelector('.route-orb-close');
     const routeStations = [...routeWorld.querySelectorAll('.route-station')];
-    const desktopPath = 'M110 690 C220 690 350 390 490 390 C575 390 560 550 650 550 C740 550 740 260 830 260 C945 260 980 330 1090 330';
-    const mediumPath = 'M110 690 C235 690 405 390 550 390 C595 390 560 550 650 550 C740 550 740 260 830 260 C945 260 980 330 1090 330';
-    const mobilePath = 'M80 72 C180 72 220 176 320 176 C220 176 180 280 80 280 C180 280 220 384 320 384 C220 384 180 488 80 488';
-    const desktopStops = [[110, 690], [490, 390], [650, 550], [830, 260], [1090, 330]];
-    const mediumStops = [[110, 690], [550, 390], [650, 550], [830, 260], [1090, 330]];
-    const mobileStops = [[80, 72], [320, 176], [80, 280], [320, 384], [80, 488]];
-    const scenes = ['about', 'education', 'research', 'projects', 'contact'];
+    const desktopPath = 'M110 690 C240 690 320 500 420 500 C510 500 495 650 580 650 C700 650 680 325 790 325 C880 325 860 540 940 540 C1030 540 990 240 1090 240';
+    const mobilePath = 'M80 80 C180 80 220 215 320 215 C220 215 180 350 80 350 C180 350 220 485 320 485 C220 485 180 620 80 620 C180 620 220 755 320 755';
+    const desktopStops = [[110, 690], [420, 500], [580, 650], [790, 325], [940, 540], [1090, 240]];
+    const mobileStops = [[80, 80], [320, 215], [80, 350], [320, 485], [80, 620], [320, 755]];
+    const scenes = ['about', 'research', 'projects', 'extracurricular', 'volunteer', 'contact'];
     const stageInfo = [
       { label: 'About Me', question: 'Wanna know about me?', href: 'about.html' },
-      { label: 'Education', question: 'Wanna know about my education?', href: 'education.html' },
       { label: 'Research', question: 'Wanna know about my research?', href: 'research.html' },
       { label: 'Projects', question: 'Wanna know about my projects?', href: 'projects.html' },
+      { label: 'Extracurricular Activities', question: 'Wanna know about my extracurricular activities?', href: 'extracurricular.html' },
+      { label: 'Volunteer Experience', question: 'Wanna know about my volunteer experience?', href: 'volunteer.html' },
       { label: 'Contact', question: 'Wanna know about reaching me?', href: 'contact.html' },
     ];
     const narrowRoute = matchMedia('(max-width: 780px)');
-    const mediumRoute = matchMedia('(min-width: 781px) and (max-width: 920px)');
     const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
     const svgNamespace = 'http://www.w3.org/2000/svg';
     let pathLength = 0;
@@ -224,7 +223,7 @@
       if (!orb || !pathLength) return;
       const point = guide.getPointAtLength(Math.max(0, Math.min(pathLength, orbDistance)));
       const width = narrowRoute.matches ? 400 : 1200;
-      const height = narrowRoute.matches ? 560 : 800;
+      const height = narrowRoute.matches ? 840 : 800;
       companion.style.left = `${(point.x / width * 100).toFixed(3)}%`;
       companion.style.top = `${(point.y / height * 100).toFixed(3)}%`;
       companion.dataset.side = point.x / width > .58 ? 'left' : 'right';
@@ -268,13 +267,13 @@
 
     const buildLivingRoute = () => {
       const previousLength = pathLength;
-      const pathData = narrowRoute.matches ? mobilePath : mediumRoute.matches ? mediumPath : desktopPath;
-      trackSvg.setAttribute('viewBox', narrowRoute.matches ? '0 0 400 560' : '0 0 1200 800');
+      const pathData = narrowRoute.matches ? mobilePath : desktopPath;
+      trackSvg.setAttribute('viewBox', narrowRoute.matches ? '0 0 400 840' : '0 0 1200 800');
       trackSvg.querySelectorAll('.track-guide, .track-shadow, .track-bed, .track-light').forEach((path) => path.setAttribute('d', pathData));
       guide.setAttribute('d', pathData);
       pathLength = guide.getTotalLength();
       orbDistance = previousLength ? orbDistance / previousLength * pathLength : 0;
-      const stops = narrowRoute.matches ? mobileStops : mediumRoute.matches ? mediumStops : desktopStops;
+      const stops = narrowRoute.matches ? mobileStops : desktopStops;
       stopDistances = stops.map((point) => closestDistance(point, pathLength));
       waypoints.replaceChildren();
       stops.forEach(([x, y]) => {
@@ -286,7 +285,6 @@
 
     buildLivingRoute();
     narrowRoute.addEventListener('change', buildLivingRoute);
-    mediumRoute.addEventListener('change', buildLivingRoute);
 
     routeStations.forEach((station, index) => {
       station.addEventListener('mouseenter', () => { pointerStation = index; syncPin(); });

@@ -310,8 +310,6 @@ body.chapter-page .project:nth-child(3) { border-top: 4px solid #74aeba; }
 body.chapter-page .research-item:first-child { border-top: 4px solid #6da9b7; }
 body.chapter-page .research-item:last-child { border-top: 4px solid #c68f7d; }
 body.chapter-page .research-item:last-child .research-card-image { background: #f5ebe4; border-color: #e0c6b5; }
-body.chapter-page.page-education .education-feature { background: #f1ebd8; border-color: #d7c69b; box-shadow: 7px 9px 0 #e7e1cc; }
-body.chapter-page.page-education .timeline article { border-left: 3px solid #b9aa83; padding-left: 20px; }
 body.chapter-page.page-research-llm .detail-hero { border-top: 4px solid #75aeb6; }
 body.chapter-page.page-research-health .detail-hero { border-top: 4px solid #c88e7b; }
 body.chapter-page.page-research-health .detail-tint { background: #f3eae3; }
@@ -333,4 +331,43 @@ body.chapter-page.page-research-health .detail-tint { background: #f3eae3; }
 }
 @media (prefers-reduced-motion: reduce) {
   body.chapter-page.chapter-direct main.chapter-main { animation: none !important; }
+}
+
+/* Education now lives within About Me; activities have their own reading pages. */
+.meet-learning { scroll-margin-top: 110px; padding: clamp(70px,8vw,112px) 24px; border-top: 1px solid #d1dbcf; background: #e9eee6; }
+.meet-learning-inner { width: min(100%,1180px); margin: 0 auto; display: grid; grid-template-columns: minmax(0,.78fr) minmax(0,1.22fr); gap: clamp(34px,7vw,100px); }
+.meet-learning-heading h2 { max-width: 490px; margin: 18px 0 22px; color: #1d3f47; font: 700 clamp(43px,4.8vw,70px)/1.04 var(--sans); letter-spacing: -.075em; }
+.meet-learning-heading h2 em { color: #b87458; font: 500 .95em/1.02 var(--serif); }
+.meet-learning-heading > p:last-child { max-width: 405px; color: #536d69; font: 17px/1.6 var(--sans); }
+.meet-learning-list { border-top: 1px solid #b9cdbf; }
+.meet-learning-list article { display: grid; grid-template-columns: 145px minmax(0,1fr); gap: 20px; padding: 29px 0 34px; border-bottom: 1px solid #b9cdbf; }
+.meet-learning-years { color: #a7654c; font: 10px/1.6 var(--mono); letter-spacing: .04em; text-transform: uppercase; }
+.meet-learning-list h3 { margin: -4px 0 12px; color: #254850; font: 600 clamp(23px,2.4vw,32px)/1.2 var(--sans); letter-spacing: -.045em; }
+.meet-learning-list article p:not(.meet-learning-distinction) { max-width: 530px; margin: 0; color: #55716d; font: 15px/1.7 var(--sans); }
+.meet-learning-distinction { display: flex; flex-wrap: wrap; gap: 5px 15px; align-items: baseline; margin: 18px 0 0; padding-top: 14px; border-top: 1px solid rgba(58,104,96,.19); }
+.meet-learning-distinction strong { color: #b26e52; font: 500 22px/1.35 var(--serif); }
+.meet-learning-distinction span { max-width: 360px; color: #56716c; font: 12px/1.5 var(--sans); }
+.meet-learning-source { margin: 17px 0 0; font: 10px/1.5 var(--mono); }
+.meet-learning-source a { color: #27565b; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+.meet-learning-source a:hover { color: #af684f; }
+
+body.chapter-page .activity-page { width: min(100%,1100px); padding-top: clamp(56px,7vw,98px); }
+.activity-page h1 { max-width: 950px; margin: 0 0 22px; color: #1c3d45; font: 700 clamp(45px,6.2vw,85px)/1.04 var(--sans); letter-spacing: -.075em; }
+.activity-page h1 em { color: #b66f53; font: 500 .95em var(--serif); }
+.activity-intro { max-width: 680px; margin: 0 0 52px; color: #526b68; font: 18px/1.65 var(--sans); }
+.activity-list { border-top: 1px solid #c5d5c8; }
+.activity-entry { display: grid; grid-template-columns: 160px minmax(0,1fr); gap: 30px; padding: 32px 0 36px; border-bottom: 1px solid #c5d5c8; }
+.activity-date { padding-top: 4px; color: #ae684f; font: 11px/1.5 var(--mono); white-space: nowrap; }
+.activity-organization { margin: 0 0 9px; color: #60827c; font: 10px/1.5 var(--mono); text-transform: uppercase; letter-spacing: .08em; }
+body.chapter-page .activity-entry h2 { margin: 0 0 12px; color: #25464e; font: 600 clamp(27px,3.2vw,41px)/1.14 var(--sans); letter-spacing: -.055em; }
+.activity-entry p:last-child { max-width: 640px; margin: 0; color: #586f6b; font: 16px/1.65 var(--sans); }
+.activity-placeholder { max-width: 680px; padding: clamp(28px,4vw,46px); border: 1px dashed #acc5b9; border-radius: 4px 18px 4px 4px; background: #ebf0e9; }
+.activity-placeholder span { color: #ae684f; font: 10px/1.5 var(--mono); text-transform: uppercase; letter-spacing: .1em; }
+.activity-placeholder p { margin: 14px 0 0; color: #526d68; font: 17px/1.65 var(--sans); }
+
+@media (max-width: 780px) {
+  .meet-learning-inner { grid-template-columns: 1fr; gap: 27px; }
+  .meet-learning-list article { grid-template-columns: 1fr; gap: 8px; }
+  .activity-entry { grid-template-columns: 1fr; gap: 9px; }
+  .activity-intro { margin-bottom: 36px; }
 }
