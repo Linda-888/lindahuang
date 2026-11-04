@@ -374,3 +374,10 @@ body.chapter-page .activity-entry h2 { margin: 0 0 12px; color: #25464e; font: 6
   .activity-entry { grid-template-columns: 1fr; gap: 9px; }
   .activity-intro { margin-bottom: 36px; }
 }
+
+/* The MindJoy cover opens the platform from both the project card and detail page. */
+.mindjoy-cover-link { display: block; width: 100%; height: 100%; cursor: pointer; line-height: 0; }
+.mindjoy-cover-link img { transition: filter .2s ease; }
+.mindjoy-cover-link:hover img { filter: brightness(.96); }
+.mindjoy-cover-link:focus-visible { outline: 3px solid var(--accent); outline-offset: -3px; }
+body.chapter-page .project-chapter-visual.project-mindjoy .mindjoy-cover-link { height: auto; }
