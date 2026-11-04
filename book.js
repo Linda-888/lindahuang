@@ -28,6 +28,7 @@
     health: { cover: 'Signals<br>& Care.', label: 'Research / wellbeing', left: 'Patterns in everyday life<br>Care in interpretation<br>Support before certainty', line: 'Connecting human signals', mark: '<circle cx="60" cy="54" r="15"/><circle cx="21" cy="28" r="6"/><circle cx="98" cy="27" r="6"/><circle cx="24" cy="91" r="6"/><circle cx="97" cy="91" r="6"/><path d="M47 45 27 31m46 13 20-14M47 65 29 87m43-22 20 22"/>' },
     projects: { cover: 'Making<br>Things.', label: 'Projects / in practice', left: 'Ideas meet people<br>Prototypes meet reality<br>Learning by building', line: 'Opening the workshop', mark: '<path d="M60 104V50m0 31L35 58m25 13 27-36M60 104l-23 10m23-10 24 10"/><circle cx="60" cy="35" r="23"/><circle cx="34" cy="55" r="18"/><circle cx="87" cy="51" r="19"/><circle cx="37" cy="44" r="3"/><circle cx="72" cy="29" r="3"/><circle cx="88" cy="60" r="3"/>' },
     mindjoy: { cover: 'Mind<br>Joy.', label: 'Project / reflection', left: 'Space to reflect<br>Ways to ask for support<br>Technology with care', line: 'Entering a supportive space', mark: '<path d="M60 24c13 14 23 23 23 39a23 23 0 0 1-46 0c0-16 10-25 23-39Z"/><path d="M20 69c14 24 66 25 80 0M28 39c14-18 50-19 64 0"/>' },
+    jobmaxxing: { cover: 'Next<br>Move.', label: 'Project / career discovery', left: 'Start with interests<br>Explore real openings<br>Save a direction', line: 'Finding a path forward', mark: '<path d="M20 88c18-4 31-13 40-29 9-16 20-24 40-27M86 20l16 10-14 14"/><circle cx="26" cy="87" r="6"/><circle cx="61" cy="58" r="6"/><circle cx="99" cy="31" r="6"/>' },
     security: { cover: 'Threat<br>Map.', label: 'Project / security', left: 'Identify a risk<br>Trace the attack path<br>Make findings usable', line: 'Mapping the system', mark: '<path d="M60 16 96 30v28c0 25-14 40-36 50-22-10-36-25-36-50V30L60 16Z"/><rect x="46" y="54" width="28" height="23" rx="3"/><path d="M52 54v-7a8 8 0 0 1 16 0v7"/>' },
     'underwater-robot': { cover: 'Open<br>Water.', label: 'Project / engineering', left: 'Model the components<br>Build the hardware<br>Test beyond the lab', line: 'Going from model to water', mark: '<path d="M18 78c12-9 24-9 36 0s24 9 36 0 24-9 36 0M18 94c12-9 24-9 36 0s24 9 36 0 24-9 36 0M35 58h51c8 0 13-5 13-12v-7H48c-8 0-13 5-13 12v7Z"/><circle cx="57" cy="48" r="5"/>' },
   };
@@ -44,6 +45,14 @@
       contextHeading: 'Survey-informed design',
       thread: 'A questionnaire survey of 327 individuals informed MindJoy’s design. Its features offer different ways for people to reflect and seek support.',
       actions: '<a class="button" href="http://8.137.13.98/" target="_blank" rel="noopener noreferrer">Check out MindJoy platform ↗</a>',
+    },
+    JobMaxxing: {
+      id: 'jobmaxxing', theme: 'Career exploration, made actionable',
+      question: 'How can exploring what you enjoy lead to real opportunities worth investigating?',
+      work: 'I built JobMaxxing as a career workspace where visitors can browse current public job postings, talk through possible directions with an AI guide, set preferences such as job type and work setup, compare a resume with openings, and save roles to revisit.',
+      contextHeading: 'From interests to a shortlist',
+      thread: 'The journey can begin with a conversation, a resume, or a search. An editable direction profile brings interests, skills, location, and practical needs together to surface possible connections in current listings. Matches are starting points for exploration: visitors can inspect the source and verify eligibility, pay, and availability with the employer.',
+      actions: '<a class="button" href="https://jobmaxxing-linda.onrender.com/" target="_blank" rel="noopener noreferrer">Open JobMaxxing ↗</a>',
     },
     'AI Agent Harness': {
       id: 'security', theme: 'Security boundaries for AI agents',
