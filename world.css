@@ -853,6 +853,7 @@ main { background: var(--world-deep); }
 .route-map-heading {
   position: absolute;
   z-index: 7;
+  scroll-margin-top: 90px;
   top: 24px;
   right: clamp(24px, 6vw, 92px);
   left: 44%;
@@ -1687,14 +1688,15 @@ main { position: relative; }
 .page-research-detail .room-sculpture { opacity: .38; width: clamp(300px, 36vw, 480px); }
 
 .route-station.station-about { --station-x: 9.17%; --station-y: 86.25%; }
-.route-station.station-research { --station-x: 35%; --station-y: 62.5%; }
-.route-station.station-projects { --station-x: 48.33%; --station-y: 81.25%; }
+.route-station.station-research { --station-x: 41.67%; --station-y: 62.5%; }
+.route-station.station-projects { --station-x: 54.17%; --station-y: 81.25%; }
 .route-station.station-extracurricular { --station-x: 65.83%; --station-y: 40.625%; }
 .route-station.station-volunteer { --station-x: 78.33%; --station-y: 67.5%; }
 .route-station.station-contact { --station-x: 90.83%; --station-y: 30%; }
 
-@media (min-width: 781px) and (max-width: 920px) {
-  .route-station { width: clamp(98px, 13vw, 120px); }
+@media (min-width: 781px) and (max-width: 1100px) {
+  .route-station { width: clamp(115px, 13vw, 150px); }
+  .route-station.station-research { --station-x: 50%; }
   .route-map-caption { display: none; }
 }
 

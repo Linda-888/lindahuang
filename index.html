@@ -10,7 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;700&family=Playfair+Display:ital,wght@0,600;1,500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css?v=20261101-editorial">
   <link rel="stylesheet" href="editorial.css?v=20261103-experiences-v1">
-  <link rel="stylesheet" href="world.css?v=20261103-experiences-v1">
+  <link rel="stylesheet" href="world.css?v=20261103-experiences-v2">
 </head>
 <body class="page-home page-editorial">
   <header class="nav">
@@ -36,8 +36,8 @@
           <div class="home-links"><a class="button" href="#route-map">Enter the route ↓</a></div>
         </div>
       </div>
-      <div class="home-route-map" id="route-map" aria-labelledby="route-title">
-        <div class="route-map-heading">
+      <div class="home-route-map" aria-labelledby="route-title">
+        <div class="route-map-heading" id="route-map">
           <div><p class="home-kicker">The human-centered line</p><h2 id="route-title">Follow an idea from people to possibility.</h2></div>
           <span class="route-hint">Select a station to enter</span>
         </div>
@@ -48,11 +48,11 @@
               <linearGradient id="threadBed" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#2a5360"/><stop offset=".54" stop-color="#547d7c"/><stop offset="1" stop-color="#a26d65"/></linearGradient>
               <linearGradient id="threadLight" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#8ed1c8"/><stop offset=".55" stop-color="#f2c09a"/><stop offset="1" stop-color="#ff9775"/></linearGradient>
             </defs>
-            <path class="track-guide" d="M110 690 C240 690 320 500 420 500 C510 500 495 650 580 650 C700 650 680 325 790 325 C880 325 860 540 940 540 C1030 540 990 240 1090 240"/>
-            <path class="track-shadow" d="M110 690 C240 690 320 500 420 500 C510 500 495 650 580 650 C700 650 680 325 790 325 C880 325 860 540 940 540 C1030 540 990 240 1090 240"/>
-            <path class="track-bed" d="M110 690 C240 690 320 500 420 500 C510 500 495 650 580 650 C700 650 680 325 790 325 C880 325 860 540 940 540 C1030 540 990 240 1090 240"/>
+            <path class="track-guide" d="M110 690 C260 690 390 500 500 500 C575 500 550 650 650 650 C760 650 680 325 790 325 C880 325 860 540 940 540 C1030 540 990 240 1090 240"/>
+            <path class="track-shadow" d="M110 690 C260 690 390 500 500 500 C575 500 550 650 650 650 C760 650 680 325 790 325 C880 325 860 540 940 540 C1030 540 990 240 1090 240"/>
+            <path class="track-bed" d="M110 690 C260 690 390 500 500 500 C575 500 550 650 650 650 C760 650 680 325 790 325 C880 325 860 540 940 540 C1030 540 990 240 1090 240"/>
             <g class="thread-waypoints"></g>
-            <path class="track-light" d="M110 690 C240 690 320 500 420 500 C510 500 495 650 580 650 C700 650 680 325 790 325 C880 325 860 540 940 540 C1030 540 990 240 1090 240"/>
+            <path class="track-light" d="M110 690 C260 690 390 500 500 500 C575 500 550 650 650 650 C760 650 680 325 790 325 C880 325 860 540 940 540 C1030 540 990 240 1090 240"/>
           </svg>
           <div class="route-companion" data-scene="about" data-side="right">
             <button class="route-orb" type="button" aria-label="Ask about me" aria-expanded="false" aria-controls="route-orb-dialog">
@@ -150,5 +150,5 @@
     const destination = legacyPages[location.hash.slice(1)];
     if (destination) location.replace(destination);
   </script>
-  <script src="world.js?v=20261103-experiences-v1"></script></body>
+  <script src="world.js?v=20261103-experiences-v2"></script></body>
 </html>

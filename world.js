@@ -109,9 +109,11 @@
     const goLink = dialog.querySelector('.route-orb-go');
     const closeButton = dialog.querySelector('.route-orb-close');
     const routeStations = [...routeWorld.querySelectorAll('.route-station')];
-    const desktopPath = 'M110 690 C240 690 320 500 420 500 C510 500 495 650 580 650 C700 650 680 325 790 325 C880 325 860 540 940 540 C1030 540 990 240 1090 240';
+    const desktopPath = 'M110 690 C260 690 390 500 500 500 C575 500 550 650 650 650 C760 650 680 325 790 325 C880 325 860 540 940 540 C1030 540 990 240 1090 240';
+    const mediumPath = 'M110 690 C280 690 460 500 600 500 C680 500 570 650 650 650 C760 650 680 325 790 325 C880 325 860 540 940 540 C1030 540 990 240 1090 240';
     const mobilePath = 'M80 80 C180 80 220 215 320 215 C220 215 180 350 80 350 C180 350 220 485 320 485 C220 485 180 620 80 620 C180 620 220 755 320 755';
-    const desktopStops = [[110, 690], [420, 500], [580, 650], [790, 325], [940, 540], [1090, 240]];
+    const desktopStops = [[110, 690], [500, 500], [650, 650], [790, 325], [940, 540], [1090, 240]];
+    const mediumStops = [[110, 690], [600, 500], [650, 650], [790, 325], [940, 540], [1090, 240]];
     const mobileStops = [[80, 80], [320, 215], [80, 350], [320, 485], [80, 620], [320, 755]];
     const scenes = ['about', 'research', 'projects', 'extracurricular', 'volunteer', 'contact'];
     const stageInfo = [
@@ -123,6 +125,7 @@
       { label: 'Contact', question: 'Wanna know about reaching me?', href: 'contact.html' },
     ];
     const narrowRoute = matchMedia('(max-width: 780px)');
+    const mediumRoute = matchMedia('(min-width: 781px) and (max-width: 1100px)');
     const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
     const svgNamespace = 'http://www.w3.org/2000/svg';
     let pathLength = 0;
@@ -267,13 +270,13 @@
 
     const buildLivingRoute = () => {
       const previousLength = pathLength;
-      const pathData = narrowRoute.matches ? mobilePath : desktopPath;
+      const pathData = narrowRoute.matches ? mobilePath : mediumRoute.matches ? mediumPath : desktopPath;
       trackSvg.setAttribute('viewBox', narrowRoute.matches ? '0 0 400 840' : '0 0 1200 800');
       trackSvg.querySelectorAll('.track-guide, .track-shadow, .track-bed, .track-light').forEach((path) => path.setAttribute('d', pathData));
       guide.setAttribute('d', pathData);
       pathLength = guide.getTotalLength();
       orbDistance = previousLength ? orbDistance / previousLength * pathLength : 0;
-      const stops = narrowRoute.matches ? mobileStops : desktopStops;
+      const stops = narrowRoute.matches ? mobileStops : mediumRoute.matches ? mediumStops : desktopStops;
       stopDistances = stops.map((point) => closestDistance(point, pathLength));
       waypoints.replaceChildren();
       stops.forEach(([x, y]) => {
@@ -285,6 +288,7 @@
 
     buildLivingRoute();
     narrowRoute.addEventListener('change', buildLivingRoute);
+    mediumRoute.addEventListener('change', buildLivingRoute);
 
     routeStations.forEach((station, index) => {
       station.addEventListener('mouseenter', () => { pointerStation = index; syncPin(); });
