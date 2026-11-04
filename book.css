@@ -381,13 +381,15 @@ body.chapter-page .activity-page { width: min(100%,1100px); padding-top: clamp(5
 .activity-group-heading span { color: #ae684f; font: 10px/1.5 var(--mono); letter-spacing: .08em; text-transform: uppercase; }
 body.chapter-page .activity-group-heading h2 { margin: 0; color: #25464e; font: 600 clamp(25px,3.2vw,39px)/1.15 var(--sans); letter-spacing: -.055em; }
 .activity-list { border-top: 1px solid #c5d5c8; }
-.activity-entry { display: grid; grid-template-columns: 160px minmax(0,1fr); gap: 30px; padding: 32px 0 36px; border-bottom: 1px solid #c5d5c8; }
-.activity-date { padding-top: 4px; color: #ae684f; font: 11px/1.5 var(--mono); white-space: nowrap; }
+.activity-entry { display: grid; grid-template-columns: 210px minmax(0,1fr); gap: 30px; padding: 32px 0 36px; border-bottom: 1px solid #c5d5c8; }
+.activity-date { padding-top: 4px; color: #ae684f; font: 11px/1.5 var(--mono); }
 .activity-organization { margin: 0 0 9px; color: #60827c; font: 10px/1.5 var(--mono); text-transform: uppercase; letter-spacing: .08em; }
 body.chapter-page .activity-entry h3 { margin: 0 0 12px; color: #25464e; font: 600 clamp(27px,3.2vw,41px)/1.14 var(--sans); letter-spacing: -.055em; }
 .activity-entry p:last-child { max-width: 640px; margin: 0; color: #586f6b; font: 16px/1.65 var(--sans); }
 .activity-service { scroll-margin-top: 110px; margin-top: clamp(54px,7vw,90px); padding-top: 30px; border-top: 1px solid #c5d5c8; }
-.activity-service > p { max-width: 620px; margin: 0; color: #586f6b; font: 16px/1.65 var(--sans); }
+.activity-highlights { max-width: 740px; margin: 0; padding-left: 1.25em; color: #586f6b; font: 16px/1.65 var(--sans); }
+.activity-highlights li + li { margin-top: 10px; }
+.activity-highlights li::marker { color: #ae684f; }
 
 @media (max-width: 780px) {
   .meet-learning-inner { grid-template-columns: 1fr; gap: 27px; }
