@@ -41,13 +41,15 @@
       id: 'mindjoy', theme: 'Support, reflection, connection',
       question: 'How can a digital space make it easier to reflect and ask for support?',
       work: 'MindJoy brings self-assessment, AI Q&A, “Mood Tree Hole,” and “MindJoy Diary” into one mental-health platform.',
-      thread: 'The platform was informed by research with more than 400 individuals. Its features are designed around different ways people may want to express themselves.',
+      contextHeading: 'Survey-informed design',
+      thread: 'A questionnaire survey of 327 individuals informed MindJoy’s design. Its features offer different ways for people to reflect and seek support.',
       actions: '<a class="button" href="http://8.137.13.98/" target="_blank" rel="noopener noreferrer">Check out MindJoy platform ↗</a>',
     },
     'Security analysis system': {
       id: 'security', theme: 'AI agents, made accountable',
       question: 'How can threat knowledge become a more usable security analysis workflow?',
       work: 'This project combines the ATT&CK framework with an AI Agent Harness for enterprise attack simulation, vulnerability assessment, and reporting.',
+      contextHeading: 'Making risks easier to review',
       thread: 'The work connects structured threat knowledge with a workflow that helps people inspect risks and communicate findings.',
       actions: '',
     },
@@ -55,6 +57,7 @@
       id: 'underwater-robot', theme: 'A system for the physical world',
       question: 'What does it take to move an idea from a model into open water?',
       work: 'I modeled components, assembled hardware, programmed control logic, and completed open-water tests for a robot intended for marine exploration and freshwater assessment.',
+      contextHeading: 'Learning through field tests',
       thread: 'The project brought mechanical design, software, and real-world testing together in one working system.',
       actions: '',
     },
@@ -177,7 +180,7 @@
         <p class="project-chapter-question">${escapeHtml(note.question)}</p>
         <div class="project-chapter-layout">
           <figure class="project-chapter-visual ${escapeHtml(imageClass)}" ${visualAttributes}>${illustration}<figcaption>${visualCaption}</figcaption></figure>
-          <div class="project-chapter-copy"><p class="project-chapter-meta">${escapeHtml(meta)}</p><h3>What I worked on</h3><p>${escapeHtml(note.work)}</p><h3>The human-centered thread</h3><p>${escapeHtml(note.thread)}</p><div class="tags">${tags}</div>${note.actions ? `<div class="project-chapter-actions">${note.actions}</div>` : ''}</div>
+          <div class="project-chapter-copy"><p class="project-chapter-meta">${escapeHtml(meta)}</p><h3>What I worked on</h3><p>${escapeHtml(note.work)}</p><h3>${escapeHtml(note.contextHeading || 'Design choices')}</h3><p>${escapeHtml(note.thread)}</p><div class="tags">${tags}</div>${note.actions ? `<div class="project-chapter-actions">${note.actions}</div>` : ''}</div>
         </div>`;
       grid.after(panel);
       projectChapters.set(note.id, panel);
