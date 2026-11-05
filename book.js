@@ -45,7 +45,7 @@
       work: 'MindJoy brings self-assessment, AI Q&A, “Mood Tree Hole,” and “MindJoy Diary” into one mental-health platform.',
       contextHeading: 'Survey-informed design',
       thread: 'A questionnaire survey of 327 individuals informed MindJoy’s design. Its features offer different ways for people to reflect and seek support.',
-      actions: '<a class="button" href="https://mindjoy.lingyahuang.com/" target="_blank" rel="noopener noreferrer">Check out MindJoy platform ↗</a>',
+      actions: '<a class="button" href="https://www.mindjoyspace.com/" target="_blank" rel="noopener noreferrer">Check out MindJoy platform ↗</a>',
     },
     JobMaxxing: {
       id: 'jobmaxxing', theme: 'Career exploration, made actionable',

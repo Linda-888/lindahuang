@@ -79,7 +79,7 @@ const mindjoyHeading=[...document.querySelectorAll('.project h3')].find(el=>el.t
 if(mindjoyHeading){
   const mindjoyButton=document.createElement('a');
   mindjoyButton.className='mindjoy-link';
-  mindjoyButton.href='https://mindjoy.lingyahuang.com/';
+  mindjoyButton.href='https://www.mindjoyspace.com/';
   mindjoyButton.target='_blank';
   mindjoyButton.rel='noopener noreferrer';
   mindjoyButton.textContent='Check out MindJoy platform ↗';
@@ -124,7 +124,7 @@ if(projectGridUpdated){
   workbuddyCard.innerHTML='<div class="project-image project-workbuddy"></div><div class="project-body"><span>Personal project · Live web app</span><h3>WorkBuddy</h3><p>A study companion that brings to-dos, project steps, focus sessions, readings, and progress into one place. Peanut the hamster grows as students study, adding a playful reason to return.</p><div class="tags"><span>Study planning</span><span>Focus</span><span>Motivation</span></div></div>';
   jobmaxxingCard.after(workbuddyCard);
   const newMindjoy=projectGridUpdated.querySelector('.project h3');
-  if(newMindjoy){const button=document.createElement('a');button.className='mindjoy-link';button.href='https://mindjoy.lingyahuang.com/';button.target='_blank';button.rel='noopener noreferrer';button.textContent='Check out MindJoy platform ↗';newMindjoy.closest('.project-body').appendChild(button);}
+  if(newMindjoy){const button=document.createElement('a');button.className='mindjoy-link';button.href='https://www.mindjoyspace.com/';button.target='_blank';button.rel='noopener noreferrer';button.textContent='Check out MindJoy platform ↗';newMindjoy.closest('.project-body').appendChild(button);}
 }
 document.querySelectorAll('#experience .timeline article').forEach(article=>{
   const title=article.querySelector('h3')?.textContent||'';
@@ -174,7 +174,7 @@ document.querySelectorAll('#projects .project').forEach(project=>{
   if(media&&image)image.innerHTML=media;
 });
 const mindjoyCover=document.querySelector('#projects .project-mindjoy');
-if(mindjoyCover)mindjoyCover.innerHTML='<a class="project-cover-link" href="https://mindjoy.lingyahuang.com/" target="_blank" rel="noopener noreferrer" aria-label="Open MindJoy platform"><img src="assets/projects/mindjoy-cover.png" alt="MindJoy project cover showing the platform mission and four self-care tools" loading="lazy" width="1600" height="900"></a>';
+if(mindjoyCover)mindjoyCover.innerHTML='<a class="project-cover-link" href="https://www.mindjoyspace.com/" target="_blank" rel="noopener noreferrer" aria-label="Open MindJoy platform"><img src="assets/projects/mindjoy-cover.png" alt="MindJoy project cover showing the platform mission and four self-care tools" loading="lazy" width="1600" height="900"></a>';
 const jobmaxxingCover=document.querySelector('#projects .project-jobmaxxing');
 if(jobmaxxingCover)jobmaxxingCover.innerHTML='<a class="project-cover-link" href="https://jobmaxxing-linda.onrender.com/" target="_blank" rel="noopener noreferrer" aria-label="Open JobMaxxing website"><img src="assets/projects/jobmaxxing-cover.png" alt="JobMaxxing cover illustrating career chat, a direction profile, job matching, and saved roles" loading="lazy" width="1600" height="900"></a>';
 const workbuddyCover=document.querySelector('#projects .project-workbuddy');
