@@ -106,6 +106,9 @@ body.chapter-page .research-card-image img { display: block; width: 100%; height
 body.chapter-page .research-card-image figcaption { color: #69817d; font: 10px/1.4 var(--mono); margin-top: 9px; }
 body.chapter-page .research-content h3 { color: #20404a; font-size: clamp(27px,2.6vw,38px); }
 body.chapter-page .research-content > p:not(.item-meta) { color: #5d7370; font-size: 14px; line-height: 1.65; }
+.page-research .research-content > p.research-publication,
+body.chapter-page.page-research .research-content > p.research-publication { margin: 0 0 16px; padding: 10px 0 10px 14px; border-left: 2px solid #bd7054; color: #37555a; font: 11px/1.6 var(--mono); }
+.research-publication a { color: inherit; text-underline-offset: 3px; overflow-wrap: anywhere; }
 body.chapter-page .research-actions { margin: 13px 0 20px; gap: 9px; }
 body.chapter-page .research-actions .button,
 body.chapter-page .research-actions .button-outline { display: inline-flex; align-items: center; padding: 10px 13px; border: 1px solid #21444c; border-radius: 3px; background: #1c3e47; color: #fff9ed; font: 500 10px/1.35 var(--mono); text-decoration: none; }
@@ -139,6 +142,10 @@ body.chapter-page.page-research-detail .data-table td { border-color: #cbd7cd; }
 body.chapter-page.page-research-detail .paper-figure-grid figure { background: #eef2e9; border-color: #d4dfd2; box-shadow: none; }
 body.chapter-page.page-research-detail .paper-figure-grid figcaption { color: #637a75; }
 body.chapter-page.page-research-detail .detail-callout p { color: #315258; }
+.paper-citation { max-width: 920px; margin: 24px 0 0; padding: 17px 20px; border-left: 3px solid #bd7054; background: rgba(255,255,255,.6); }
+.paper-citation span { color: #a35e48; font: 10px/1.4 var(--mono); letter-spacing: .06em; text-transform: uppercase; }
+.paper-citation p { margin: 8px 0 0; color: #37555a; font: 14px/1.6 var(--sans); }
+.paper-citation a { color: inherit; text-underline-offset: 3px; overflow-wrap: anywhere; }
 body.chapter-page.page-research-detail .detail-cta { display: flex; width: min(100% - 48px,1100px); max-width: 1100px; margin: 35px auto 70px; padding: 39px 43px; background: #173842; border-radius: 4px 16px 4px 4px; color: #fff9ed; }
 body.chapter-page.page-research-detail .detail-cta h2 { color: #fff9ed; }
 body.chapter-page.page-research-detail .detail-cta .text-link { color: #fff9ed; }
