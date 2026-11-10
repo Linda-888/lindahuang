@@ -29,7 +29,7 @@
     projects: { cover: 'Making<br>Things.', label: 'Projects / in practice', left: 'Ideas meet people<br>Prototypes meet reality<br>Learning by building', line: 'Opening the workshop', mark: '<path d="M60 104V50m0 31L35 58m25 13 27-36M60 104l-23 10m23-10 24 10"/><circle cx="60" cy="35" r="23"/><circle cx="34" cy="55" r="18"/><circle cx="87" cy="51" r="19"/><circle cx="37" cy="44" r="3"/><circle cx="72" cy="29" r="3"/><circle cx="88" cy="60" r="3"/>' },
     mindjoy: { cover: 'Mind<br>Joy.', label: 'Project / reflection', left: 'Space to reflect<br>Ways to ask for support<br>Technology with care', line: 'Entering a supportive space', mark: '<path d="M60 24c13 14 23 23 23 39a23 23 0 0 1-46 0c0-16 10-25 23-39Z"/><path d="M20 69c14 24 66 25 80 0M28 39c14-18 50-19 64 0"/>' },
     jobmaxxing: { cover: 'Next<br>Move.', label: 'Project / career discovery', left: 'Start with interests<br>Explore real openings<br>Save a direction', line: 'Finding a path forward', mark: '<path d="M20 88c18-4 31-13 40-29 9-16 20-24 40-27M86 20l16 10-14 14"/><circle cx="26" cy="87" r="6"/><circle cx="61" cy="58" r="6"/><circle cx="99" cy="31" r="6"/>' },
-    workbuddy: { cover: 'Work<br>Buddy.', label: 'Project / student life', left: 'Plan what matters<br>Make room to focus<br>Celebrate steady progress', line: 'Making space to study', mark: '<circle cx="60" cy="70" r="18"/><circle cx="29" cy="40" r="8"/><circle cx="49" cy="30" r="8"/><circle cx="72" cy="30" r="8"/><circle cx="92" cy="42" r="8"/>' },
+    scholarling: { cover: 'Scholar<br>ling.', label: 'Project / student life', left: 'Plan what matters<br>Make room to focus<br>Celebrate steady progress', line: 'Making space to study', mark: '<circle cx="60" cy="70" r="18"/><circle cx="29" cy="40" r="8"/><circle cx="49" cy="30" r="8"/><circle cx="72" cy="30" r="8"/><circle cx="92" cy="42" r="8"/>' },
     security: { cover: 'Threat<br>Map.', label: 'Project / security', left: 'Identify a risk<br>Trace the attack path<br>Make findings usable', line: 'Mapping the system', mark: '<path d="M60 16 96 30v28c0 25-14 40-36 50-22-10-36-25-36-50V30L60 16Z"/><rect x="46" y="54" width="28" height="23" rx="3"/><path d="M52 54v-7a8 8 0 0 1 16 0v7"/>' },
     'underwater-robot': { cover: 'Open<br>Water.', label: 'Project / engineering', left: 'Model the components<br>Build the hardware<br>Test beyond the lab', line: 'Going from model to water', mark: '<path d="M18 78c12-9 24-9 36 0s24 9 36 0 24-9 36 0M18 94c12-9 24-9 36 0s24 9 36 0 24-9 36 0M35 58h51c8 0 13-5 13-12v-7H48c-8 0-13 5-13 12v7Z"/><circle cx="57" cy="48" r="5"/>' },
   };
@@ -55,13 +55,13 @@
       thread: 'The journey can begin with a conversation, a resume, or a search. An editable direction profile brings interests, skills, location, and practical needs together to surface possible connections in current listings. Matches are starting points for exploration: visitors can inspect the source and verify eligibility, pay, and availability with the employer.',
       actions: '<a class="button" href="https://jobmaxxing-linda.onrender.com/" target="_blank" rel="noopener noreferrer">Open JobMaxxing ↗</a>',
     },
-    WorkBuddy: {
-      id: 'workbuddy', theme: 'A study companion for everyday progress',
+    Scholarling: {
+      id: 'scholarling', theme: 'A study companion for everyday progress',
       question: 'How can planning and focus feel more supportive as students build a study routine?',
-      work: 'I built WorkBuddy to put the essentials of studying in one workspace. Students can make to-dos, break a larger project into steps and deadlines, run a focus timer, keep PDF, EPUB, and text readings on a shelf, and review their study history.',
+      work: 'I built Scholarling to put the essentials of studying in one workspace. Students can make to-dos, break a larger project into steps and deadlines, run a focus timer, keep PDF, EPUB, and text readings on a shelf, and review their study history.',
       contextHeading: 'Plan, focus, track, grow',
-      thread: 'WorkBuddy turns a study session into a small cycle: choose the next step, spend time on it, and see the progress afterward. Daily goals and streaks make effort visible, while Peanut the hamster levels up with study time and unlocks rewards. Students can start on one device; Canvas and Google Calendar connection options help bring in assignments and plans, and signing in adds a shared profile across devices.',
-      actions: '<a class="button" href="https://workbuddy.workbuddybtw.workers.dev/" target="_blank" rel="noopener noreferrer">Open WorkBuddy ↗</a>',
+      thread: 'Scholarling turns a study session into a small cycle: choose the next step, spend time on it, and see the progress afterward. Daily goals and streaks make effort visible, while Peanut the hamster levels up with study time and unlocks rewards. Students can start on one device; Canvas and Google Calendar connection options help bring in assignments and plans, and signing in adds a shared profile across devices.',
+      actions: '<a class="button" href="https://scholarling.com/" target="_blank" rel="noopener noreferrer">Open Scholarling ↗</a>',
     },
     'AI Agent Harness': {
       id: 'security', theme: 'Security boundaries for AI agents',

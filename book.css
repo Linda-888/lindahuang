@@ -287,7 +287,7 @@ body.chapter-page.chapter-direct main.chapter-main { animation: direct-page-arri
 .mystery-intro[data-theme="projects"] { --scene-top:#4a3e3e; --scene-bottom:#201e27; --cover-top:#7d5751; --cover-bottom:#3c3339; --cover-edge:#d9ae79; --cover-type:#ffe6ca; --intro-accent:#ffc297; }
 .mystery-intro[data-theme="mindjoy"] { --scene-top:#73555a; --scene-bottom:#332d39; --cover-top:#a87572; --cover-bottom:#6b454d; --cover-edge:#e1bf98; --cover-type:#fff0db; --intro-accent:#fbd1b7; }
 .mystery-intro[data-theme="jobmaxxing"] { --scene-top:#315ca5; --scene-bottom:#112345; --cover-top:#376ec2; --cover-bottom:#19396c; --cover-edge:#b9c9ec; --cover-type:#f4f8ff; --intro-accent:#d7e7ff; }
-.mystery-intro[data-theme="workbuddy"] { --scene-top:#789b82; --scene-bottom:#263e38; --cover-top:#b9825b; --cover-bottom:#6a6550; --cover-edge:#f2d9a5; --cover-type:#fff8e9; --intro-accent:#ffdfaa; }
+.mystery-intro[data-theme="scholarling"] { --scene-top:#789b82; --scene-bottom:#263e38; --cover-top:#b9825b; --cover-bottom:#6a6550; --cover-edge:#f2d9a5; --cover-type:#fff8e9; --intro-accent:#ffdfaa; }
 .mystery-intro[data-theme="security"] { --scene-top:#283f54; --scene-bottom:#101d2c; --cover-top:#37546c; --cover-bottom:#1a3045; --cover-edge:#b4c0b9; --cover-type:#eaf1e8; --intro-accent:#b1d5ce; }
 .mystery-intro[data-theme="underwater-robot"] { --scene-top:#235369; --scene-bottom:#071c2b; --cover-top:#356e80; --cover-bottom:#134254; --cover-edge:#a0c6c5; --cover-type:#ecf6e9; --intro-accent:#a6dedb; }
 .mystery-intro .mystery-cover { border-color: var(--cover-edge); color: var(--cover-type); background: radial-gradient(circle at 65% 45%,var(--cover-top),var(--cover-bottom) 70%); }
@@ -303,7 +303,7 @@ body.chapter-page.chapter-direct main.chapter-main { animation: direct-page-arri
 .mystery-intro[data-theme="jobmaxxing"] .mystery-turn-sheet i,
 .mystery-intro[data-theme="security"] .mystery-turn-sheet i,
 .mystery-intro[data-theme="underwater-robot"] .mystery-turn-sheet i { background: linear-gradient(rgba(55,103,116,.19) 1px,transparent 1px),linear-gradient(90deg,rgba(55,103,116,.19) 1px,transparent 1px); background-size: 22px 22px; }
-.mystery-intro[data-theme="workbuddy"] .mystery-turn-sheet i { background: repeating-linear-gradient(0deg,transparent 0 17px,rgba(95,136,111,.2) 18px 19px,transparent 20px 28px); }
+.mystery-intro[data-theme="scholarling"] .mystery-turn-sheet i { background: repeating-linear-gradient(0deg,transparent 0 17px,rgba(95,136,111,.2) 18px 19px,transparent 20px 28px); }
 .mystery-intro[data-theme="education"] .mystery-turn-sheet i { background: repeating-linear-gradient(0deg,transparent 0 14px,rgba(71,107,91,.22) 15px 16px,transparent 17px 26px); }
 
 /* Work cards and reading pages carry the same cues as their entrances. */
@@ -314,11 +314,11 @@ body.chapter-page .project-chapter-visual.project-jobmaxxing { background: #1e56
 body.chapter-page .project-image.project-jobmaxxing img { display: block; width: 100%; height: 100%; object-fit: contain; }
 body.chapter-page .project-chapter-visual.project-jobmaxxing { min-height: 0; height: auto; padding: 12px; }
 body.chapter-page .project-chapter-visual.project-jobmaxxing img { display: block; width: 100%; height: auto; }
-body.chapter-page .project-image.project-workbuddy,
-body.chapter-page .project-chapter-visual.project-workbuddy { background: #fff3e0; }
-body.chapter-page .project-image.project-workbuddy img { display: block; width: 100%; height: 100%; object-fit: contain; }
-body.chapter-page .project-chapter-visual.project-workbuddy { min-height: 0; height: auto; padding: 12px; }
-body.chapter-page .project-chapter-visual.project-workbuddy img { display: block; width: 100%; height: auto; }
+body.chapter-page .project-image.project-scholarling,
+body.chapter-page .project-chapter-visual.project-scholarling { background: #fff3e0; }
+body.chapter-page .project-image.project-scholarling img { display: block; width: 100%; height: 100%; object-fit: contain; }
+body.chapter-page .project-chapter-visual.project-scholarling { min-height: 0; height: auto; padding: 12px; }
+body.chapter-page .project-chapter-visual.project-scholarling img { display: block; width: 100%; height: auto; }
 body.chapter-page .project-image.project-mindjoy img { display: block; width: 100%; height: 100%; object-fit: contain; }
 body.chapter-page .project-chapter-visual.project-mindjoy { min-height: 0; height: auto; padding: 12px 12px 38px; }
 body.chapter-page .project-chapter-visual.project-mindjoy img { display: block; width: 100%; height: auto; }

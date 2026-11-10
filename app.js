@@ -119,10 +119,10 @@ if(projectGridUpdated){
   jobmaxxingCard.className='project';
   jobmaxxingCard.innerHTML='<div class="project-image project-jobmaxxing"></div><div class="project-body"><span>Personal project · Live web app</span><h3>JobMaxxing</h3><p>A career workspace that connects guided exploration and practical preferences with current public job postings. Visitors can chat about their direction, compare a resume with openings, and save roles to revisit.</p><div class="tags"><span>Career exploration</span><span>AI</span><span>Job discovery</span></div></div>';
   projectGridUpdated.firstElementChild.after(jobmaxxingCard);
-  const workbuddyCard=document.createElement('article');
-  workbuddyCard.className='project';
-  workbuddyCard.innerHTML='<div class="project-image project-workbuddy"></div><div class="project-body"><span>Personal project · Live web app</span><h3>WorkBuddy</h3><p>A study companion that brings to-dos, project steps, focus sessions, readings, and progress into one place. Peanut the hamster grows as students study, adding a playful reason to return.</p><div class="tags"><span>Study planning</span><span>Focus</span><span>Motivation</span></div></div>';
-  jobmaxxingCard.after(workbuddyCard);
+  const scholarlingCard=document.createElement('article');
+  scholarlingCard.className='project';
+  scholarlingCard.innerHTML='<div class="project-image project-scholarling"></div><div class="project-body"><span>Personal project · Live web app</span><h3>Scholarling</h3><p>A study companion that brings to-dos, project steps, focus sessions, readings, and progress into one place. Peanut the hamster grows as students study, adding a playful reason to return.</p><div class="tags"><span>Study planning</span><span>Focus</span><span>Motivation</span></div></div>';
+  jobmaxxingCard.after(scholarlingCard);
   const newMindjoy=projectGridUpdated.querySelector('.project h3');
   if(newMindjoy){const button=document.createElement('a');button.className='mindjoy-link';button.href='https://www.mindjoyspace.com/';button.target='_blank';button.rel='noopener noreferrer';button.textContent='Check out MindJoy platform ↗';newMindjoy.closest('.project-body').appendChild(button);}
 }
@@ -177,8 +177,8 @@ const mindjoyCover=document.querySelector('#projects .project-mindjoy');
 if(mindjoyCover)mindjoyCover.innerHTML='<a class="project-cover-link" href="https://www.mindjoyspace.com/" target="_blank" rel="noopener noreferrer" aria-label="Open MindJoy platform"><img src="assets/projects/mindjoy-cover.png" alt="MindJoy project cover showing the platform mission and four self-care tools" loading="lazy" width="1600" height="900"></a>';
 const jobmaxxingCover=document.querySelector('#projects .project-jobmaxxing');
 if(jobmaxxingCover)jobmaxxingCover.innerHTML='<a class="project-cover-link" href="https://jobmaxxing-linda.onrender.com/" target="_blank" rel="noopener noreferrer" aria-label="Open JobMaxxing website"><img src="assets/projects/jobmaxxing-cover.png" alt="JobMaxxing cover illustrating career chat, a direction profile, job matching, and saved roles" loading="lazy" width="1600" height="900"></a>';
-const workbuddyCover=document.querySelector('#projects .project-workbuddy');
-if(workbuddyCover)workbuddyCover.innerHTML='<a class="project-cover-link" href="https://workbuddy.workbuddybtw.workers.dev/" target="_blank" rel="noopener noreferrer" aria-label="Open WorkBuddy website"><img src="assets/projects/workbuddy-cover.png" alt="WorkBuddy cover showing a study planner, focus timer, progress tracking, and Peanut the hamster" loading="lazy" width="1600" height="900"></a>';
+const scholarlingCover=document.querySelector('#projects .project-scholarling');
+if(scholarlingCover)scholarlingCover.innerHTML='<a class="project-cover-link" href="https://scholarling.com/" target="_blank" rel="noopener noreferrer" aria-label="Open Scholarling website"><img src="assets/projects/scholarling-cover.png" alt="Scholarling cover showing a study planner, focus timer, progress tracking, and Peanut the hamster" loading="lazy" width="1600" height="900"></a>';
 const securityCover=document.querySelector('#projects .project-security');
 if(securityCover)securityCover.innerHTML='<img src="assets/projects/ai-agent-harness-cover.png" alt="AI Agent Harness cover showing a modeled ATT&CK scenario, four Harness layers, and scope validation results" loading="lazy" width="1600" height="900">';
 const mentalHealthVisual=document.querySelector('.health-media .signal-map');
