@@ -1394,6 +1394,8 @@ main { position: relative; }
 .orb-sapling-leaf { fill: #a9d4ac; stroke: #d7efc5; stroke-width: 1; }
 .orb-screen { fill: #e6e3cc; stroke: #9fcac2; stroke-width: 1.6; }
 .orb-screen-line { fill: none; stroke: #bd876d; stroke-width: 1.7; stroke-linecap: round; }
+.orb-keyboard { fill: #f3e4c9; stroke: #9fcac2; stroke-width: 1.2; stroke-linejoin: round; }
+.orb-desk { fill: none; stroke: #d7b894; stroke-width: 3; stroke-linecap: round; }
 .orb-message { fill: #fff1db; stroke: #d6a07d; stroke-width: 1.6; stroke-linejoin: round; }
 .orb-message-line { fill: none; stroke: #6d918f; stroke-width: 2; stroke-linecap: round; }
 .route-orb-dialog {
@@ -1516,7 +1518,7 @@ main { position: relative; }
 .station-copy strong { font-size: 16px; }
 .object-paper-search svg,
 .object-tree svg,
-.object-briefcase svg,
+.object-workstation svg,
 .object-community svg,
 .object-heart svg { display: block; width: 100%; height: 100%; overflow: visible; }
 .art-paper-shadow { fill: #122e38; opacity: .9; }
@@ -1534,11 +1536,17 @@ main { position: relative; }
 .art-tree-leaf-three { fill: #3c796f; }
 .art-tree-branch { fill: none; stroke: #b9dfc2; stroke-width: 1.5; stroke-linecap: round; opacity: .7; }
 .art-tree-fruit { fill: #ffac86; stroke: #ffe8bd; stroke-width: 1; filter: drop-shadow(0 0 3px rgba(255,159,116,.75)); }
-.art-case-shadow { fill: #183640; }
-.art-case-handle { fill: none; stroke: #f8e8cb; stroke-width: 5; stroke-linecap: round; }
-.art-case { fill: #bd8f77; stroke: #ffe5c8; stroke-width: 2; stroke-linejoin: round; }
-.art-case-lid { fill: #e9d7b5; stroke: #fff0d3; stroke-width: 1.5; stroke-linejoin: round; }
-.art-case-clasp { fill: #80aaa3; stroke: #d9efe1; stroke-width: 1.5; }
+.art-work-shadow { fill: #102b35; opacity: .75; }
+.art-work-chair { fill: #477982; stroke: #a6d1c3; stroke-width: 1.5; stroke-linejoin: round; }
+.art-work-body { fill: #d98974; stroke: #ffe1bb; stroke-width: 1.7; stroke-linejoin: round; }
+.art-work-head { fill: #f5caa6; stroke: #ffe8c9; stroke-width: 1.5; }
+.art-work-hair { fill: #263d45; }
+.art-work-screen-shadow { fill: #173943; }
+.art-work-screen { fill: #b9ddd0; stroke: #f3e7c9; stroke-width: 2; stroke-linejoin: round; }
+.art-work-screen-line { fill: none; stroke: #508a88; stroke-width: 2; stroke-linecap: round; }
+.art-work-arm { fill: none; stroke: #f5caa6; stroke-width: 5; stroke-linecap: round; }
+.art-work-keyboard { fill: #f2e3ca; stroke: #a6d1c3; stroke-width: 1.5; stroke-linejoin: round; }
+.art-work-desk { fill: none; stroke: #e7c5a0; stroke-width: 3; stroke-linecap: round; }
 .art-community-shadow { fill: #102b35; opacity: .75; }
 .art-community-side-body { fill: #5f9b93; stroke: #c9e7d4; stroke-width: 1.7; }
 .art-community-side-head { fill: #f0c9a4; stroke: #fff0d4; stroke-width: 1.5; }
